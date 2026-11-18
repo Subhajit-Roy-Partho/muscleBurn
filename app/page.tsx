@@ -135,7 +135,9 @@ export default function HomePage() {
           </div>
           <p className="stage-hint">
             Drag to orbit · scroll/pinch to zoom · right-drag or two-finger drag to pan ·
-            click a structure to pin it — click empty space to deselect
+            click a structure to pin it — click empty space to deselect. Use the X-ray
+            slider (or 25 %) to fade superficial muscles so deep layers such as internal
+            oblique, transversus abdominis and psoas become visible.
           </p>
         </div>
 

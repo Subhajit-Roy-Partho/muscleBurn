@@ -41,9 +41,14 @@ export interface MuscleViewerProps {
   activation?: Record<string, number> | null;
 }
 
-/** How much the non-activated muscles recede in heat-map mode. */
-const DIM_FACTOR = 0.55;
-const DIM_DESATURATION = 0.35;
+/** Opacity of muscles that are *not* the focused/selected structure. */
+const GHOST_OPACITY = 0.22;
+/** Opacity of muscles that are not activated in exercise heat-map mode. */
+const GHOST_ACTIVATION_OPACITY = 0.28;
+/** Default X-ray level: superficial muscles fade, deep layers stay opaque. */
+const XRAY_DEFAULT_OPACITY = 0.25;
+const XRAY_MIN_OPACITY = 0.1;
+const XRAY_STEP = 0.05;
 const HEAT_ROUGHNESS = 0.55;
 
 interface OrbitLike {
@@ -57,6 +62,12 @@ interface MaterialSet {
   selected: THREE.MeshStandardMaterial;
 }
 
+interface MaterialOptions {
+  opacity?: number;
+  transparent?: boolean;
+  depthWrite?: boolean;
+}
+
 interface PreparedModel {
   scene: THREE.Object3D;
   meshes: THREE.Mesh[];
@@ -65,8 +76,19 @@ interface PreparedModel {
   regions: Map<Region, MaterialSet>;
   /** Lazily-built, cached material sets for activated muscles (keyed by hex). */
   heat: (hex: string) => MaterialSet;
-  /** Lazily-built, cached dimmed material sets for inactive muscles. */
-  dim: (region: Region) => MaterialSet;
+  /**
+   * Lazily-built, cached translucent sets (depthWrite off) used to de-emphasise
+   * muscles that are not the one being inspected. Cached per region + opacity.
+   */
+  ghost: (region: Region, opacity?: number) => MaterialSet;
+  /**
+   * Lazily-built, cached translucent sets for the superficial layer in X-ray
+   * mode. The opacity is mutable so the slider can retune it in place instead
+   * of rebuilding materials for all 600+ meshes on every drag tick.
+   */
+  xray: (region: Region) => MaterialSet;
+  /** Retunes every cached X-ray set to a new opacity. */
+  setXrayOpacity: (opacity: number) => void;
   dispose: () => void;
 }
 
@@ -86,12 +108,20 @@ const LAYER_COPY: Record<StructureInfo['layer'], string> = {
   superficial: 'Superficial muscle',
 };
 
-function makeMaterialSet(color: string, vertexColors: boolean, roughness: number): MaterialSet {
+function makeMaterialSet(
+  color: string,
+  vertexColors: boolean,
+  roughness: number,
+  options: MaterialOptions = {},
+): MaterialSet {
   const base = new THREE.MeshStandardMaterial({
     color,
     metalness: 0.05,
     roughness,
     vertexColors,
+    opacity: options.opacity ?? 1,
+    transparent: options.transparent ?? false,
+    depthWrite: options.depthWrite ?? true,
   });
   const hover = base.clone();
   hover.emissive = new THREE.Color('#ff7b42');
@@ -139,19 +169,44 @@ function prepare(gltfScene: THREE.Object3D): PreparedModel {
     return set;
   };
 
-  const dimSets = new Map<Region, MaterialSet>();
-  const dim = (region: Region): MaterialSet => {
-    const existing = dimSets.get(region);
+  const ghostSets = new Map<string, MaterialSet>();
+  const ghost = (region: Region, opacity: number = GHOST_OPACITY): MaterialSet => {
+    const slot = `${region}@${opacity.toFixed(2)}`;
+    const existing = ghostSets.get(slot);
     if (existing) return existing;
-    const base = new THREE.Color(REGION_COLORS[region]);
-    const luminance = base.r * 0.2126 + base.g * 0.7152 + base.b * 0.0722;
-    const dimmed = base
-      .lerp(new THREE.Color(luminance, luminance, luminance), DIM_DESATURATION)
-      .multiplyScalar(DIM_FACTOR);
-    const set = makeMaterialSet(`#${dimmed.getHexString()}`, false, 0.55);
-    dimSets.set(region, set);
+    const set = makeMaterialSet(REGION_COLORS[region], false, 0.55, {
+      opacity,
+      transparent: true,
+      depthWrite: false,
+    });
+    ghostSets.set(slot, set);
     materials.push(set.base, set.hover, set.selected);
     return set;
+  };
+
+  // X-ray: translucent superficial muscle, mutable opacity. depthWrite stays off
+  // so the opaque deep layer drawn underneath is not hidden by the overlay.
+  let xrayOpacity = XRAY_DEFAULT_OPACITY;
+  const xraySets = new Map<Region, MaterialSet>();
+  const xray = (region: Region): MaterialSet => {
+    const existing = xraySets.get(region);
+    if (existing) return existing;
+    const set = makeMaterialSet(REGION_COLORS[region], false, 0.55, {
+      opacity: xrayOpacity,
+      transparent: true,
+      depthWrite: false,
+    });
+    xraySets.set(region, set);
+    materials.push(set.base, set.hover, set.selected);
+    return set;
+  };
+  const setXrayOpacity = (opacity: number) => {
+    xrayOpacity = opacity;
+    for (const set of xraySets.values()) {
+      set.base.opacity = opacity;
+      set.hover.opacity = opacity;
+      set.selected.opacity = opacity;
+    }
   };
 
   const meshes: THREE.Mesh[] = [];
@@ -205,7 +260,9 @@ function prepare(gltfScene: THREE.Object3D): PreparedModel {
     bone,
     regions,
     heat,
-    dim,
+    ghost,
+    xray,
+    setXrayOpacity,
     dispose: () => materials.forEach((material) => material.dispose()),
   };
 }
@@ -279,6 +336,8 @@ interface SceneProps {
   layers: Layers;
   side: SideFilter;
   activationIndex: Map<string, ActivationEntry> | null;
+  /** Superficial-layer opacity for X-ray mode: 1 disables X-ray. */
+  xray: number;
 }
 
 const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
@@ -296,6 +355,7 @@ function SceneContents({
   layers,
   side,
   activationIndex,
+  xray,
 }: SceneProps) {
   const camera = useThree((state) => state.camera);
   const gl = useThree((state) => state.gl);
@@ -324,41 +384,92 @@ function SceneContents({
     };
   };
 
-  // one material instance per region, reused across every mesh of that region;
+  // One material instance per region, reused across every mesh of that region;
   // in activation mode, one instance per heat colour instead so the ramp is
-  // per-muscle and inactive muscles recede.
+  // per-muscle. Three visual states share that cache:
+  //   • neutral       — region colours, or translucent superficial layer in X-ray
+  //   • focus         — the selected mesh opaque, every other muscle ghosted
+  //   • activation    — activated meshes keep their heat colour, the rest ghosted
+  // renderOrder keeps the passes deterministic: bones (0) → opaque muscle (1) →
+  // translucent muscle (2). Transparent materials have depthWrite off, so the
+  // opaque deep layer underneath them is never occluded.
   const lastActivation = useRef<Map<string, ActivationEntry> | null>(null);
   useEffect(() => {
     let heated = 0;
-    let dimmed = 0;
+    let ghosted = 0;
     const matchedSources = new Set<string>();
+
+    model.setXrayOpacity(xray);
 
     for (const mesh of model.meshes) {
       const structure = model.info.get(mesh);
       if (!structure) continue;
-      let set = structure.isBone
-        ? model.bone
-        : (model.regions.get(structure.region ?? 'back') ?? model.bone);
+      const key = mesh.userData.structureKey as string;
+      const region: Region = structure.region ?? 'back';
+      const isSelected = key === selectedKey;
+      const isHovered = key === hoveredKey;
 
-      if (!structure.isBone && activationIndex) {
-        let entry: ActivationEntry | undefined;
+      if (structure.isBone) {
+        // Bones stay opaque in every mode; they are the frame that makes the
+        // X-ray (and the ghosted muscles) readable.
+        const set = model.bone;
+        mesh.material = isSelected ? set.selected : isHovered ? set.hover : set.base;
+        mesh.renderOrder = 0;
+        continue;
+      }
+
+      let entry: ActivationEntry | undefined;
+      if (activationIndex) {
         for (const candidate of structureLookupKeys(structure.key)) {
           entry = activationIndex.get(candidate);
           if (entry) break;
         }
         if (entry) {
-          set = model.heat(heatColor(entry.value));
           matchedSources.add(entry.source);
           heated += 1;
-        } else {
-          set = model.dim(structure.region ?? 'back');
-          dimmed += 1;
         }
       }
 
-      const key = mesh.userData.structureKey as string;
-      mesh.material =
-        key === selectedKey ? set.selected : key === hoveredKey ? set.hover : set.base;
+      const regionSet = model.regions.get(region) ?? model.bone;
+      const heatSet = entry ? model.heat(heatColor(entry.value)) : null;
+      // What this muscle looks like when it is the thing being talked about.
+      const opaqueSet = heatSet ?? regionSet;
+
+      let set: MaterialSet;
+      if (activationIndex) {
+        // Exercise mode wins over focus: activated muscles keep the heat ramp,
+        // a pinned-but-inactive structure stays legible, the rest recedes.
+        if (heatSet) {
+          set = heatSet;
+        } else if (isSelected) {
+          set = regionSet;
+        } else {
+          set = model.ghost(region, GHOST_ACTIVATION_OPACITY);
+          ghosted += 1;
+        }
+      } else if (selectedKey) {
+        // Focus mode: one structure opaque, every other muscle faded.
+        if (isSelected) {
+          set = opaqueSet;
+        } else {
+          set = model.ghost(region);
+          ghosted += 1;
+        }
+      } else if (xray < 1 && structure.layer === 'superficial') {
+        // X-ray: fade the superficial sheet; the opaque deep layer shows through.
+        set = model.xray(region);
+      } else {
+        set = regionSet;
+      }
+
+      // Hovered muscles are temporarily opaque so they stay inspectable even
+      // when the current mode has faded them.
+      if (isHovered && !isSelected && set !== regionSet && set !== heatSet) {
+        set = opaqueSet;
+      }
+
+      mesh.material = isSelected ? set.selected : isHovered ? set.hover : set.base;
+      mesh.renderOrder = set.base.transparent ? 2 : 1;
     }
 
     if (activationIndex && lastActivation.current !== activationIndex) {
@@ -371,7 +482,7 @@ function SceneContents({
       );
       const summary = {
         heatedMeshes: heated,
-        dimmedMeshes: dimmed,
+        ghostedMeshes: ghosted,
         activationKeys: sources.size,
         unmatchedKeys: unmatched,
       };
@@ -384,7 +495,7 @@ function SceneContents({
       }
     }
     if (!activationIndex) lastActivation.current = null;
-  }, [model, selectedKey, hoveredKey, activationIndex]);
+  }, [model, selectedKey, hoveredKey, activationIndex, xray]);
 
   // layer + side visibility
   useEffect(() => {
@@ -596,6 +707,9 @@ export default function MuscleViewer({
   });
   const [side, setSide] = useState<SideFilter>('both');
   const [pointer, setPointer] = useState({ x: 0, y: 0 });
+  /** Superficial-muscle opacity; 1 = fully opaque (X-ray off). */
+  const [xray, setXray] = useState(1);
+  const xrayPercent = Math.round(xray * 100);
 
   // Load the atlas once. MeshoptDecoder is required: the GLB is compressed with
   // EXT_meshopt_compression and quantised with KHR_mesh_quantization.
@@ -689,6 +803,7 @@ export default function MuscleViewer({
               layers={layers}
               side={side}
               activationIndex={activationIndex}
+              xray={xray}
             />
           ) : null}
 
@@ -802,6 +917,43 @@ export default function MuscleViewer({
             onClick={() => toggleLayer('labels')}
           >
             labels
+          </button>
+        </div>
+
+        <div className="toolbar-group" role="group" aria-label="X-ray">
+          <label className="toolbar-label" htmlFor="xray-opacity">
+            X-ray
+          </label>
+          <input
+            id="xray-opacity"
+            className="xray-slider"
+            type="range"
+            min={XRAY_MIN_OPACITY}
+            max={1}
+            step={XRAY_STEP}
+            value={xray}
+            onChange={(event) => setXray(Number(event.target.value))}
+            aria-valuetext={`${xrayPercent}% opacity`}
+            title="Fade the superficial muscle layer to see deeper structures"
+          />
+          <span className="xray-value">{xrayPercent}%</span>
+          <button
+            type="button"
+            className={xray === XRAY_DEFAULT_OPACITY ? 'chip chip-active' : 'chip'}
+            aria-pressed={xray === XRAY_DEFAULT_OPACITY}
+            onClick={() => setXray(XRAY_DEFAULT_OPACITY)}
+            title="Fade superficial muscles to 25 % so deep layers become visible"
+          >
+            X-ray 25%
+          </button>
+          <button
+            type="button"
+            className={xray === 1 ? 'chip chip-active' : 'chip'}
+            aria-pressed={xray === 1}
+            onClick={() => setXray(1)}
+            title="Restore fully opaque muscles"
+          >
+            reset
           </button>
         </div>
 
