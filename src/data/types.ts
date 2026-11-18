@@ -22,6 +22,12 @@ export interface ExerciseDef {
   id: string;
   name: string;
   category: string;
+  /**
+   * Where the exercise is realistically performed. `both` marks a movement that
+   * needs no gym equipment but is also loaded in a gym; omitted on legacy records
+   * means `gym` (see `exerciseSetting` in src/data/exercises.ts).
+   */
+  context?: 'home' | 'gym' | 'both';
   primaryMuscles: string[];
   secondaryMuscles: string[];
   variations: ExerciseFormVariation[];

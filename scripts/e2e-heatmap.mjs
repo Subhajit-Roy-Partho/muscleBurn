@@ -15,8 +15,11 @@
  *   3. click "Barbell Back Squat", wait for the activation legend;
  *   4. screenshot the canvas again and decode both PNGs (zlib only, no deps):
  *      more than 2 % of pixels must have changed, proving the meshes recoloured;
- *   5. open About and count the rendered reference entries (>= 90);
- *   6. fail on any uncaught page error or console error.
+ *   5. switch the Setting filter to Home, select "Push-Up", and repeat the
+ *      legend + >2 % recolour check against the squat frame — proving a
+ *      home/bodyweight exercise drives the same 3D heat map;
+ *   6. open About and count the rendered reference entries (>= 90);
+ *   7. fail on any uncaught page error or console error.
  *
  * Playwright is resolved exactly like scripts/ci-smoke.mjs (NODE_PATH or an
  * out-of-repo install); it is never added to package.json.
@@ -41,6 +44,7 @@ const PIXEL_DELTA = Number(process.env.E2E_PIXEL_DELTA || 24);
 const MIN_CHANGED_FRACTION = Number(process.env.E2E_MIN_CHANGED || 0.02);
 const MIN_REFERENCES = 90;
 const EXERCISE_NAME = 'Barbell Back Squat';
+const HOME_EXERCISE_NAME = 'Push-Up';
 
 /* ------------------------------- playwright ------------------------------- */
 
@@ -362,6 +366,67 @@ try {
     `3D canvas recoloured (> ${(MIN_CHANGED_FRACTION * 100).toFixed(0)} % of pixels changed)`,
     fraction > MIN_CHANGED_FRACTION,
     `${(fraction * 100).toFixed(1)} % of ${before.width * before.height} pixels changed`,
+  );
+
+  /* ------------------- second scenario: a Home exercise ------------------- */
+
+  // Back to the list, then narrow it with the new Setting = Home filter.
+  await page.getByRole('button', { name: /All exercises/i }).first().click();
+  const homeFilter = page.getByRole('button', { name: /^Home \(/i });
+  await homeFilter.waitFor({ state: 'visible', timeout: 20000 });
+  await homeFilter.click();
+  const homePressed = await homeFilter.getAttribute('aria-pressed');
+  check('Setting = Home filter chip is active', homePressed === 'true', `aria-pressed=${homePressed}`);
+
+  const squatRowsAfterFilter = await page
+    .getByRole('button', { name: new RegExp(EXERCISE_NAME, 'i') })
+    .count();
+  check(
+    'Setting = Home hides gym-only exercises',
+    squatRowsAfterFilter === 0,
+    `${squatRowsAfterFilter} squat row(s) visible`,
+  );
+
+  const homeExerciseButton = page
+    .getByRole('button', { name: new RegExp(`^${HOME_EXERCISE_NAME}\\b`, 'i') })
+    .first();
+  let homeButtonVisible = true;
+  try {
+    await homeExerciseButton.waitFor({ state: 'visible', timeout: 20000 });
+  } catch {
+    homeButtonVisible = false;
+  }
+  check('home exercise appears under Setting = Home', homeButtonVisible, HOME_EXERCISE_NAME);
+  if (homeButtonVisible) await homeExerciseButton.click();
+
+  let homeLegendAppeared = true;
+  try {
+    await legend.waitFor({ state: 'visible', timeout: 30000 });
+  } catch {
+    homeLegendAppeared = false;
+  }
+  const homeLegendText = homeLegendAppeared ? await legend.innerText() : '';
+  check(
+    'legend names the home exercise',
+    homeLegendAppeared && new RegExp(HOME_EXERCISE_NAME, 'i').test(homeLegendText),
+    homeLegendAppeared ? JSON.stringify(homeLegendText.replace(/\s+/g, ' ').trim()) : 'legend missing',
+  );
+
+  const homeBadge = page.locator('.mbx-detail .mbx-setting-home');
+  const homeBadgeText = (await homeBadge.count()) ? await homeBadge.first().innerText() : '';
+  check(
+    'detail header carries the Home badge',
+    /^Home$/.test(homeBadgeText.trim()),
+    JSON.stringify(homeBadgeText.trim()),
+  );
+
+  await page.waitForTimeout(RENDER_SETTLE_MS);
+  const homeFrame = decodePng(await canvas.screenshot());
+  const homeFraction = changedFraction(after, homeFrame);
+  check(
+    `3D canvas recoloured for the home exercise (> ${(MIN_CHANGED_FRACTION * 100).toFixed(0)} % of pixels changed)`,
+    homeFraction > MIN_CHANGED_FRACTION,
+    `${(homeFraction * 100).toFixed(1)} % of ${after.width * after.height} pixels changed`,
   );
 
   // About tab → references.

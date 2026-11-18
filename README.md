@@ -3,9 +3,10 @@
 Interactive 3D muscle viewer for skeletal anatomy, built as a statically exported
 Next.js (App Router + TypeScript) app. The figure is the **Écorché** full-body
 atlas — one named mesh per anatomical structure — hovered and selected in 3D, with
-attachments, actions and innervation in the side panel. An exercise layer
-(schema-first) is scaffolded to record how form variations shift demand across
-muscles, with citation hooks.
+attachments, actions and innervation in the side panel. An exercise layer records
+how form variations shift demand across muscles, with citation hooks: **36 cited
+exercises (22 gym + 14 home/bodyweight)** backed by **114 references**, filterable
+by body region and by Home/Gym setting.
 
 > **Educational only.** This is not medical advice, not a diagnostic tool, and not a
 > training prescription. Exercise effects are placeholders until replaced with
@@ -88,8 +89,8 @@ src/data/
   anatomy.ts            typed index over structures.json, region classifier
   muscles/meta.ts       curated origin/insertion/action/innervation (~127 muscles)
   types.ts              exercise/reference schema
-  exercises.ts          placeholder exercise entries
-  references.ts         placeholder citations
+  exercises.ts          exercise records (36) + region/setting filters
+  references.ts         citations (114)
 ```
 
 ## How the atlas is wired
@@ -121,21 +122,40 @@ src/data/
 - `ExerciseFormVariation` — `{ id, name, description, effects: [{ muscle,
   direction: 'increase' | 'decrease' | 'shift', magnitude?, note?,
   referenceIds }], referenceIds }`
-- `ExerciseDef` — `{ id, name, category, primaryMuscles, secondaryMuscles,
-  variations, referenceIds }`
+- `ExerciseDef` — `{ id, name, category, context?, primaryMuscles,
+  secondaryMuscles, variations, referenceIds }`
 - `Reference` — `{ id, title, authors, year, journal?, doi?, pmid?, url?,
   evidenceLevel? }`
 
-Exercise and reference records are placeholders; muscle ids still use the old
-`<muscle>-<side>` slugs.
+### Home / Gym setting
+
+`context` is `'home' | 'gym' | 'both'`; records without it are treated as `gym`.
+The 14 `home` entries come from `docs/research/home-exercise-extension.md`
+(no equipment assumed). Seven of the 22 gym movements are tagged `both` because
+they need no equipment beyond a bar/pull-up bar or a single dumbbell and are
+realistically performed at home: pull-up, biceps curl, hip thrust, calf raise,
+lateral raise, plank, crunch. The remaining 15 stay `gym` (barbell/machine/bench
+set-ups). The Exercise tab exposes this as an All / Home / Gym chip row combined
+with the region filter and search; `Home` and `Gym` both include `both`
+exercises, so nothing is hidden from either setting.
+
+Exercise and reference records are a curated subset of the cited literature;
+every effect carries `referenceIds`. Methodology, caveats and the educational
+disclaimer are unchanged.
 
 ## Adding data
 
 - Curated anatomy: add an entry to `MUSCLE_META` in `src/data/muscles/meta.ts`
   keyed by `muscleSlug(meshName)`; run `npx tsc --noEmit` to catch typos.
-- Exercises: add `ExerciseDef` entries to `EXERCISES`.
-- References: add `Reference` entries to `REFERENCES`; only cite what you have
+- Exercises: append an `ExerciseDef`-shaped record to
+  `src/data/raw/exercises.json` (include `context`), then run
+  `node scripts/validate-mapping.mjs --strict` — every muscle label must resolve
+  through `src/data/raw/muscle-map.json`. Add an alias there rather than editing
+  the research label.
+- References: append to `src/data/raw/references.json`; only cite what you have
   verified — never invent a DOI or PMID.
+- Verification: `npx tsc --noEmit`, `npm run build`, `node scripts/validate-mapping.mjs
+  --strict`, then `node scripts/e2e-heatmap.mjs` (Playwright resolved out-of-repo).
 
 ## License
 

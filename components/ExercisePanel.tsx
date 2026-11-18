@@ -4,11 +4,15 @@ import { useEffect, useMemo, useState } from 'react';
 import {
   EXERCISES,
   EXERCISE_REGION_LABELS,
+  EXERCISE_SETTING_LABELS,
   exerciseMatches,
+  exerciseMatchesSetting,
   exerciseRegions,
+  exerciseSetting,
   getExercise,
   listRegions,
   type ExerciseRegion,
+  type ExerciseSettingFilter,
   type ResearchExercise,
   type ResearchVariation,
 } from '@/data/exercises';
@@ -89,6 +93,25 @@ function EvidenceBadge({ grade }: { grade: 'high' | 'moderate' | 'low' }) {
       title={EVIDENCE_GRADE_DEFINITIONS[grade]}
     >
       {EVIDENCE_GRADE_LABELS[grade]}
+    </span>
+  );
+}
+
+const SETTING_HINTS: Record<string, string> = {
+  home: 'Needs no gym equipment.',
+  gym: 'Requires gym equipment.',
+  both: 'A gym movement that also works without equipment at home.',
+};
+
+function SettingBadge({ exercise }: { exercise: Pick<ResearchExercise, 'context'> }) {
+  const setting = exerciseSetting(exercise);
+  return (
+    <span
+      className={`mbx-setting mbx-setting-${setting}`}
+      title={SETTING_HINTS[setting]}
+    >
+      <span className="mbx-setting-dot" aria-hidden="true" />
+      {EXERCISE_SETTING_LABELS[setting]}
     </span>
   );
 }
@@ -306,6 +329,15 @@ const PANEL_STYLES = `
 }
 .mbx-filter-chip { border: 1px solid var(--line-strong); background: var(--panel-soft); color: var(--text); font-size: .72rem; padding: 3px 10px; border-radius: 999px; }
 .mbx-filter-chip[aria-pressed="true"] { background: rgba(224,87,79,.18); border-color: var(--accent); color: #ffe6e2; }
+.mbx-filter-count { margin-left: 5px; color: var(--muted); font-family: var(--font-mono); font-size: .64rem; }
+.mbx-setting { display: inline-flex; align-items: center; gap: 4px; font-size: .62rem; letter-spacing: .02em; color: var(--text); border: 1px solid rgba(255,255,255,.16); border-radius: 999px; padding: 1px 7px; white-space: nowrap; }
+.mbx-setting-dot { width: 6px; height: 6px; border-radius: 999px; background: var(--muted); }
+.mbx-setting-home { background: rgba(79,179,164,.12); border-color: rgba(79,179,164,.4); }
+.mbx-setting-home .mbx-setting-dot { background: var(--teal); }
+.mbx-setting-gym { background: rgba(224,87,79,.12); border-color: rgba(224,87,79,.4); }
+.mbx-setting-gym .mbx-setting-dot { background: var(--accent); }
+.mbx-setting-both { background: rgba(232,180,90,.1); border-color: rgba(232,180,90,.35); }
+.mbx-setting-both .mbx-setting-dot { background: linear-gradient(90deg, var(--teal) 50%, var(--accent) 50%); }
 .mbx-filter-chip:focus-visible, .mbx-chip:focus-visible, .mbx-back:focus-visible, .mbx-variation-select:focus-visible, .mbx-exercise:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .mbx-clear { border: 0; background: none; color: var(--accent-soft); font-size: .72rem; padding: 0; text-decoration: underline; }
 .mbx-back { align-self: flex-start; border: 0; background: none; color: var(--accent-soft); font-size: .78rem; padding: 0; }
@@ -313,10 +345,12 @@ const PANEL_STYLES = `
 .mbx-exercise-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
 .mbx-exercise { width: 100%; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel-soft); color: var(--text); font-family: inherit; cursor: pointer; }
 .mbx-exercise:hover { border-color: var(--accent); }
+.mbx-exercise-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .mbx-exercise-name { font-size: .86rem; font-weight: 600; }
 .mbx-exercise-meta { font-size: .7rem; color: var(--muted); }
 .mbx-detail-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 4px; }
 .mbx-detail-head h2 { margin: 0; font-size: 1.08rem; }
+.mbx-detail-tags { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
 .mbx-detail-regions { display: flex; flex-wrap: wrap; gap: 5px; margin: 6px 0 10px; }
 .mbx-muscles { display: grid; grid-template-columns: 78px minmax(0,1fr); gap: 4px 10px; margin: 0 0 12px; }
 .mbx-muscles dt { color: var(--accent-soft); font-size: .68rem; text-transform: uppercase; letter-spacing: .07em; padding-top: 2px; }
@@ -383,6 +417,7 @@ export default function ExercisePanel({
 }: ExercisePanelProps) {
   const [query, setQuery] = useState('');
   const [regions, setRegions] = useState<ExerciseRegion[]>([]);
+  const [setting, setSetting] = useState<ExerciseSettingFilter>('all');
   const [selectedId, setSelectedId] = useState<string | null>(selectedExerciseId);
   const [activeVariationId, setActiveVariationId] = useState<string | null>(
     selectedVariationId,
@@ -401,6 +436,7 @@ export default function ExercisePanel({
   const filtered = useMemo(
     () =>
       EXERCISES.filter((exercise) => {
+        if (!exerciseMatchesSetting(exercise, setting)) return false;
         if (
           regions.length > 0 &&
           !regions.some((region) => exerciseRegions(exercise).includes(region))
@@ -409,7 +445,16 @@ export default function ExercisePanel({
         }
         return exerciseMatches(exercise, query);
       }),
-    [regions, query],
+    [regions, query, setting],
+  );
+
+  const settingCounts = useMemo(
+    () => ({
+      all: EXERCISES.length,
+      home: EXERCISES.filter((exercise) => exerciseMatchesSetting(exercise, 'home')).length,
+      gym: EXERCISES.filter((exercise) => exerciseMatchesSetting(exercise, 'gym')).length,
+    }),
+    [],
   );
 
   const selected = selectedId ? getExercise(selectedId) : undefined;
@@ -470,6 +515,11 @@ export default function ExercisePanel({
 
   const browsing = !selected || query.trim().length > 0 || regions.length > 0;
 
+  const clearFilters = () => {
+    setRegions([]);
+    setSetting('all');
+  };
+
   return (
     <div className="panel-body mbx-panel">
       <style>{PANEL_STYLES}</style>
@@ -509,7 +559,45 @@ export default function ExercisePanel({
         </div>
         {regions.length > 0 ? (
           <button type="button" className="mbx-clear" onClick={() => setRegions([])}>
-            Clear filters
+            Clear region
+          </button>
+        ) : null}
+      </div>
+
+      <div className="mbx-filter">
+        <span className="mbx-eyebrow">Setting</span>
+        <div className="mbx-chips" role="group" aria-label="Filter by setting">
+          <button
+            type="button"
+            className="mbx-filter-chip"
+            aria-pressed={setting === 'all'}
+            aria-label={`All settings (${settingCounts.all} exercises)`}
+            onClick={() => setSetting('all')}
+          >
+            All<span className="mbx-filter-count">{settingCounts.all}</span>
+          </button>
+          <button
+            type="button"
+            className="mbx-filter-chip"
+            aria-pressed={setting === 'home'}
+            aria-label={`Home (${settingCounts.home} exercises)`}
+            onClick={() => setSetting('home')}
+          >
+            Home<span className="mbx-filter-count">{settingCounts.home}</span>
+          </button>
+          <button
+            type="button"
+            className="mbx-filter-chip"
+            aria-pressed={setting === 'gym'}
+            aria-label={`Gym (${settingCounts.gym} exercises)`}
+            onClick={() => setSetting('gym')}
+          >
+            Gym<span className="mbx-filter-count">{settingCounts.gym}</span>
+          </button>
+        </div>
+        {setting !== 'all' ? (
+          <button type="button" className="mbx-clear" onClick={() => setSetting('all')}>
+            Clear setting
           </button>
         ) : null}
       </div>
@@ -530,22 +618,20 @@ export default function ExercisePanel({
             {regions.length > 0
               ? ` · ${regions.map((region) => EXERCISE_REGION_LABELS[region]).join(', ')}`
               : ''}
+            {setting !== 'all'
+              ? ` · ${EXERCISE_SETTING_LABELS[setting === 'home' ? 'home' : 'gym']} setting`
+              : ''}
           </p>
           {filtered.length === 0 ? (
             <p className="muted empty">
-              No exercises match those regions.
-              {regions.length > 0 ? (
-                <>
-                  {' '}
-                  <button
-                    type="button"
-                    className="mbx-clear"
-                    onClick={() => setRegions([])}
-                  >
-                    Clear filters
-                  </button>
-                </>
-              ) : null}
+              No exercises match those filters.{' '}
+              <button
+                type="button"
+                className="mbx-clear"
+                onClick={clearFilters}
+              >
+                Clear filters
+              </button>
             </p>
           ) : (
             <ul className="mbx-exercise-list">
@@ -556,7 +642,10 @@ export default function ExercisePanel({
                     className="mbx-exercise"
                     onClick={() => chooseExercise(exercise.id)}
                   >
-                    <span className="mbx-exercise-name">{exercise.name}</span>
+                    <span className="mbx-exercise-row">
+                      <span className="mbx-exercise-name">{exercise.name}</span>
+                      <SettingBadge exercise={exercise} />
+                    </span>
                     <span className="mbx-exercise-meta">
                       {capitalize(exercise.category)} ·{' '}
                       {exerciseRegions(exercise)
@@ -578,7 +667,10 @@ export default function ExercisePanel({
           </button>
           <div className="mbx-detail-head">
             <h2>{selected.name}</h2>
-            <span className="pill">{capitalize(selected.category)}</span>
+            <span className="mbx-detail-tags">
+              <SettingBadge exercise={selected} />
+              <span className="pill">{capitalize(selected.category)}</span>
+            </span>
           </div>
           <div className="mbx-detail-regions">
             {exerciseRegions(selected).map((region) => (

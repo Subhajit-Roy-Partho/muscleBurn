@@ -1698,5 +1698,438 @@
   "evidenceLevel": "RCT",
   "metadataSource": "crossref",
   "citedBy": 96
+ },
+ {
+  "id": "cogley2005",
+  "title": "COMPARISON OF MUSCLE ACTIVATION USING VARIOUS HAND POSITIONS DURING THE PUSH-UP EXERCISE",
+  "authors": [
+   "ROBERT M. COGLEY",
+   "TEASHA A. ARCHAMBAULT",
+   "JON F. FIBEGER",
+   "MANDY M. KOVERMAN",
+   "JAMES W. YOUDAS",
+   "JOHN H. HOLLMAN"
+  ],
+  "year": 2005,
+  "journal": "Journal of Strength and Conditioning Research",
+  "doi": "10.1519/00124278-200508000-00024",
+  "pmid": "16095413",
+  "url": "https://doi.org/10.1519/00124278-200508000-00024",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 14
+ },
+ {
+  "id": "gouvali2005",
+  "title": "DYNAMIC AND ELECTROMYOGRAPHICAL ANALYSIS IN VARIANTS OF PUSH-UP EXERCISE",
+  "authors": [
+   "MARINA K. GOUVALI",
+   "KONSTANTINOS BOUDOLOS"
+  ],
+  "year": 2005,
+  "journal": "Journal of Strength and Conditioning Research",
+  "doi": "10.1519/00124278-200502000-00025",
+  "pmid": "15705025",
+  "url": "https://doi.org/10.1519/00124278-200502000-00025",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 12
+ },
+ {
+  "id": "kikuchi2017",
+  "title": "Low-load bench press and push-up induce similar muscle hypertrophy and strength gain",
+  "authors": [
+   "Naoki Kikuchi",
+   "Koichi Nakazato"
+  ],
+  "year": 2017,
+  "journal": "Journal of Exercise Science & Fitness",
+  "doi": "10.1016/j.jesf.2017.06.003",
+  "pmid": "29541130",
+  "url": "https://doi.org/10.1016/j.jesf.2017.06.003",
+  "evidenceLevel": "RCT",
+  "metadataSource": "crossref",
+  "citedBy": 48
+ },
+ {
+  "id": "calatayud2015",
+  "title": "Bench Press and Push-up at Comparable Levels of Muscle Activity Results in Similar Strength Gains",
+  "authors": [
+   "Joaquin Calatayud",
+   "Sebastien Borreani",
+   "Juan C. Colado",
+   "Fernando Martin",
+   "Victor Tella",
+   "Lars L. Andersen"
+  ],
+  "year": 2015,
+  "journal": "Journal of Strength and Conditioning Research",
+  "doi": "10.1519/jsc.0000000000000589",
+  "pmid": "24983847",
+  "url": "https://doi.org/10.1519/jsc.0000000000000589",
+  "evidenceLevel": "RCT",
+  "metadataSource": "crossref",
+  "citedBy": 66
+ },
+ {
+  "id": "vandentillaar2019",
+  "title": "Comparison of Kinematics and Muscle Activation between Push-up and Bench Press",
+  "authors": [
+   "Roland van den Tillaar"
+  ],
+  "year": 2019,
+  "journal": "Sports Medicine International Open",
+  "doi": "10.1055/a-1001-2526",
+  "pmid": "31508485",
+  "url": "https://doi.org/10.1055/a-1001-2526",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 15
+ },
+ {
+  "id": "intziegianni2026",
+  "title": "Electromyographic Activation of the Pectoralis Major and Triceps Brachii Muscles During Standard, Diamond, and Wide Hand Position Push-Ups",
+  "authors": [
+   "Konstantina Intziegianni",
+   "Epifanios Katsamis",
+   "Marcos Michaelides",
+   "Koulla Parpa"
+  ],
+  "year": 2026,
+  "journal": "Muscles",
+  "doi": "10.3390/muscles5010018",
+  "pmid": "41892990",
+  "url": "https://doi.org/10.3390/muscles5010018",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 0
+ },
+ {
+  "id": "lin2026",
+  "title": "Angle-specific upper body muscle activation in suspension push-ups: an electromyographic analysis across different body angles",
+  "authors": [
+   "Yu-Chin Lin",
+   "Tsung-Lin Chiang",
+   "Shih-Hsuan Chan",
+   "Kuei-Fu Lin",
+   "Chih-Hsiang Hsu"
+  ],
+  "year": 2026,
+  "journal": "BMC Sports Science, Medicine and Rehabilitation",
+  "doi": "10.1186/s13102-026-01582-3",
+  "pmid": "41673781",
+  "url": "https://doi.org/10.1186/s13102-026-01582-3",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 0
+ },
+ {
+  "id": "almosnino2013",
+  "title": "Three-Dimensional Knee Joint Moments During Performance of the Bodyweight Squat: Effects of Stance Width and Foot Rotation",
+  "authors": [
+   "Sivan Almosnino",
+   "David Kingston",
+   "Ryan B. Graham"
+  ],
+  "year": 2013,
+  "journal": "Journal of Applied Biomechanics",
+  "doi": "10.1123/jab.29.1.33",
+  "pmid": "23462440",
+  "url": "https://doi.org/10.1123/jab.29.1.33",
+  "evidenceLevel": "biomechanical",
+  "metadataSource": "crossref",
+  "citedBy": 26
+ },
+ {
+  "id": "hopkins2024",
+  "title": "Greater squat stance width alters three-dimensional hip moment demands",
+  "authors": [
+   "Jane E. Hopkins",
+   "Claire E. Hopkins",
+   "Loren Z.F. Chiu"
+  ],
+  "year": 2024,
+  "journal": "Journal of Biomechanics",
+  "doi": "10.1016/j.jbiomech.2024.112391",
+  "pmid": "39486379",
+  "url": "https://doi.org/10.1016/j.jbiomech.2024.112391",
+  "evidenceLevel": "biomechanical crossover",
+  "metadataSource": "crossref",
+  "citedBy": 6
+ },
+ {
+  "id": "aygunpolat2025",
+  "title": "Targeted muscle activation in Bulgarian split squat variations: effects of trunk position and suspension-based execution",
+  "authors": [
+   "Elif Aygun-Polat",
+   "Nevin A. Guzel",
+   "Sonay Guruhan",
+   "Yusuf Polat",
+   "Nihan Karatas"
+  ],
+  "year": 2025,
+  "journal": "BMC Sports Science, Medicine and Rehabilitation",
+  "doi": "10.1186/s13102-025-01306-z",
+  "pmid": "40867012",
+  "url": "https://doi.org/10.1186/s13102-025-01306-z",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 4
+ },
+ {
+  "id": "topcu2025",
+  "title": "Effects of rear-foot instability devices on lower-limb muscle activation during the Bulgarian split squat in male football players",
+  "authors": [
+   "Hüseyin Topçu",
+   "Ali Kamil Güngör",
+   "Yahya Yıldırım",
+   "Ufuk Şekir",
+   "David G. Behm",
+   "Monira I. Aldhahi"
+  ],
+  "year": 2025,
+  "journal": "Scientific Reports",
+  "doi": "10.1038/s41598-025-32203-7",
+  "pmid": "41392178",
+  "url": "https://doi.org/10.1038/s41598-025-32203-7",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 1
+ },
+ {
+  "id": "goulette2021",
+  "title": "Patellofemoral joint loading during the forward and backward lunge",
+  "authors": [
+   "Danielle Goulette",
+   "Patrick Griffith",
+   "Michael Schiller",
+   "Drew Rutherford",
+   "Thomas W. Kernozek"
+  ],
+  "year": 2021,
+  "journal": "Physical Therapy in Sport",
+  "doi": "10.1016/j.ptsp.2020.12.001",
+  "pmid": "33310585",
+  "url": "https://doi.org/10.1016/j.ptsp.2020.12.001",
+  "evidenceLevel": "biomechanical",
+  "metadataSource": "crossref",
+  "citedBy": 15
+ },
+ {
+  "id": "muyor2020",
+  "title": "Electromyographic activity in the gluteus medius, gluteus maximus, biceps femoris, vastus lateralis, vastus medialis and rectus femoris during the Monopodal Squat, Forward Lunge and Lateral Step-Up exercises",
+  "authors": [
+   "José M. Muyor",
+   "Isabel Martín-Fuentes",
+   "David Rodríguez-Ridao",
+   "José A. Antequera-Vique"
+  ],
+  "year": 2020,
+  "journal": "PLOS ONE",
+  "doi": "10.1371/journal.pone.0230841",
+  "pmid": "32236133",
+  "url": "https://doi.org/10.1371/journal.pone.0230841",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 69
+ },
+ {
+  "id": "mckenzie2022",
+  "title": "Bench, Bar, and Ring Dips: Do Kinematics and Muscle Activity Differ?",
+  "authors": [
+   "Alec McKenzie",
+   "Zachary Crowley-McHattan",
+   "Rudi Meir",
+   "John Whitting",
+   "Wynand Volschenk"
+  ],
+  "year": 2022,
+  "journal": "International Journal of Environmental Research and Public Health",
+  "doi": "10.3390/ijerph192013211",
+  "pmid": "36293792",
+  "url": "https://doi.org/10.3390/ijerph192013211",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 5
+ },
+ {
+  "id": "hirose2021",
+  "title": "Biceps Femoris Muscle is Activated by Performing Nordic Hamstring Exercise at a Shallow Knee Flexion Angle",
+  "authors": [
+   "Norikazu Hirose",
+   "Masaaki Tsuruike",
+   "Ayako Higashihara"
+  ],
+  "year": 2021,
+  "journal": "Journal of Sports Science and Medicine",
+  "doi": "10.52082/jssm.2021.275",
+  "pmid": "34211320",
+  "url": "https://doi.org/10.52082/jssm.2021.275",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 19
+ },
+ {
+  "id": "keerasomboon2022",
+  "title": "Influence of Altered Knee Angle on Electromyographic Activity of Hamstring Muscles Between Nordic Hamstring Exercise and Nordic Hamstring Exercise with Incline Slope Lower Leg Board",
+  "authors": [
+   "Taspol Keerasomboon",
+   "Toshiaki Soga",
+   "Norikazu Hirose"
+  ],
+  "year": 2022,
+  "journal": "International Journal of Sports Physical Therapy",
+  "doi": "10.26603/001c.36627",
+  "pmid": "35949369",
+  "url": "https://doi.org/10.26603/001c.36627",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 5
+ },
+ {
+  "id": "medeiros2021",
+  "title": "Effect of Nordic Hamstring Exercise Training on Knee Flexors Eccentric Strength and Fascicle Length: A Systematic Review and Meta-Analysis",
+  "authors": [
+   "Diulian Muniz Medeiros",
+   "César Marchiori",
+   "Bruno Manfredini Baroni"
+  ],
+  "year": 2021,
+  "journal": "Journal of Sport Rehabilitation",
+  "doi": "10.1123/jsr.2019-0388",
+  "pmid": "33049705",
+  "url": "https://doi.org/10.1123/jsr.2019-0388",
+  "evidenceLevel": "systematic review/meta-analysis",
+  "metadataSource": "crossref",
+  "citedBy": 49
+ },
+ {
+  "id": "garciajaen2026",
+  "title": "Core Muscle Activation and Perceived Exertion Across Side Plank and Copenhagen Plank Variations",
+  "authors": [
+   "Miguel García-Jaén",
+   "Juan M. Cortell-Tormo",
+   "Marco A. García-Luna",
+   "Carlos D. Gómez-Carmona"
+  ],
+  "year": 2026,
+  "journal": "Journal of Strength & Conditioning Research",
+  "doi": "10.1519/jsc.0000000000005684",
+  "pmid": "42895560",
+  "url": "https://doi.org/10.1519/jsc.0000000000005684",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 0
+ },
+ {
+  "id": "mercer2009",
+  "title": "Comparison of Gluteus Medius Muscle Electromyographic Activity During Forward and Lateral Step-up Exercises in Older Adults",
+  "authors": [
+   "Vicki Stemmons Mercer",
+   "Michael T. Gross",
+   "Subhashini Sharma",
+   "Erin Weeks"
+  ],
+  "year": 2009,
+  "journal": "Physical Therapy",
+  "doi": "10.2522/ptj.20080229",
+  "pmid": "19778980",
+  "url": "https://doi.org/10.2522/ptj.20080229",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 21
+ },
+ {
+  "id": "simenz2012",
+  "title": "Electromyographical Analysis of Lower Extremity Muscle Activation During Variations of the Loaded Step-Up Exercise",
+  "authors": [
+   "Christopher J. Simenz",
+   "Luke R. Garceau",
+   "Brittney N. Lutsch",
+   "Timothy J. Suchomel",
+   "William P. Ebben"
+  ],
+  "year": 2012,
+  "journal": "Journal of Strength and Conditioning Research",
+  "doi": "10.1519/jsc.0b013e3182472fad",
+  "pmid": "22237139",
+  "url": "https://doi.org/10.1519/jsc.0b013e3182472fad",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 23
+ },
+ {
+  "id": "kim2026",
+  "title": "Activation of the gluteus maximus and multifidus muscles in bridge and hip thrust exercise variations",
+  "authors": [
+   "Tae-Hyeong Kim",
+   "In-Cheol Jeon"
+  ],
+  "year": 2026,
+  "journal": "Physiotherapy Theory and Practice",
+  "doi": "10.1080/09593985.2026.2714954",
+  "pmid": "42578527",
+  "url": "https://doi.org/10.1080/09593985.2026.2714954",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 0
+ },
+ {
+  "id": "fukunaga2022",
+  "title": "Band Pull-Apart Exercise: Effects of Movement Direction and Hand Position on Shoulder Muscle Activity",
+  "authors": [
+   "Takumi Fukunaga",
+   "Connor Fedge",
+   "Timothy Tyler",
+   "Michael Mullaney",
+   "Brandon Schmitt",
+   "Karl Orishimo",
+   "Malachy McHugh",
+   "Stephen Nicholas"
+  ],
+  "year": 2022,
+  "journal": "International Journal of Sports Physical Therapy",
+  "doi": "10.26603/001c.33026",
+  "pmid": "35391860",
+  "url": "https://doi.org/10.26603/001c.33026",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 3
+ },
+ {
+  "id": "atalay2025",
+  "title": "Association Between Lumbar Lordosis, Thoracic Kyphosis, and Muscle Activations During Different Lower Back Exercises: An Observational Study",
+  "authors": [
+   "Emre Serdar Atalay",
+   "Duygu Türker",
+   "Çağlar Soylu",
+   "Tezel Yıldırım Şahan",
+   "Necmiye Ün Yıldırım"
+  ],
+  "year": 2025,
+  "journal": "Medicina",
+  "doi": "10.3390/medicina61060986",
+  "pmid": "40572674",
+  "url": "https://doi.org/10.3390/medicina61060986",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 3
+ },
+ {
+  "id": "drinkwater2012",
+  "title": "Effects of Changing from Full Range of Motion to Partial Range of Motion on Squat Kinetics",
+  "authors": [
+   "Eric J. Drinkwater",
+   "Norman R. Moore",
+   "Stephen P Bird"
+  ],
+  "year": 2012,
+  "journal": "Journal of Strength and Conditioning Research",
+  "doi": "10.1519/jsc.0b013e318248ad2e",
+  "pmid": "22222322",
+  "url": "https://doi.org/10.1519/jsc.0b013e318248ad2e",
+  "evidenceLevel": "biomechanical crossover",
+  "metadataSource": "crossref",
+  "citedBy": 37
  }
 ]

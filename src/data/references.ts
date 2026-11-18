@@ -28,7 +28,7 @@ export type EvidenceGrade = 'high' | 'moderate' | 'low';
 /** Local, widened view of the shared schema (the research labels are free text). */
 export type Reference = ResearchReference;
 
-/** All 90 references, in the source order. */
+/** All 114 references, in the source order (90 original + 24 home-exercise). */
 export const REFERENCES: Reference[] =
   rawReferences as unknown as ResearchReference[];
 

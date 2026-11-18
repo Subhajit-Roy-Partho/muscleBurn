@@ -15,6 +15,38 @@ import { resolveResearchMuscle } from './muscleNameMap';
 
 export type EffectDirection = 'increase' | 'decrease' | 'shift';
 
+/** Where an exercise is realistically performed. */
+export type ExerciseSetting = 'home' | 'gym' | 'both';
+
+export const EXERCISE_SETTING_LABELS: Record<ExerciseSetting, string> = {
+  home: 'Home',
+  gym: 'Gym',
+  both: 'Home & gym',
+};
+
+/** Records without an explicit context predate the setting field → gym. */
+export function exerciseSetting(exercise: Pick<ExerciseDef, 'context'>): ExerciseSetting {
+  return exercise.context ?? 'gym';
+}
+
+/** Setting filter chip values; `all` is the neutral option. */
+export type ExerciseSettingFilter = 'all' | 'home' | 'gym';
+
+export const EXERCISE_SETTING_FILTERS: ExerciseSettingFilter[] = ['all', 'home', 'gym'];
+
+/**
+ * `Home` includes home-only and dual-use movements, `Gym` includes gym-only and
+ * dual-use ones, so a `both` exercise is never hidden from either setting.
+ */
+export function exerciseMatchesSetting(
+  exercise: Pick<ExerciseDef, 'context'>,
+  filter: ExerciseSettingFilter,
+): boolean {
+  if (filter === 'all') return true;
+  const setting = exerciseSetting(exercise);
+  return setting === filter || setting === 'both';
+}
+
 export interface ResearchEffect
   extends Omit<ExerciseFormVariation['effects'][number], 'magnitude'> {
   /** Magnitude exactly as written in the source (may be qualitative). */
@@ -52,6 +84,7 @@ interface RawExercise {
   id: string;
   name: string;
   category: string;
+  context?: ExerciseSetting;
   primaryMuscles: string[];
   secondaryMuscles: string[];
   variations: RawVariation[];
@@ -84,11 +117,18 @@ function mapEffect(effect: RawEffect): ResearchEffect {
 
 const RAW_EXERCISES = rawExercises as unknown as RawExercise[];
 
-/** All 22 exercises / 68 variations / 209 effects. IDs are stable. */
+/**
+ * All 36 exercises / 114 variations / 314 effects. IDs are stable.
+ *
+ * 22 gym movements (7 of which are genuinely home-capable, tagged `both`) plus
+ * the 14 cited home/bodyweight movements from the home-exercise-extension
+ * workspace, tagged `home`.
+ */
 export const EXERCISES: ResearchExercise[] = RAW_EXERCISES.map((exercise) => ({
   id: exercise.id,
   name: exercise.name,
   category: exercise.category,
+  context: exercise.context,
   primaryMuscles: exercise.primaryMuscles,
   secondaryMuscles: exercise.secondaryMuscles,
   variations: exercise.variations.map((variation) => ({
