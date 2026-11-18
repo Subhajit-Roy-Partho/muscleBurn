@@ -1,0 +1,42 @@
+{
+ "topic": "Exercise Form Variations and Skeletal Muscle Activation: An Evidence Map",
+ "slug": "exercise-form-variations-and-skeletal-muscle-activation-an-e",
+ "createdAt": "2026-11-18T05:09:44Z",
+ "effortTier": "high",
+ "budgets": {
+  "maxExpansionRounds": 6,
+  "maxScholarlyLookups": 300,
+  "usedLookups": "~210"
+ },
+ "stopReason": "coverage checklist answered + <10% novel gain in final snowball round",
+ "completedAt": "2026-11-18T05:59:09Z",
+ "counts": {
+  "identified": 1026,
+  "uniqueDois": 683,
+  "screened": 683,
+  "assessed": 148,
+  "included": 90,
+  "oaSources": 44,
+  "viaAsuLibrary": 5,
+  "exercises": 22,
+  "variations": 68,
+  "effects": 209
+ },
+ "deliverables": [
+  "report.md",
+  "sources.json",
+  "exercises.json",
+  "references.json",
+  "research-state.md"
+ ],
+ "databases": {
+  "openalex": "2026-11-17",
+  "europepmc": "2026-11-17",
+  "crossref": "2026-11-17",
+  "semanticScholar": "2026-11-17 (rate-limited)",
+  "scopus": "2026-11-17 (429/thin)",
+  "arxiv": "2026-11-17 (scoping only)",
+  "asuLibrary": "2026-11-17",
+  "libkey": "2026-11-17 (keyless)"
+ }
+}
