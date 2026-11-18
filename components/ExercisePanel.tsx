@@ -2,9 +2,15 @@
 
 import { EXERCISES } from '@/data/exercises';
 import { getReference } from '@/data/references';
-import { getMuscle } from '@/data/muscles/placeholder';
 
-const muscleName = (id: string): string => getMuscle(id)?.name ?? id;
+/** Exercise entries still use placeholder slugs ('biceps-brachii-left'). */
+const muscleName = (id: string): string => {
+  const name = id
+    .replace(/-(left|right)$/, '')
+    .replace(/-/g, ' ')
+    .trim();
+  return name.charAt(0).toUpperCase() + name.slice(1);
+};
 
 export default function ExercisePanel() {
   if (EXERCISES.length === 0) {

@@ -163,7 +163,7 @@ body {
 
 .muscle-label {
   font-family: var(--font-sans);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.02em;
   color: rgba(255, 240, 230, 0.88);
   background: rgba(8, 12, 17, 0.55);
@@ -578,4 +578,77 @@ body {
   .viewer-canvas {
     height: clamp(340px, 58vh, 520px);
   }
+}
+
+/* ---------- model load states ---------- */
+
+.viewer-status {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 1px solid var(--line-strong);
+  background: rgba(8, 12, 17, 0.9);
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-align: center;
+  max-width: 80%;
+}
+
+.viewer-status-error {
+  border-color: var(--accent-dim);
+  color: var(--accent-soft);
+}
+
+.viewer-status-error strong {
+  color: var(--text);
+}
+
+/* ---------- toolbar note ---------- */
+
+.toolbar-note {
+  margin-left: auto;
+  align-self: center;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+.chip:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ---------- detail extras ---------- */
+
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 12px;
+}
+
+.pill-mono {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+}
+
+.derived-badge {
+  color: var(--warn);
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+}
+
+.missing {
+  color: var(--muted);
+  font-style: italic;
 }

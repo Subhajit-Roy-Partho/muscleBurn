@@ -1,0 +1,1110 @@
+import { muscleSlug, type Region } from '../anatomy';
+
+/**
+ * Curated anatomy for the muscles most people look up first.
+ *
+ * Keys are `muscleSlug(meshName)` (see src/data/anatomy.ts): the side, the
+ * part/head prefix ("lateral head of", "clavicular part of") and a trailing
+ * "muscle" are stripped, so every mesh belonging to one muscle resolves to the
+ * same record. Muscles without an entry fall back to attachments derived from
+ * the mesh geometry, and the UI labels those "(derived)".
+ *
+ * Text follows standard textbook descriptions (Gray's Anatomy, Moore's
+ * Clinically Oriented Anatomy). Attachments are stated as bone regions rather
+ * than coordinates.
+ */
+export interface MuscleMeta {
+  name: string;
+  region: Region;
+  origin: string;
+  insertion: string;
+  action: string;
+  innervation: string;
+}
+
+export const MUSCLE_META: Record<string, MuscleMeta> = {
+  // ---------------------------------------------------------------- head
+  masseter: {
+    name: 'Masseter',
+    region: 'head',
+    origin: 'Zygomatic arch (maxillary process and zygomatic bone).',
+    insertion: 'Lateral surface of the ramus and angle of the mandible.',
+    action: 'Elevates the mandible; the superficial fibres assist protrusion.',
+    innervation:
+      'Masseteric nerve from the mandibular division of the trigeminal nerve (CN V3).',
+  },
+  temporalis: {
+    name: 'Temporalis',
+    region: 'head',
+    origin: 'Temporal fossa and the deep surface of the temporal fascia.',
+    insertion: 'Coronoid process and anterior border of the ramus of the mandible.',
+    action: 'Elevates the mandible; posterior fibres retract the protruded mandible.',
+    innervation:
+      'Deep temporal nerves from the mandibular division of the trigeminal nerve (CN V3).',
+  },
+  'medial-pterygoid': {
+    name: 'Medial pterygoid',
+    region: 'head',
+    origin:
+      'Medial surface of the lateral pterygoid plate, pyramidal process of the palatine bone and maxillary tuberosity.',
+    insertion: 'Medial surface of the ramus and angle of the mandible.',
+    action: 'Elevates and protrudes the mandible; with one side active, deviates it contralaterally.',
+    innervation:
+      'Nerve to the medial pterygoid from the mandibular division of the trigeminal nerve (CN V3).',
+  },
+  'lateral-pterygoid': {
+    name: 'Lateral pterygoid',
+    region: 'head',
+    origin:
+      'Upper head: infratemporal surface of the greater wing of the sphenoid. Lower head: lateral surface of the lateral pterygoid plate.',
+    insertion: 'Neck of the mandible and the capsule of the temporomandibular joint.',
+    action: 'Depresses and protrudes the mandible; produces contralateral deviation.',
+    innervation:
+      'Nerve to the lateral pterygoid from the mandibular division of the trigeminal nerve (CN V3).',
+  },
+  'orbicularis-oculi': {
+    name: 'Orbicularis oculi',
+    region: 'head',
+    origin: 'Medial orbital margin, medial palpebral ligament and lacrimal bone.',
+    insertion: 'Skin around the orbital margin and the eyelids (no bony insertion).',
+    action: 'Closes the eyelids; the orbital part compresses the skin around the orbit.',
+    innervation: 'Temporal and zygomatic branches of the facial nerve (CN VII).',
+  },
+  'orbicularis-oris': {
+    name: 'Orbicularis oris',
+    region: 'head',
+    origin:
+      'Maxilla and mandible near the midline, with fibres contributed by the buccinator and the other perioral muscles.',
+    insertion: 'Fibres encircle the mouth and blend with the lips.',
+    action: 'Closes and protrudes the lips.',
+    innervation: 'Buccal and mandibular branches of the facial nerve (CN VII).',
+  },
+  frontalis: {
+    name: 'Frontalis',
+    region: 'head',
+    origin: 'Epicranial aponeurosis.',
+    insertion: 'Skin of the eyebrows and the root of the nose.',
+    action: 'Elevates the eyebrows and wrinkles the forehead.',
+    innervation: 'Temporal branches of the facial nerve (CN VII).',
+  },
+  'zygomaticus-major': {
+    name: 'Zygomaticus major',
+    region: 'head',
+    origin: 'Zygomatic bone, anterior to the zygomaticotemporal suture.',
+    insertion: 'Angle of the mouth, blending with the orbicularis oris.',
+    action: 'Elevates and retracts the corner of the mouth.',
+    innervation: 'Zygomatic and buccal branches of the facial nerve (CN VII).',
+  },
+  'zygomaticus-minor': {
+    name: 'Zygomaticus minor',
+    region: 'head',
+    origin: 'Zygomatic bone, posterior to the maxilla.',
+    insertion: 'Upper lip, blending with the orbicularis oris.',
+    action: 'Elevates the upper lip.',
+    innervation: 'Zygomatic and buccal branches of the facial nerve (CN VII).',
+  },
+  'levator-labii-superioris': {
+    name: 'Levator labii superioris',
+    region: 'head',
+    origin: 'Maxilla above the infraorbital foramen and the zygomatic bone.',
+    insertion: 'Upper lip and orbicularis oris.',
+    action: 'Elevates the upper lip.',
+    innervation: 'Zygomatic and buccal branches of the facial nerve (CN VII).',
+  },
+  'depressor-labii-inferioris': {
+    name: 'Depressor labii inferioris',
+    region: 'head',
+    origin: 'Mandible below the mental foramen.',
+    insertion: 'Lower lip and orbicularis oris.',
+    action: 'Depresses the lower lip.',
+    innervation: 'Mandibular branch of the facial nerve (CN VII).',
+  },
+  'depressor-anguli-oris': {
+    name: 'Depressor anguli oris',
+    region: 'head',
+    origin: 'Mandible below the mental foramen, near the midline.',
+    insertion: 'Angle of the mouth.',
+    action: 'Depresses the angle of the mouth.',
+    innervation: 'Mandibular branch of the facial nerve (CN VII).',
+  },
+  mentalis: {
+    name: 'Mentalis',
+    region: 'head',
+    origin: 'Mandible at the incisive fossa.',
+    insertion: 'Skin of the chin.',
+    action: 'Elevates and protrudes the lower lip; wrinkles the chin.',
+    innervation: 'Mandibular branch of the facial nerve (CN VII).',
+  },
+  risorius: {
+    name: 'Risorius',
+    region: 'head',
+    origin: 'Parotid fascia and zygomatic arch.',
+    insertion: 'Angle of the mouth.',
+    action: 'Retracts the angle of the mouth.',
+    innervation: 'Buccal branch of the facial nerve (CN VII).',
+  },
+  procerus: {
+    name: 'Procerus',
+    region: 'head',
+    origin: 'Nasal bone and upper lateral nasal cartilage.',
+    insertion: 'Skin between the eyebrows.',
+    action: 'Depresses the medial ends of the eyebrows.',
+    innervation: 'Zygomatic branches of the facial nerve (CN VII).',
+  },
+  nasalis: {
+    name: 'Nasalis',
+    region: 'head',
+    origin: 'Maxilla above and lateral to the incisive fossa (compressor part) and over the canine (dilator part).',
+    insertion: 'Aponeurosis over the nasal cartilages and the alar cartilage.',
+    action: 'Compresses or dilates the nostrils.',
+    innervation: 'Zygomatic and buccal branches of the facial nerve (CN VII).',
+  },
+  'corrugator-supercilii': {
+    name: 'Corrugator supercilii',
+    region: 'head',
+    origin: 'Medial end of the superciliary arch of the frontal bone.',
+    insertion: 'Skin above the middle of the eyebrow.',
+    action: 'Draws the eyebrow medially and downward.',
+    innervation: 'Temporal branches of the facial nerve (CN VII).',
+  },
+
+  // ---------------------------------------------------------------- neck
+  sternocleidomastoid: {
+    name: 'Sternocleidomastoid',
+    region: 'neck',
+    origin:
+      'Sternal head: manubrium of the sternum. Clavicular head: superior surface of the medial third of the clavicle.',
+    insertion: 'Mastoid process of the temporal bone and the lateral half of the superior nuchal line.',
+    action:
+      'One side: tilts the head ipsilaterally and rotates it contralaterally. Both sides: flexes the cervical spine and extends the head at the atlanto-occipital joint.',
+    innervation: 'Accessory nerve (CN XI), with proprioceptive fibres from C2–C3.',
+  },
+  'splenius-capitis': {
+    name: 'Splenius capitis',
+    region: 'neck',
+    origin: 'Lower half of the ligamentum nuchae and the spinous processes of C7–T3/T4.',
+    insertion: 'Mastoid process and the lateral third of the superior nuchal line.',
+    action: 'Extends, ipsilaterally rotates and laterally flexes the head and neck.',
+    innervation: 'Posterior rami of the middle cervical spinal nerves (C3–C4).',
+  },
+  'splenius-cervicis': {
+    name: 'Splenius cervicis',
+    region: 'neck',
+    origin: 'Spinous processes of T3–T5/T6.',
+    insertion: 'Posterior tubercles of the transverse processes of C1–C3.',
+    action: 'Extends and ipsilaterally rotates the cervical spine.',
+    innervation: 'Posterior rami of the lower cervical spinal nerves.',
+  },
+  'semispinalis-capitis': {
+    name: 'Semispinalis capitis',
+    region: 'neck',
+    origin: 'Transverse processes of T1–T6 and the articular processes of C4–C7.',
+    insertion: 'Between the superior and inferior nuchal lines of the occipital bone.',
+    action: 'Extends the head and cervical spine; ipsilateral rotation.',
+    innervation: 'Posterior rami of the cervical spinal nerves (C2–C4).',
+  },
+  'scalenus-anterior': {
+    name: 'Scalenus anterior',
+    region: 'neck',
+    origin: 'Anterior tubercles of the transverse processes of C3–C6.',
+    insertion: 'Scalene tubercle and the upper surface of the first rib.',
+    action: 'Elevates the first rib; ipsilateral lateral flexion of the neck.',
+    innervation: 'Anterior rami of the cervical spinal nerves (C4–C6).',
+  },
+  'scalenus-medius': {
+    name: 'Scalenus medius',
+    region: 'neck',
+    origin: 'Posterior tubercles of the transverse processes of C2–C7.',
+    insertion: 'Upper surface of the first rib, behind the subclavian artery.',
+    action: 'Elevates the first rib; ipsilateral lateral flexion of the neck.',
+    innervation: 'Anterior rami of the cervical spinal nerves (C3–C8).',
+  },
+  'scalenus-posterior': {
+    name: 'Scalenus posterior',
+    region: 'neck',
+    origin: 'Posterior tubercles of the transverse processes of C4–C6.',
+    insertion: 'External border of the second rib.',
+    action: 'Elevates the second rib; lateral flexion of the neck.',
+    innervation: 'Anterior rami of the cervical spinal nerves (C6–C8).',
+  },
+  'levator-scapulae': {
+    name: 'Levator scapulae',
+    region: 'neck',
+    origin: 'Posterior tubercles of the transverse processes of C1–C4.',
+    insertion: 'Medial border of the scapula above the root of the spine.',
+    action: 'Elevates and downwardly rotates the scapula; extends the neck.',
+    innervation: 'Dorsal scapular nerve (C5) and branches of C3–C4.',
+  },
+  'rectus-capitis-posterior-major': {
+    name: 'Rectus capitis posterior major',
+    region: 'neck',
+    origin: 'Spinous process of the axis (C2).',
+    insertion: 'Lateral part of the inferior nuchal line of the occipital bone.',
+    action: 'Extends the head and rotates it ipsilaterally.',
+    innervation: 'Suboccipital nerve (posterior ramus of C1).',
+  },
+  'obliquus-capitis-inferior': {
+    name: 'Obliquus capitis inferior',
+    region: 'neck',
+    origin: 'Spinous process of the axis (C2).',
+    insertion: 'Transverse process of the atlas (C1).',
+    action: 'Rotates C1, and with it the head, ipsilaterally.',
+    innervation: 'Suboccipital nerve (posterior ramus of C1).',
+  },
+  omohyoid: {
+    name: 'Omohyoid',
+    region: 'neck',
+    origin: 'Superior border of the scapula near the suprascapular notch (inferior belly).',
+    insertion: 'Inferior border of the hyoid bone, lateral to the sternohyoid.',
+    action: 'Depresses the hyoid bone.',
+    innervation: 'Ansa cervicalis (C1–C3).',
+  },
+  sternohyoid: {
+    name: 'Sternohyoid',
+    region: 'neck',
+    origin: 'Posterior surface of the manubrium and the medial end of the clavicle.',
+    insertion: 'Inferior border of the body of the hyoid bone.',
+    action: 'Depresses the hyoid bone.',
+    innervation: 'Ansa cervicalis (C1–C3).',
+  },
+  thyrohyoid: {
+    name: 'Thyrohyoid',
+    region: 'neck',
+    origin: 'Oblique line of the thyroid cartilage.',
+    insertion: 'Inferior border of the hyoid bone.',
+    action: 'Depresses the hyoid and elevates the thyroid cartilage.',
+    innervation: 'Ansa cervicalis, via fibres that travel with C1.',
+  },
+
+  // ------------------------------------------------------------ shoulder
+  deltoid: {
+    name: 'Deltoid',
+    region: 'shoulder',
+    origin: 'Lateral third of the clavicle, acromion and the spine of the scapula.',
+    insertion: 'Deltoid tuberosity of the humerus.',
+    action:
+      'Abducts the arm (middle fibres); anterior fibres flex and medially rotate it, posterior fibres extend and laterally rotate it.',
+    innervation: 'Axillary nerve (C5–C6).',
+  },
+  supraspinatus: {
+    name: 'Supraspinatus',
+    region: 'shoulder',
+    origin: 'Supraspinous fossa of the scapula.',
+    insertion: 'Superior facet of the greater tubercle of the humerus.',
+    action: 'Initiates abduction of the arm and stabilises the humeral head in the glenoid.',
+    innervation: 'Suprascapular nerve (C5–C6).',
+  },
+  infraspinatus: {
+    name: 'Infraspinatus',
+    region: 'shoulder',
+    origin: 'Infraspinous fossa of the scapula.',
+    insertion: 'Middle facet of the greater tubercle of the humerus.',
+    action: 'Laterally rotates the arm and stabilises the glenohumeral joint.',
+    innervation: 'Suprascapular nerve (C5–C6).',
+  },
+  'teres-minor': {
+    name: 'Teres minor',
+    region: 'shoulder',
+    origin: 'Upper two-thirds of the lateral border of the scapula.',
+    insertion: 'Inferior facet of the greater tubercle of the humerus.',
+    action: 'Laterally rotates the arm and assists adduction.',
+    innervation: 'Axillary nerve (C5–C6).',
+  },
+  'teres-major': {
+    name: 'Teres major',
+    region: 'shoulder',
+    origin: 'Dorsal surface of the inferior angle of the scapula.',
+    insertion: 'Medial lip of the intertubercular sulcus of the humerus.',
+    action: 'Adducts and medially rotates the arm; assists extension.',
+    innervation: 'Lower subscapular nerve (C5–C6).',
+  },
+  subscapularis: {
+    name: 'Subscapularis',
+    region: 'shoulder',
+    origin: 'Subscapular fossa of the scapula.',
+    insertion: 'Lesser tubercle of the humerus.',
+    action: 'Medially rotates the arm and is the main anterior stabiliser of the shoulder.',
+    innervation: 'Upper and lower subscapular nerves (C5–C7).',
+  },
+
+  // --------------------------------------------------------------- chest
+  'pectoralis-major': {
+    name: 'Pectoralis major',
+    region: 'chest',
+    origin:
+      'Clavicular head: medial half of the clavicle. Sternocostal head: sternum and the cartilages of ribs 1–6. Abdominal part: aponeurosis of the external oblique.',
+    insertion: 'Lateral lip of the intertubercular sulcus of the humerus.',
+    action:
+      'Adducts and medially rotates the arm; the clavicular head flexes the shoulder, the sternocostal head extends a flexed arm.',
+    innervation: 'Lateral and medial pectoral nerves (C5–T1).',
+  },
+  'pectoralis-minor': {
+    name: 'Pectoralis minor',
+    region: 'chest',
+    origin: 'Anterior ends of ribs 3–5 and the fascia over the intercostal muscles.',
+    insertion: 'Medial border and upper surface of the coracoid process of the scapula.',
+    action: 'Draws the scapula anteriorly and inferiorly; elevates ribs 3–5 in forced inspiration.',
+    innervation: 'Medial pectoral nerve (C8–T1), with a contribution from the lateral pectoral nerve.',
+  },
+  'serratus-anterior': {
+    name: 'Serratus anterior',
+    region: 'chest',
+    origin: 'Lateral surfaces of ribs 1–8/9.',
+    insertion: 'Anterior surface of the medial border of the scapula.',
+    action: 'Protracts the scapula and rotates it upwardly during arm elevation; holds the medial border against the rib cage.',
+    innervation: 'Long thoracic nerve (C5–C7).',
+  },
+  'external-intercostal': {
+    name: 'External intercostal',
+    region: 'chest',
+    origin: 'Lower border of each rib.',
+    insertion: 'Upper border of the rib below.',
+    action: 'Elevates the ribs in inspiration; maintains intercostal space rigidity.',
+    innervation: 'Intercostal nerves (T1–T11).',
+  },
+  subclavius: {
+    name: 'Subclavius',
+    region: 'chest',
+    origin: 'First rib at the junction of bone and cartilage.',
+    insertion: 'Inferior surface of the middle third of the clavicle.',
+    action: 'Depresses the clavicle and steadies it during shoulder movements.',
+    innervation: 'Nerve to subclavius (C5–C6).',
+  },
+
+  // ------------------------------------------------------------- abdomen
+  'rectus-abdominis': {
+    name: 'Rectus abdominis',
+    region: 'abdomen',
+    origin: 'Pubic crest and pubic symphysis.',
+    insertion: 'Xiphoid process and the cartilages of ribs 5–7.',
+    action: 'Flexes the trunk and posteriorly tilts the pelvis; compresses the abdominal viscera.',
+    innervation: 'Anterior rami of the thoracic spinal nerves (T6–T12).',
+  },
+  'external-oblique': {
+    name: 'External oblique',
+    region: 'abdomen',
+    origin: 'External surfaces of ribs 5–12.',
+    insertion:
+      'Linea alba, pubic tubercle and the anterior half of the iliac crest via its aponeurosis.',
+    action:
+      'Contralaterally rotates and laterally flexes the trunk; flexes it when both sides act; compresses the abdomen.',
+    innervation: 'Anterior rami of the thoracic spinal nerves (T7–T12).',
+  },
+  'internal-oblique': {
+    name: 'Internal oblique',
+    region: 'abdomen',
+    origin: 'Thoracolumbar fascia, anterior two-thirds of the iliac crest and the lateral half of the inguinal ligament.',
+    insertion:
+      'Lower borders of ribs 10–12, linea alba and the pubic crest through the conjoint tendon.',
+    action:
+      'Ipsilaterally rotates and laterally flexes the trunk; flexes it when both sides act; compresses the abdomen.',
+    innervation: 'Anterior rami of T6–T12 and L1 (iliohypogastric and ilioinguinal nerves).',
+  },
+  'transversus-abdominis': {
+    name: 'Transversus abdominis',
+    region: 'abdomen',
+    origin:
+      'Internal surfaces of the cartilages of ribs 7–12, thoracolumbar fascia, iliac crest and lateral third of the inguinal ligament.',
+    insertion: 'Linea alba with the internal oblique aponeurosis and the pubic crest.',
+    action: 'Compresses the abdominal contents and increases intra-abdominal pressure; stabilises the lumbar spine.',
+    innervation: 'Anterior rami of T6–T12 and L1.',
+  },
+
+  // ---------------------------------------------------------------- back
+  trapezius: {
+    name: 'Trapezius',
+    region: 'back',
+    origin:
+      'Medial third of the superior nuchal line, external occipital protuberance, ligamentum nuchae, spinous processes of C7–T12 and the supraspinous ligament.',
+    insertion: 'Lateral third of the clavicle, acromion and the spine of the scapula.',
+    action:
+      'Upper fibres elevate, middle fibres retract and lower fibres depress the scapula; upper and lower fibres together rotate it upwardly.',
+    innervation: 'Accessory nerve (CN XI), with proprioceptive fibres from C3–C4.',
+  },
+  'latissimus-dorsi': {
+    name: 'Latissimus dorsi',
+    region: 'back',
+    origin:
+      'Spinous processes of T7–T12, thoracolumbar fascia, iliac crest and the lower three or four ribs.',
+    insertion: 'Floor of the intertubercular sulcus of the humerus.',
+    action: 'Extends, adducts and medially rotates the arm; contributes to trunk extension when the arms are fixed.',
+    innervation: 'Thoracodorsal nerve (C6–C8).',
+  },
+  'rhomboid-major': {
+    name: 'Rhomboid major',
+    region: 'back',
+    origin: 'Spinous processes of T2–T5.',
+    insertion: 'Medial border of the scapula below the root of the spine.',
+    action: 'Retracts and downwardly rotates the scapula; fixes it against the thoracic wall.',
+    innervation: 'Dorsal scapular nerve (C4–C5).',
+  },
+  'rhomboid-minor': {
+    name: 'Rhomboid minor',
+    region: 'back',
+    origin: 'Ligamentum nuchae and the spinous processes of C7–T1.',
+    insertion: 'Medial border of the scapula at the root of the spine.',
+    action: 'Retracts and downwardly rotates the scapula.',
+    innervation: 'Dorsal scapular nerve (C4–C5).',
+  },
+  'serratus-posterior-superior': {
+    name: 'Serratus posterior superior',
+    region: 'back',
+    origin: 'Ligamentum nuchae and the spinous processes of C7–T3.',
+    insertion: 'Upper borders of ribs 2–5, lateral to the angles.',
+    action: 'Elevates the upper ribs in inspiration.',
+    innervation: 'Intercostal nerves (T2–T5).',
+  },
+  'serratus-posterior-inferior': {
+    name: 'Serratus posterior inferior',
+    region: 'back',
+    origin: 'Spinous processes of T11–L2.',
+    insertion: 'Lower borders of ribs 9–12, lateral to the angles.',
+    action: 'Depresses the lower ribs and resists the upward pull of the diaphragm in inspiration.',
+    innervation: 'Anterior rami of the thoracic spinal nerves (T9–T12).',
+  },
+  'iliocostalis-lumborum': {
+    name: 'Iliocostalis lumborum',
+    region: 'back',
+    origin: 'Common erector spinae tendon from the iliac crest, sacrum and thoracolumbar fascia.',
+    insertion: 'Angles of ribs 6–12 and the transverse processes of L1–L4.',
+    action: 'Extends and ipsilaterally laterally flexes the lumbar spine; maintains posture.',
+    innervation: 'Posterior rami of the lower thoracic and lumbar spinal nerves.',
+  },
+  'longissimus-thoracis': {
+    name: 'Longissimus thoracis',
+    region: 'back',
+    origin: 'Common erector spinae tendon and the transverse processes of the lumbar vertebrae.',
+    insertion: 'Transverse processes of the thoracic vertebrae and the lower ribs.',
+    action: 'Extends and ipsilaterally laterally flexes the thoracic spine.',
+    innervation: 'Posterior rami of the thoracic and lumbar spinal nerves.',
+  },
+  'spinalis-thoracis': {
+    name: 'Spinalis thoracis',
+    region: 'back',
+    origin: 'Spinous processes of T11–L2.',
+    insertion: 'Spinous processes of T2–T8.',
+    action: 'Extends the thoracic spine.',
+    innervation: 'Posterior rami of the thoracic spinal nerves.',
+  },
+  'multifidus-lumborum': {
+    name: 'Multifidus lumborum',
+    region: 'back',
+    origin:
+      'Mammillary processes of the lumbar vertebrae, posterior surface of the sacrum, posterior superior iliac spine and the iliac crest.',
+    insertion: 'Spinous processes two to four segments above the origin.',
+    action: 'Segmental extension and contralateral rotation of the spine; stabilises the lumbar segments.',
+    innervation: 'Posterior rami of the lumbar spinal nerves.',
+  },
+  'quadratus-lumborum': {
+    name: 'Quadratus lumborum',
+    region: 'back',
+    origin: 'Iliolumbar ligament and the inner lip of the iliac crest.',
+    insertion: 'Inferior border of the twelfth rib and the transverse processes of L1–L4.',
+    action: 'Laterally flexes the trunk, extends it when both sides act, and fixes the twelfth rib for inspiration.',
+    innervation: 'Anterior rami of T12 and L1–L4.',
+  },
+
+  // ----------------------------------------------------------------- arm
+  'biceps-brachii': {
+    name: 'Biceps brachii',
+    region: 'arm',
+    origin:
+      'Short head: apex of the coracoid process. Long head: supraglenoid tubercle of the scapula.',
+    insertion: 'Radial tuberosity, with an aponeurotic expansion into the deep fascia of the forearm.',
+    action: 'Flexes the elbow and supinates the forearm; weakly flexes the shoulder.',
+    innervation: 'Musculocutaneous nerve (C5–C6).',
+  },
+  'triceps-brachii': {
+    name: 'Triceps brachii',
+    region: 'arm',
+    origin:
+      'Long head: infraglenoid tubercle of the scapula. Lateral head: posterior humerus above the radial groove. Medial head: posterior humerus below the radial groove.',
+    insertion: 'Posterior part of the olecranon of the ulna and the forearm fascia.',
+    action: 'Extends the elbow; the long head extends and adducts the shoulder.',
+    innervation: 'Radial nerve (C6–C8), the long head mainly by C7.',
+  },
+  brachialis: {
+    name: 'Brachialis',
+    region: 'arm',
+    origin: 'Distal half of the anterior surface of the humerus and the intermuscular septa.',
+    insertion: 'Tuberosity of the ulna and the anterior surface of the coronoid process.',
+    action: 'Flexes the elbow in all forearm positions.',
+    innervation: 'Musculocutaneous nerve (C5–C6), with a lateral contribution from the radial nerve (C7).',
+  },
+  coracobrachialis: {
+    name: 'Coracobrachialis',
+    region: 'arm',
+    origin: 'Apex of the coracoid process, with the short head of biceps.',
+    insertion: 'Medial surface of the middle third of the humerus.',
+    action: 'Flexes and adducts the arm.',
+    innervation: 'Musculocutaneous nerve (C5–C7).',
+  },
+  anconeus: {
+    name: 'Anconeus',
+    region: 'arm',
+    origin: 'Lateral epicondyle of the humerus.',
+    insertion: 'Lateral surface of the olecranon and the proximal posterior ulna.',
+    action: 'Assists elbow extension and stabilises the ulna during pronation.',
+    innervation: 'Radial nerve (C7–C8).',
+  },
+
+  // ------------------------------------------------------------- forearm
+  brachioradialis: {
+    name: 'Brachioradialis',
+    region: 'forearm',
+    origin: 'Proximal two-thirds of the lateral supracondylar ridge of the humerus.',
+    insertion: 'Lateral side of the base of the radial styloid process.',
+    action: 'Flexes the elbow, strongest with the forearm midprone; steadies the elbow during fast movement.',
+    innervation: 'Radial nerve (C5–C6).',
+  },
+  'extensor-carpi-radialis-longus': {
+    name: 'Extensor carpi radialis longus',
+    region: 'forearm',
+    origin: 'Lateral supracondylar ridge of the humerus and the lateral intermuscular septum.',
+    insertion: 'Dorsal surface of the base of the second metacarpal.',
+    action: 'Extends and radially deviates the wrist; assists elbow flexion.',
+    innervation: 'Radial nerve (C6–C7), before it divides.',
+  },
+  'extensor-carpi-radialis-brevis': {
+    name: 'Extensor carpi radialis brevis',
+    region: 'forearm',
+    origin: 'Lateral epicondyle of the humerus via the common extensor tendon.',
+    insertion: 'Dorsal surface of the base of the third metacarpal.',
+    action: 'Extends and radially deviates the wrist.',
+    innervation: 'Deep branch of the radial nerve / posterior interosseous nerve (C7–C8).',
+  },
+  'extensor-carpi-ulnaris': {
+    name: 'Extensor carpi ulnaris',
+    region: 'forearm',
+    origin: 'Lateral epicondyle via the common extensor tendon, and the posterior border of the ulna.',
+    insertion: 'Dorsal surface of the base of the fifth metacarpal.',
+    action: 'Extends and ulnarly deviates the wrist.',
+    innervation: 'Posterior interosseous nerve (C7–C8).',
+  },
+  'extensor-digitorum': {
+    name: 'Extensor digitorum',
+    region: 'forearm',
+    origin: 'Lateral epicondyle via the common extensor tendon.',
+    insertion: 'Extensor expansions of digits 2–5, inserting on the middle and distal phalanges.',
+    action: 'Extends the fingers at the MCP and IP joints; assists wrist extension.',
+    innervation: 'Posterior interosseous nerve (C7–C8).',
+  },
+  'extensor-pollicis-longus': {
+    name: 'Extensor pollicis longus',
+    region: 'forearm',
+    origin: 'Posterior surface of the middle third of the ulna and the interosseous membrane.',
+    insertion: 'Dorsal surface of the base of the distal phalanx of the thumb.',
+    action: 'Extends the thumb at the IP and MCP joints; extends and radially abducts the thumb at the carpometacarpal joint.',
+    innervation: 'Posterior interosseous nerve (C7–C8).',
+  },
+  'abductor-pollicis-longus': {
+    name: 'Abductor pollicis longus',
+    region: 'forearm',
+    origin: 'Posterior surfaces of the ulna and radius and the interosseous membrane.',
+    insertion: 'Dorsal surface of the base of the first metacarpal (and trapezium).',
+    action: 'Abducts and extends the thumb at the carpometacarpal joint.',
+    innervation: 'Posterior interosseous nerve (C7–C8).',
+  },
+  'flexor-carpi-radialis': {
+    name: 'Flexor carpi radialis',
+    region: 'forearm',
+    origin: 'Medial epicondyle via the common flexor tendon.',
+    insertion: 'Palmar surface of the base of the second (and third) metacarpal.',
+    action: 'Flexes and radially deviates the wrist.',
+    innervation: 'Median nerve (C6–C7).',
+  },
+  'flexor-carpi-ulnaris': {
+    name: 'Flexor carpi ulnaris',
+    region: 'forearm',
+    origin: 'Humeral head: medial epicondyle. Ulnar head: olecranon and posterior border of the ulna.',
+    insertion: 'Pisiform, hook of the hamate and the base of the fifth metacarpal.',
+    action: 'Flexes and ulnarly deviates the wrist.',
+    innervation: 'Ulnar nerve (C7–C8).',
+  },
+  'flexor-digitorum-superficialis': {
+    name: 'Flexor digitorum superficialis',
+    region: 'forearm',
+    origin:
+      'Medial epicondyle, coronoid process of the ulna and the superior half of the anterior radius.',
+    insertion: 'Sides of the middle phalanges of digits 2–5.',
+    action: 'Flexes the proximal interphalangeal joints and, in turn, the MCP joints and the wrist.',
+    innervation: 'Median nerve (C7–T1).',
+  },
+  'flexor-digitorum-profundus': {
+    name: 'Flexor digitorum profundus',
+    region: 'forearm',
+    origin: 'Anterior and medial surfaces of the ulna and the interosseous membrane.',
+    insertion: 'Palmar bases of the distal phalanges of digits 2–5.',
+    action: 'Flexes the distal interphalangeal joints and, in turn, the more proximal joints of the fingers.',
+    innervation: 'Anterior interosseous nerve (median, C8–T1) for digits 2–3; ulnar nerve (C8–T1) for digits 4–5.',
+  },
+  'flexor-pollicis-longus': {
+    name: 'Flexor pollicis longus',
+    region: 'forearm',
+    origin: 'Anterior surface of the radius and the interosseous membrane.',
+    insertion: 'Palmar surface of the base of the distal phalanx of the thumb.',
+    action: 'Flexes the thumb at the IP and MCP joints.',
+    innervation: 'Anterior interosseous nerve (median, C8–T1).',
+  },
+  'palmaris-longus': {
+    name: 'Palmaris longus',
+    region: 'forearm',
+    origin: 'Medial epicondyle via the common flexor tendon.',
+    insertion: 'Palmar aponeurosis and the flexor retinaculum.',
+    action: 'Flexes the wrist and tenses the palmar aponeurosis.',
+    innervation: 'Median nerve (C7–C8).',
+  },
+  'pronator-teres': {
+    name: 'Pronator teres',
+    region: 'forearm',
+    origin: 'Humeral head: medial epicondyle. Ulnar head: coronoid process of the ulna.',
+    insertion: 'Lateral surface of the middle of the radius.',
+    action: 'Pronates the forearm and assists elbow flexion.',
+    innervation: 'Median nerve (C6–C7).',
+  },
+  'pronator-quadratus': {
+    name: 'Pronator quadratus',
+    region: 'forearm',
+    origin: 'Anterior surface of the distal quarter of the ulna.',
+    insertion: 'Anterior surface of the distal quarter of the radius.',
+    action: 'Pronates the forearm; stabilises the distal radioulnar joint.',
+    innervation: 'Anterior interosseous nerve (median, C8–T1).',
+  },
+  supinator: {
+    name: 'Supinator',
+    region: 'forearm',
+    origin:
+      'Lateral epicondyle, radial collateral and annular ligaments, and the supinator crest of the ulna.',
+    insertion: 'Lateral surface of the proximal third of the radius.',
+    action: 'Supinates the forearm.',
+    innervation: 'Posterior interosseous nerve (C6–C7).',
+  },
+
+  // ---------------------------------------------------------------- hand
+  'abductor-pollicis-brevis': {
+    name: 'Abductor pollicis brevis',
+    region: 'hand',
+    origin: 'Flexor retinaculum, tubercles of the scaphoid and trapezium.',
+    insertion: 'Lateral side of the base of the proximal phalanx of the thumb.',
+    action: 'Abducts the thumb at the carpometacarpal joint and assists opposition.',
+    innervation: 'Recurrent branch of the median nerve (C8–T1).',
+  },
+  'flexor-pollicis-brevis': {
+    name: 'Flexor pollicis brevis',
+    region: 'hand',
+    origin:
+      'Superficial head: flexor retinaculum and trapezium. Deep head: trapezoid and capitate.',
+    insertion: 'Lateral side of the base of the proximal phalanx of the thumb.',
+    action: 'Flexes the thumb at the metacarpophalangeal joint.',
+    innervation: 'Median nerve (C8–T1) for the superficial head; deep branch of the ulnar nerve for the deep head.',
+  },
+  'opponens-pollicis': {
+    name: 'Opponens pollicis',
+    region: 'hand',
+    origin: 'Flexor retinaculum and tubercle of the trapezium.',
+    insertion: 'Lateral border of the shaft of the first metacarpal.',
+    action: 'Draws the thumb anteriorly and medially, rotating it into opposition.',
+    innervation: 'Recurrent branch of the median nerve (C8–T1).',
+  },
+  'adductor-pollicis': {
+    name: 'Adductor pollicis',
+    region: 'hand',
+    origin:
+      'Oblique head: capitate and the bases of metacarpals 2–3. Transverse head: palmar border of the third metacarpal.',
+    insertion: 'Medial side of the base of the proximal phalanx of the thumb.',
+    action: 'Adducts the thumb toward the palm and assists pinch grip.',
+    innervation: 'Deep branch of the ulnar nerve (C8–T1).',
+  },
+  'abductor-digiti-minimi-of-hand': {
+    name: 'Abductor digiti minimi',
+    region: 'hand',
+    origin: 'Pisiform and the flexor retinaculum.',
+    insertion: 'Medial side of the base of the proximal phalanx of the little finger.',
+    action: 'Abducts the little finger.',
+    innervation: 'Deep branch of the ulnar nerve (C8–T1).',
+  },
+  'flexor-digiti-minimi-brevis-of-hand': {
+    name: 'Flexor digiti minimi brevis',
+    region: 'hand',
+    origin: 'Hook of the hamate and the flexor retinaculum.',
+    insertion: 'Medial side of the base of the proximal phalanx of the little finger.',
+    action: 'Flexes the little finger at the metacarpophalangeal joint.',
+    innervation: 'Deep branch of the ulnar nerve (C8–T1).',
+  },
+  'set-of-lumbricals-of-hand': {
+    name: 'Lumbricals of the hand',
+    region: 'hand',
+    origin: 'Tendons of flexor digitorum profundus (first and second unipennate; third and fourth bipennate).',
+    insertion: 'Extensor expansions of digits 2–5.',
+    action: 'Flex the metacarpophalangeal joints and extend the interphalangeal joints of the fingers.',
+    innervation: 'Median nerve for the first and second (C8–T1); deep branch of the ulnar nerve for the third and fourth.',
+  },
+  'set-of-dorsal-interossei-of-hand': {
+    name: 'Dorsal interossei of the hand',
+    region: 'hand',
+    origin: 'Adjacent sides of the shafts of metacarpals 1–5 (four bipennate muscles).',
+    insertion: 'Bases of the proximal phalanges and extensor expansions of digits 2–4.',
+    action: 'Abduct the fingers away from the midline of the hand and assist metacarpophalangeal flexion.',
+    innervation: 'Deep branch of the ulnar nerve (C8–T1).',
+  },
+  'set-of-palmar-interossei-of-hand': {
+    name: 'Palmar interossei of the hand',
+    region: 'hand',
+    origin: 'Palmar surfaces of the shafts of metacarpals 2, 4 and 5.',
+    insertion: 'Bases of the proximal phalanges and extensor expansions of digits 2, 4 and 5.',
+    action: 'Adduct the fingers toward the midline of the hand and assist metacarpophalangeal flexion.',
+    innervation: 'Deep branch of the ulnar nerve (C8–T1).',
+  },
+
+  // ----------------------------------------------------------------- hip
+  'gluteus-maximus': {
+    name: 'Gluteus maximus',
+    region: 'hip',
+    origin:
+      'Posterior gluteal line of the ilium, posterior surface of the sacrum and coccyx, and the sacrotuberous ligament.',
+    insertion: 'Iliotibial tract and the gluteal tuberosity of the femur.',
+    action: 'Extends and laterally rotates the hip; stabilises the trunk on the femur and the knee in extension.',
+    innervation: 'Inferior gluteal nerve (L5–S2).',
+  },
+  'gluteus-medius': {
+    name: 'Gluteus medius',
+    region: 'hip',
+    origin: 'External surface of the ilium between the anterior and posterior gluteal lines.',
+    insertion: 'Lateral surface of the greater trochanter of the femur.',
+    action: 'Abducts the hip; the anterior fibres medially rotate it, the posterior fibres laterally rotate it. Main stance-phase pelvic stabiliser.',
+    innervation: 'Superior gluteal nerve (L4–S1).',
+  },
+  'gluteus-minimus': {
+    name: 'Gluteus minimus',
+    region: 'hip',
+    origin: 'External surface of the ilium between the anterior and inferior gluteal lines.',
+    insertion: 'Anterior surface of the greater trochanter of the femur.',
+    action: 'Abducts and medially rotates the hip; stabilises the pelvis in single-leg stance.',
+    innervation: 'Superior gluteal nerve (L4–S1).',
+  },
+  piriformis: {
+    name: 'Piriformis',
+    region: 'hip',
+    origin: 'Anterior surface of the sacrum between the second and fourth sacral foramina.',
+    insertion: 'Superior border of the greater trochanter of the femur.',
+    action: 'Laterally rotates the extended hip and abducts the flexed hip.',
+    innervation: 'Nerve to piriformis (S1–S2).',
+  },
+  'obturator-internus': {
+    name: 'Obturator internus',
+    region: 'hip',
+    origin: 'Internal surface of the obturator membrane and the surrounding bone.',
+    insertion: 'Medial surface of the greater trochanter, above the trochanteric fossa.',
+    action: 'Laterally rotates the extended hip and abducts the flexed hip; stabilises the femoral head in the acetabulum.',
+    innervation: 'Nerve to obturator internus (L5–S1).',
+  },
+  'obturator-externus': {
+    name: 'Obturator externus',
+    region: 'hip',
+    origin: 'External surface of the obturator membrane and the margins of the obturator foramen.',
+    insertion: 'Trochanteric fossa of the femur.',
+    action: 'Laterally rotates the hip.',
+    innervation: 'Obturator nerve (L3–L4).',
+  },
+  'quadratus-femoris': {
+    name: 'Quadratus femoris',
+    region: 'hip',
+    origin: 'Lateral border of the ischial tuberosity.',
+    insertion: 'Quadrate tubercle on the intertrochanteric crest of the femur.',
+    action: 'Laterally rotates the hip and stabilises the femoral head.',
+    innervation: 'Nerve to quadratus femoris (L5–S1).',
+  },
+  'gemellus-superior': {
+    name: 'Gemellus superior',
+    region: 'hip',
+    origin: 'Spine of the ischium.',
+    insertion: 'Medial surface of the greater trochanter, with the obturator internus tendon.',
+    action: 'Laterally rotates the extended hip and abducts the flexed hip.',
+    innervation: 'Nerve to obturator internus (L5–S1).',
+  },
+  'gemellus-inferior': {
+    name: 'Gemellus inferior',
+    region: 'hip',
+    origin: 'Ischial tuberosity.',
+    insertion: 'Medial surface of the greater trochanter, with the obturator internus tendon.',
+    action: 'Laterally rotates the extended hip and abducts the flexed hip.',
+    innervation: 'Nerve to quadratus femoris (L5–S1).',
+  },
+  iliacus: {
+    name: 'Iliacus',
+    region: 'hip',
+    origin: 'Iliac fossa and the anterior sacroiliac ligaments.',
+    insertion: 'Lateral side of the tendon of psoas major, inserting on the lesser trochanter of the femur.',
+    action: 'Flexes the hip and assists lateral rotation; together with psoas major it is a chief hip flexor.',
+    innervation: 'Femoral nerve (L2–L3).',
+  },
+  'psoas-major': {
+    name: 'Psoas major',
+    region: 'hip',
+    origin:
+      'Anterior surfaces of the transverse processes of L1–L5, the sides of the vertebral bodies and the intervertebral discs.',
+    insertion: 'Lesser trochanter of the femur, merging with the iliacus.',
+    action: 'Flexes the hip and contributes to trunk flexion and lumbar lordosis.',
+    innervation: 'Anterior rami of the lumbar spinal nerves (L1–L3).',
+  },
+  'tensor-fasciae-latae': {
+    name: 'Tensor fasciae latae',
+    region: 'hip',
+    origin: 'Anterior superior iliac spine and the anterior part of the iliac crest.',
+    insertion: 'Iliotibial tract, which inserts on the lateral tibial condyle.',
+    action: 'Flexes, abducts and medially rotates the hip; tenses the iliotibial tract to stabilise the knee.',
+    innervation: 'Superior gluteal nerve (L4–S1).',
+  },
+
+  // --------------------------------------------------------------- thigh
+  sartorius: {
+    name: 'Sartorius',
+    region: 'thigh',
+    origin: 'Anterior superior iliac spine and the notch below it.',
+    insertion: 'Medial surface of the proximal tibia, behind the medial condyle (pes anserinus).',
+    action: 'Flexes, abducts and laterally rotates the hip; flexes the knee.',
+    innervation: 'Femoral nerve (L2–L3).',
+  },
+  'rectus-femoris': {
+    name: 'Rectus femoris',
+    region: 'thigh',
+    origin: 'Straight head: anterior inferior iliac spine. Reflected head: groove above the acetabulum.',
+    insertion: 'Base of the patella, continuing to the tibial tuberosity through the patellar ligament.',
+    action: 'Extends the knee and flexes the hip.',
+    innervation: 'Femoral nerve (L2–L4).',
+  },
+  'vastus-lateralis': {
+    name: 'Vastus lateralis',
+    region: 'thigh',
+    origin: 'Intertrochanteric line, greater trochanter, gluteal tuberosity and the lateral lip of the linea aspera.',
+    insertion: 'Lateral border of the patella and the tibial tuberosity through the patellar ligament.',
+    action: 'Extends the knee; its oblique fibres pull the patella laterally.',
+    innervation: 'Femoral nerve (L2–L4).',
+  },
+  'vastus-medialis': {
+    name: 'Vastus medialis',
+    region: 'thigh',
+    origin: 'Intertrochanteric line, medial lip of the linea aspera and the medial supracondylar line.',
+    insertion: 'Medial border of the patella and the tibial tuberosity through the patellar ligament.',
+    action: 'Extends the knee; the distal oblique fibres (vastus medialis obliquus) resist lateral patellar tracking.',
+    innervation: 'Femoral nerve (L2–L4).',
+  },
+  'vastus-intermedius': {
+    name: 'Vastus intermedius',
+    region: 'thigh',
+    origin: 'Anterior and lateral surfaces of the shaft of the femur.',
+    insertion: 'Base of the patella and the tibial tuberosity through the patellar ligament.',
+    action: 'Extends the knee.',
+    innervation: 'Femoral nerve (L2–L4).',
+  },
+  'adductor-longus': {
+    name: 'Adductor longus',
+    region: 'thigh',
+    origin: 'Body of the pubis, below the pubic crest.',
+    insertion: 'Middle third of the medial lip of the linea aspera of the femur.',
+    action: 'Adducts the hip and assists flexion and medial rotation.',
+    innervation: 'Anterior division of the obturator nerve (L2–L4).',
+  },
+  'adductor-brevis': {
+    name: 'Adductor brevis',
+    region: 'thigh',
+    origin: 'Body and inferior ramus of the pubis.',
+    insertion: 'Proximal part of the medial lip of the linea aspera and the pectineal line.',
+    action: 'Adducts the hip and assists flexion.',
+    innervation: 'Obturator nerve (L2–L4).',
+  },
+  'adductor-magnus': {
+    name: 'Adductor magnus',
+    region: 'thigh',
+    origin:
+      'Adductor part: inferior ramus of the pubis and the ramus of the ischium. Hamstring part: ischial tuberosity.',
+    insertion:
+      'Adductor part: gluteal tuberosity and the medial lip of the linea aspera. Hamstring part: adductor tubercle of the femur.',
+    action: 'Adducts the hip; the adductor part flexes and medially rotates it, the hamstring part extends it.',
+    innervation:
+      'Obturator nerve (L2–L4) for the adductor part; tibial division of the sciatic nerve (L4) for the hamstring part.',
+  },
+  gracilis: {
+    name: 'Gracilis',
+    region: 'thigh',
+    origin: 'Body of the pubis and the inferior pubic ramus.',
+    insertion: 'Medial surface of the proximal tibia below the medial condyle (pes anserinus).',
+    action: 'Adducts the hip, flexes the knee and medially rotates the flexed leg.',
+    innervation: 'Obturator nerve (L2–L3).',
+  },
+  pectineus: {
+    name: 'Pectineus',
+    region: 'thigh',
+    origin: 'Pecten pubis and the superior ramus of the pubis.',
+    insertion: 'Pectineal line of the femur, between the lesser trochanter and the linea aspera.',
+    action: 'Adducts and flexes the hip.',
+    innervation: 'Femoral nerve (L2–L3), sometimes with a branch from the obturator nerve.',
+  },
+  'biceps-femoris': {
+    name: 'Biceps femoris',
+    region: 'thigh',
+    origin:
+      'Long head: ischial tuberosity and the sacrotuberous ligament. Short head: lateral lip of the linea aspera and the lateral supracondylar line.',
+    insertion: 'Lateral side of the head of the fibula.',
+    action: 'Flexes the knee and laterally rotates the flexed leg; the long head extends the hip.',
+    innervation:
+      'Long head: tibial division of the sciatic nerve (L5–S2). Short head: common fibular division (L5–S2).',
+  },
+  semitendinosus: {
+    name: 'Semitendinosus',
+    region: 'thigh',
+    origin: 'Ischial tuberosity, with the long head of biceps femoris.',
+    insertion: 'Medial surface of the proximal tibia (pes anserinus).',
+    action: 'Extends the hip, flexes the knee and medially rotates the flexed leg.',
+    innervation: 'Tibial division of the sciatic nerve (L5–S2).',
+  },
+  semimembranosus: {
+    name: 'Semimembranosus',
+    region: 'thigh',
+    origin: 'Ischial tuberosity, deep to the origin of semitendinosus.',
+    insertion: 'Posterior part of the medial tibial condyle.',
+    action: 'Extends the hip, flexes the knee and medially rotates the flexed leg; stabilises the extended knee.',
+    innervation: 'Tibial division of the sciatic nerve (L5–S2).',
+  },
+
+  // ----------------------------------------------------------------- leg
+  gastrocnemius: {
+    name: 'Gastrocnemius',
+    region: 'leg',
+    origin: 'Medial head: posterior surface of the femur above the medial condyle. Lateral head: lateral surface above the lateral condyle.',
+    insertion: 'Calcaneal tuberosity through the calcaneal (Achilles) tendon.',
+    action: 'Plantarflexes the ankle and assists knee flexion.',
+    innervation: 'Tibial nerve (S1–S2).',
+  },
+  soleus: {
+    name: 'Soleus',
+    region: 'leg',
+    origin: 'Posterior surface of the head and proximal shaft of the fibula and the soleal line of the tibia.',
+    insertion: 'Calcaneal tuberosity through the calcaneal (Achilles) tendon.',
+    action: 'Plantarflexes the ankle and is the principal postural muscle of the lower leg.',
+    innervation: 'Tibial nerve (S1–S2).',
+  },
+  plantaris: {
+    name: 'Plantaris',
+    region: 'leg',
+    origin: 'Inferior part of the lateral supracondylar line of the femur.',
+    insertion: 'Posterior surface of the calcaneus, medial to the Achilles tendon.',
+    action: 'Weakly plantarflexes the ankle and assists knee flexion.',
+    innervation: 'Tibial nerve (S1–S2).',
+  },
+  popliteus: {
+    name: 'Popliteus',
+    region: 'leg',
+    origin: 'Lateral surface of the lateral femoral condyle and the lateral meniscus.',
+    insertion: 'Posterior surface of the tibia above the soleal line.',
+    action: 'Unlocks the extended knee by laterally rotating the femur on the tibia; weakly flexes the knee and retracts the meniscus.',
+    innervation: 'Tibial nerve (L4–S1).',
+  },
+  'tibialis-anterior': {
+    name: 'Tibialis anterior',
+    region: 'leg',
+    origin: 'Lateral condyle and upper half of the lateral surface of the tibia and the interosseous membrane.',
+    insertion: 'Medial and inferior surfaces of the medial cuneiform and the base of the first metatarsal.',
+    action: 'Dorsiflexes and inverts the foot; the main toe-clearance muscle in gait.',
+    innervation: 'Deep fibular nerve (L4–L5).',
+  },
+  'tibialis-posterior': {
+    name: 'Tibialis posterior',
+    region: 'leg',
+    origin: 'Posterior surfaces of the interosseous membrane, tibia and fibula.',
+    insertion: 'Tuberosity of the navicular, with slips to the cuneiforms and the bases of metatarsals 2–4.',
+    action: 'Inverts and plantarflexes the foot; supports the medial longitudinal arch.',
+    innervation: 'Tibial nerve (L4–L5).',
+  },
+  'fibularis-longus': {
+    name: 'Fibularis longus',
+    region: 'leg',
+    origin: 'Head and upper two-thirds of the lateral surface of the fibula.',
+    insertion: 'Base of the first metatarsal and the medial cuneiform, beneath the sole of the foot.',
+    action: 'Everts and plantarflexes the foot; supports the transverse arch.',
+    innervation: 'Superficial fibular nerve (L5–S1).',
+  },
+  'fibularis-brevis': {
+    name: 'Fibularis brevis',
+    region: 'leg',
+    origin: 'Lower two-thirds of the lateral surface of the fibula.',
+    insertion: 'Tuberosity on the lateral side of the base of the fifth metatarsal.',
+    action: 'Everts and plantarflexes the foot.',
+    innervation: 'Superficial fibular nerve (L5–S1).',
+  },
+  'extensor-digitorum-longus': {
+    name: 'Extensor digitorum longus',
+    region: 'leg',
+    origin: 'Lateral condyle of the tibia, proximal fibula and the interosseous membrane.',
+    insertion: 'Extensor expansions of digits 2–5 via the middle and distal phalanges.',
+    action: 'Extends the lateral four toes and dorsiflexes the ankle.',
+    innervation: 'Deep fibular nerve (L5–S1).',
+  },
+  'extensor-hallucis-longus': {
+    name: 'Extensor hallucis longus',
+    region: 'leg',
+    origin: 'Medial surface of the fibula and the interosseous membrane.',
+    insertion: 'Dorsal surface of the base of the distal phalanx of the great toe.',
+    action: 'Extends the great toe and dorsiflexes the ankle.',
+    innervation: 'Deep fibular nerve (L5–S1).',
+  },
+  'flexor-digitorum-longus': {
+    name: 'Flexor digitorum longus',
+    region: 'leg',
+    origin: 'Posterior surface of the tibia below the soleal line.',
+    insertion: 'Bases of the distal phalanges of digits 2–5.',
+    action: 'Flexes the lateral four toes and plantarflexes the ankle; supports the medial longitudinal arch.',
+    innervation: 'Tibial nerve (L5–S1).',
+  },
+  'flexor-hallucis-longus': {
+    name: 'Flexor hallucis longus',
+    region: 'leg',
+    origin: 'Posterior surface of the lower two-thirds of the fibula and the interosseous membrane.',
+    insertion: 'Base of the distal phalanx of the great toe.',
+    action: 'Flexes the great toe and plantarflexes the ankle; a key propulsive muscle and arch support.',
+    innervation: 'Tibial nerve (S2–S3).',
+  },
+
+  // ---------------------------------------------------------------- foot
+  'abductor-hallucis': {
+    name: 'Abductor hallucis',
+    region: 'foot',
+    origin: 'Medial process of the calcaneal tuberosity, flexor retinaculum and plantar aponeurosis.',
+    insertion: 'Medial side of the base of the proximal phalanx of the great toe.',
+    action: 'Abducts and flexes the great toe; supports the medial longitudinal arch.',
+    innervation: 'Medial plantar nerve (S1–S2).',
+  },
+  'flexor-digitorum-brevis': {
+    name: 'Flexor digitorum brevis',
+    region: 'foot',
+    origin: 'Medial process of the calcaneal tuberosity and the plantar aponeurosis.',
+    insertion: 'Middle phalanges of digits 2–5.',
+    action: 'Flexes the proximal interphalangeal joints of the lateral four toes.',
+    innervation: 'Medial plantar nerve (S1–S2).',
+  },
+  'extensor-hallucis-brevis': {
+    name: 'Extensor hallucis brevis',
+    region: 'foot',
+    origin: 'Superior surface of the calcaneus, medial to the extensor digitorum brevis.',
+    insertion: 'Dorsal surface of the base of the proximal phalanx of the great toe.',
+    action: 'Extends the great toe at the metatarsophalangeal joint.',
+    innervation: 'Deep fibular nerve (L5–S1).',
+  },
+  'adductor-hallucis': {
+    name: 'Adductor hallucis',
+    region: 'foot',
+    origin:
+      'Oblique head: bases of metatarsals 2–4. Transverse head: plantar ligaments of the metatarsophalangeal joints.',
+    insertion: 'Lateral side of the base of the proximal phalanx of the great toe.',
+    action: 'Adducts the great toe and supports the transverse arch of the foot.',
+    innervation: 'Deep branch of the lateral plantar nerve (S2–S3).',
+  },
+};
+
+/** Curated record for a mesh, matched on its side-free base name. */
+export function lookupMuscleMeta(meshName: string): MuscleMeta | null {
+  const slug = muscleSlug(meshName);
+  return MUSCLE_META[slug] ?? null;
+}
+
+export const MUSCLE_META_COUNT = Object.keys(MUSCLE_META).length;

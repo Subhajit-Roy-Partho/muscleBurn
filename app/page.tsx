@@ -4,9 +4,8 @@ import { useState } from 'react';
 import ViewerMount from '@/components/ViewerMount';
 import InfoPanel from '@/components/InfoPanel';
 import ExercisePanel from '@/components/ExercisePanel';
-import { MUSCLES, getMuscle } from '@/data/muscles/placeholder';
-import type { MuscleDef } from '@/data/types';
 import type { FocusRequest } from '@/components/MuscleViewer';
+import { STRUCTURE_COUNTS } from '@/data/anatomy';
 
 type TabId = 'muscle' | 'exercises' | 'about';
 
@@ -18,19 +17,17 @@ const TABS: Array<{ id: TabId; label: string }> = [
 
 export default function HomePage() {
   const [tab, setTab] = useState<TabId>('muscle');
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [selectedKey, setSelectedKey] = useState<string | null>(null);
   const [focusRequest, setFocusRequest] = useState<FocusRequest | null>(null);
 
-  const selected: MuscleDef | undefined = getMuscle(selectedId);
-
-  const handleSelect = (def: MuscleDef) => {
-    setSelectedId(def.id);
-    setTab('muscle');
+  const handleSelect = (key: string | null) => {
+    setSelectedKey(key);
+    if (key) setTab('muscle');
   };
 
-  const handleFocus = (def: MuscleDef) => {
-    setSelectedId(def.id);
-    setFocusRequest({ id: def.id, nonce: Date.now() });
+  const handleFocus = (key: string) => {
+    setSelectedKey(key);
+    setFocusRequest({ key, nonce: Date.now() });
   };
 
   return (
@@ -54,14 +51,13 @@ export default function HomePage() {
       <section className="workspace">
         <div className="stage">
           <ViewerMount
-            muscles={MUSCLES}
-            selectedId={selectedId}
+            selectedKey={selectedKey}
             onSelect={handleSelect}
             focusRequest={focusRequest}
           />
           <p className="stage-hint">
             Drag to orbit · scroll/pinch to zoom · right-drag or two-finger drag to pan ·
-            click a muscle to pin it
+            click a structure to pin it — click empty space to deselect
           </p>
         </div>
 
@@ -83,8 +79,7 @@ export default function HomePage() {
 
           {tab === 'muscle' ? (
             <InfoPanel
-              muscles={MUSCLES}
-              selectedId={selected ? selected.id : null}
+              selectedKey={selectedKey}
               onSelect={handleSelect}
               onFocus={handleFocus}
             />
@@ -94,26 +89,35 @@ export default function HomePage() {
             <div className="panel-body about">
               <h2>About this build</h2>
               <p>
-                A static Next.js (App Router) app that renders each muscle as a swept
-                Catmull-Rom fiber with parallel-transport frames, a tapered elliptical
-                cross-section, and a procedural striation texture.
+                A static Next.js (App Router) app wrapped around the Écorché full-body atlas:
+                one named mesh per anatomical structure, loaded as a meshopt-compressed glTF
+                and shaded by body region.
               </p>
               <p>
-                Muscle, exercise, and reference records are typed in <code>src/data/</code>.
-                The current anatomy is an approximation meant to validate the viewer
-                pipeline; exercise effects are placeholders rather than measured values.
+                The model carries {STRUCTURE_COUNTS.total} structures —{' '}
+                {STRUCTURE_COUNTS.bones} skeletal, {STRUCTURE_COUNTS.deep} deep and{' '}
+                {STRUCTURE_COUNTS.superficial} superficial muscle meshes. Attachment text is
+                curated for the muscles most often looked up; for the rest the two ends of
+                the mesh are shown and labelled <em>(derived)</em>.
               </p>
               <h3>Data notes</h3>
               <ul>
-                <li>Body space: y up, floor at y = 0, height ≈ 1.8, +x = subject’s right, +z = anterior.</li>
-                <li>Each fiber: origin, optional intermediate path points, insertion, radius, flatten.</li>
+                <li>Body space: metres, y up, soles at y = 0, figure faces +Z.</li>
+                <li>The subject&apos;s left is +X, so the anterior view shows their left on your right.</li>
+                <li>Mesh names and FMA ids come from the source atlas, not from this app.</li>
                 <li>Citations live in <code>src/data/references.ts</code>; never invent a DOI.</li>
               </ul>
-              <h3>License</h3>
+              <h3>Licenses</h3>
               <p>
-                Source released under the GNU Affero General Public License v3.0 (AGPL-3.0);
-                see <code>LICENSE</code>. Educational use only, with no warranty of
-                anatomical accuracy.
+                Application code: GNU Affero General Public License v3.0 (AGPL-3.0), see{' '}
+                <code>LICENSE</code>.
+              </p>
+              <p>
+                The 3D model is a third-party asset, included as-is and re-coloured at
+                runtime: Écorché (github.com/Charleeh/ecorche) under{' '}
+                <strong>CC BY-SA 4.0</strong>, derived from BodyParts3D (© The Database Center
+                for Life Science, CC BY 4.0) and Z-Anatomy (Gauthier Kervyn, CC BY-SA 4.0).
+                See <code>public/models/ATTRIBUTION.md</code>.
               </p>
             </div>
           ) : null}
@@ -121,8 +125,8 @@ export default function HomePage() {
       </section>
 
       <footer className="site-footer">
-        <span>muscleBurn · placeholder anatomy data</span>
-        <span>AGPL-3.0 · not medical advice</span>
+        <span>muscleBurn · Écorché atlas, CC BY-SA 4.0</span>
+        <span>App code AGPL-3.0 · not medical advice</span>
       </footer>
     </main>
   );
