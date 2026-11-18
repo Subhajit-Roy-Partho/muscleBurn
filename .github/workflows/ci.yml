@@ -108,3 +108,12 @@ jobs:
           done
 
           node scripts/ci-smoke.mjs http://127.0.0.1:4173/muscleBurn/
+
+      - name: Heat-map end-to-end test
+        shell: bash
+        env:
+          NODE_PATH: ${{ runner.temp }}/pw/node_modules
+        run: |
+          set -euo pipefail
+          # Serves out/ itself on a local port and drives Chromium through Playwright.
+          node scripts/e2e-heatmap.mjs
