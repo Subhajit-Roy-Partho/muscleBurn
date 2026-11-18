@@ -8,12 +8,15 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import { MODEL_URL } from '@/lib/paths';
 import {
+  baseMuscleName,
   getStructure,
   regionForMuscle,
   STRUCTURE_COUNTS,
   type Region,
   type StructureInfo,
 } from '@/data/anatomy';
+import { normalizeMuscleName } from '@/data/muscleNameMap';
+import { heatColor } from '@/lib/heatmap';
 import { BONE_COLOR, GRID_COLORS, REGION_COLORS, REGION_LABELS, SIDE_LABELS } from '@/lib/muscleColors';
 import { clearDerivedAttachments, registerDerivedAttachments } from '@/lib/modelRegistry';
 
@@ -26,11 +29,22 @@ export interface FocusRequest {
   nonce: number;
 }
 
-interface MuscleViewerProps {
+export interface MuscleViewerProps {
   selectedKey: string | null;
   onSelect: (key: string | null) => void;
   focusRequest?: FocusRequest | null;
+  /**
+   * Exercise activation (0..1) keyed by base muscle name as returned by
+   * `buildActivationMap` ("pectoralis major", not "Clavicular part of left
+   * pectoralis major"). `null`/undefined keeps the region colouring.
+   */
+  activation?: Record<string, number> | null;
 }
+
+/** How much the non-activated muscles recede in heat-map mode. */
+const DIM_FACTOR = 0.55;
+const DIM_DESATURATION = 0.35;
+const HEAT_ROUGHNESS = 0.55;
 
 interface OrbitLike {
   target: THREE.Vector3;
@@ -49,6 +63,10 @@ interface PreparedModel {
   info: Map<THREE.Mesh, StructureInfo>;
   bone: MaterialSet;
   regions: Map<Region, MaterialSet>;
+  /** Lazily-built, cached material sets for activated muscles (keyed by hex). */
+  heat: (hex: string) => MaterialSet;
+  /** Lazily-built, cached dimmed material sets for inactive muscles. */
+  dim: (region: Region) => MaterialSet;
   dispose: () => void;
 }
 
@@ -109,6 +127,33 @@ function prepare(gltfScene: THREE.Object3D): PreparedModel {
     materials.push(set.base, set.hover, set.selected);
   }
 
+  // Activation mode reuses the same MaterialSet shape (base/hover/selected) so
+  // hover and selection keep their emissive highlight on the heat colours.
+  const heatSets = new Map<string, MaterialSet>();
+  const heat = (hex: string): MaterialSet => {
+    const existing = heatSets.get(hex);
+    if (existing) return existing;
+    const set = makeMaterialSet(hex, false, HEAT_ROUGHNESS);
+    heatSets.set(hex, set);
+    materials.push(set.base, set.hover, set.selected);
+    return set;
+  };
+
+  const dimSets = new Map<Region, MaterialSet>();
+  const dim = (region: Region): MaterialSet => {
+    const existing = dimSets.get(region);
+    if (existing) return existing;
+    const base = new THREE.Color(REGION_COLORS[region]);
+    const luminance = base.r * 0.2126 + base.g * 0.7152 + base.b * 0.0722;
+    const dimmed = base
+      .lerp(new THREE.Color(luminance, luminance, luminance), DIM_DESATURATION)
+      .multiplyScalar(DIM_FACTOR);
+    const set = makeMaterialSet(`#${dimmed.getHexString()}`, false, 0.55);
+    dimSets.set(region, set);
+    materials.push(set.base, set.hover, set.selected);
+    return set;
+  };
+
   const meshes: THREE.Mesh[] = [];
   const info = new Map<THREE.Mesh, StructureInfo>();
 
@@ -159,6 +204,8 @@ function prepare(gltfScene: THREE.Object3D): PreparedModel {
     info,
     bone,
     regions,
+    heat,
+    dim,
     dispose: () => materials.forEach((material) => material.dispose()),
   };
 }
@@ -184,6 +231,41 @@ interface Layers {
   labels: boolean;
 }
 
+interface ActivationEntry {
+  /** The activation-map key that produced this value (for diagnostics). */
+  source: string;
+  value: number;
+}
+
+/**
+ * Normalise both sides of the lookup: `buildActivationMap` returns lowercase
+ * Écorché *base* names ("pectoralis major"), while the atlas keys structures by
+ * full mesh name ("Clavicular part of left pectoralis major"). Each activation
+ * entry is indexed under its own key plus its normalised form, and each mesh is
+ * probed with its base name first, then the normalised name.
+ */
+function buildActivationIndex(
+  activation: Record<string, number> | null | undefined,
+): Map<string, ActivationEntry> | null {
+  if (!activation) return null;
+  const index = new Map<string, ActivationEntry>();
+  for (const [rawKey, value] of Object.entries(activation)) {
+    if (!Number.isFinite(value)) continue;
+    const entry: ActivationEntry = { source: rawKey, value };
+    const base = baseMuscleName(rawKey).toLowerCase();
+    if (base && !index.has(base)) index.set(base, entry);
+    const normalized = normalizeMuscleName(rawKey);
+    if (normalized && !index.has(normalized)) index.set(normalized, entry);
+  }
+  return index;
+}
+
+function structureLookupKeys(meshName: string): string[] {
+  const base = baseMuscleName(meshName).toLowerCase();
+  const normalized = normalizeMuscleName(meshName);
+  return base === normalized ? [base] : [base, normalized];
+}
+
 interface SceneProps {
   model: PreparedModel;
   selectedKey: string | null;
@@ -196,6 +278,7 @@ interface SceneProps {
   zoom: { kind: ZoomKind; nonce: number } | null;
   layers: Layers;
   side: SideFilter;
+  activationIndex: Map<string, ActivationEntry> | null;
 }
 
 const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
@@ -212,6 +295,7 @@ function SceneContents({
   zoom,
   layers,
   side,
+  activationIndex,
 }: SceneProps) {
   const camera = useThree((state) => state.camera);
   const gl = useThree((state) => state.gl);
@@ -240,19 +324,67 @@ function SceneContents({
     };
   };
 
-  // one material instance per region, reused across every mesh of that region
+  // one material instance per region, reused across every mesh of that region;
+  // in activation mode, one instance per heat colour instead so the ramp is
+  // per-muscle and inactive muscles recede.
+  const lastActivation = useRef<Map<string, ActivationEntry> | null>(null);
   useEffect(() => {
+    let heated = 0;
+    let dimmed = 0;
+    const matchedSources = new Set<string>();
+
     for (const mesh of model.meshes) {
       const structure = model.info.get(mesh);
       if (!structure) continue;
-      const set = structure.isBone
+      let set = structure.isBone
         ? model.bone
         : (model.regions.get(structure.region ?? 'back') ?? model.bone);
+
+      if (!structure.isBone && activationIndex) {
+        let entry: ActivationEntry | undefined;
+        for (const candidate of structureLookupKeys(structure.key)) {
+          entry = activationIndex.get(candidate);
+          if (entry) break;
+        }
+        if (entry) {
+          set = model.heat(heatColor(entry.value));
+          matchedSources.add(entry.source);
+          heated += 1;
+        } else {
+          set = model.dim(structure.region ?? 'back');
+          dimmed += 1;
+        }
+      }
+
       const key = mesh.userData.structureKey as string;
       mesh.material =
         key === selectedKey ? set.selected : key === hoveredKey ? set.hover : set.base;
     }
-  }, [model, selectedKey, hoveredKey]);
+
+    if (activationIndex && lastActivation.current !== activationIndex) {
+      lastActivation.current = activationIndex;
+      const sources = new Set(
+        Array.from(activationIndex.values(), (entry) => entry.source),
+      );
+      const unmatched = Array.from(sources).filter(
+        (source) => !matchedSources.has(source),
+      );
+      const summary = {
+        heatedMeshes: heated,
+        dimmedMeshes: dimmed,
+        activationKeys: sources.size,
+        unmatchedKeys: unmatched,
+      };
+      // Never silent, never an error: a key that resolves to no mesh is a data
+      // gap in the research → atlas map, not a rendering failure.
+      if (unmatched.length > 0) {
+        console.debug('[muscleBurn] activation heat map — unmatched keys', summary);
+      } else {
+        console.debug('[muscleBurn] activation heat map applied', summary);
+      }
+    }
+    if (!activationIndex) lastActivation.current = null;
+  }, [model, selectedKey, hoveredKey, activationIndex]);
 
   // layer + side visibility
   useEffect(() => {
@@ -446,6 +578,7 @@ export default function MuscleViewer({
   selectedKey,
   onSelect,
   focusRequest,
+  activation = null,
 }: MuscleViewerProps) {
   const [model, setModel] = useState<PreparedModel | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -506,6 +639,8 @@ export default function MuscleViewer({
 
   const hovered = hoveredKey ? getStructure(hoveredKey) : null;
 
+  const activationIndex = useMemo(() => buildActivationIndex(activation), [activation]);
+
   const applyPreset = (next: ViewPreset) => {
     setPreset(next);
     setPresetNonce((nonce) => nonce + 1);
@@ -553,6 +688,7 @@ export default function MuscleViewer({
               zoom={zoom}
               layers={layers}
               side={side}
+              activationIndex={activationIndex}
             />
           ) : null}
 

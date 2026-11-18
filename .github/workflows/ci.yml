@@ -1,0 +1,110 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - '*'
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Typecheck, build, and smoke-test
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+        env:
+          NEXT_TELEMETRY_DISABLED: '1'
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+        env:
+          NEXT_TELEMETRY_DISABLED: '1'
+
+      - name: Build static export
+        run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: '1'
+
+      - name: Verify build artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ ! -f out/index.html ]; then
+            echo "::error::out/index.html is missing — the static export did not produce a landing page."
+            exit 1
+          fi
+          echo "OK out/index.html ($(stat -c%s out/index.html) bytes)"
+
+          model=""
+          for candidate in out/models/ecorche.meshopt.glb out/models/ecorche.glb; do
+            if [ -f "$candidate" ]; then
+              model="$candidate"
+              break
+            fi
+          done
+          if [ -z "$model" ]; then
+            echo "::error::No Ecroche GLB in out/models (looked for ecorche.meshopt.glb and ecorche.glb)."
+            ls -la out/models || true
+            exit 1
+          fi
+
+          size=$(stat -c%s "$model")
+          echo "OK $model ($size bytes)"
+          if [ "$size" -lt 1000000 ]; then
+            echo "::error::$model is only $size bytes, expected > 1 MB — the model asset looks truncated or missing."
+            exit 1
+          fi
+
+          echo "Artifact assertions passed."
+
+      - name: Install Playwright and Chromium (outside the repo)
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save --no-package-lock --prefix "$RUNNER_TEMP/pw" playwright@1.49.0
+          PW_BIN="$RUNNER_TEMP/pw/node_modules/.bin/playwright"
+          # Best effort: ubuntu-latest normally ships the libs Chromium needs.
+          sudo "$PW_BIN" install-deps chromium >/dev/null 2>&1 || true
+          "$PW_BIN" install chromium
+
+      - name: Smoke test exported site
+        shell: bash
+        env:
+          NODE_PATH: ${{ runner.temp }}/pw/node_modules
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/serve"
+          ln -sfn "$GITHUB_WORKSPACE/out" "$RUNNER_TEMP/serve/muscleBurn"
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory "$RUNNER_TEMP/serve" \
+            >"$RUNNER_TEMP/http.log" 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+
+          for _ in $(seq 1 100); do
+            if curl -fsS -o /dev/null http://127.0.0.1:4173/muscleBurn/; then
+              break
+            fi
+            sleep 0.2
+          done
+
+          node scripts/ci-smoke.mjs http://127.0.0.1:4173/muscleBurn/

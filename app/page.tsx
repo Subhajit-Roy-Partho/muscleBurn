@@ -1,11 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import ViewerMount from '@/components/ViewerMount';
 import InfoPanel from '@/components/InfoPanel';
 import ExercisePanel from '@/components/ExercisePanel';
+import ReferencesPanel from '@/components/ReferencesPanel';
 import type { FocusRequest } from '@/components/MuscleViewer';
 import { STRUCTURE_COUNTS } from '@/data/anatomy';
+import { getExercise } from '@/data/exercises';
+import { buildActivationMap, heatRampGradient } from '@/lib/heatmap';
 
 type TabId = 'muscle' | 'exercises' | 'about';
 
@@ -19,6 +22,9 @@ export default function HomePage() {
   const [tab, setTab] = useState<TabId>('muscle');
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
   const [focusRequest, setFocusRequest] = useState<FocusRequest | null>(null);
+  const [selectedExerciseId, setSelectedExerciseId] = useState<string | null>(null);
+  const [selectedVariationId, setSelectedVariationId] = useState<string | null>(null);
+  const [legendHidden, setLegendHidden] = useState(false);
 
   const handleSelect = (key: string | null) => {
     setSelectedKey(key);
@@ -28,6 +34,27 @@ export default function HomePage() {
   const handleFocus = (key: string) => {
     setSelectedKey(key);
     setFocusRequest({ key, nonce: Date.now() });
+  };
+
+  const selectedExercise = selectedExerciseId ? getExercise(selectedExerciseId) : undefined;
+
+  /**
+   * Base-name → 0..1 activation map for the exercise on the stage. An exercise
+   * whose research labels resolve to no atlas structure yields `null` (normal
+   * region colours) rather than an all-dim body with no highlighted muscle.
+   */
+  const activation = useMemo(() => {
+    if (!selectedExercise) return null;
+    const map = buildActivationMap(selectedExercise, selectedVariationId ?? undefined);
+    return map.size > 0 ? Object.fromEntries(map) : null;
+  }, [selectedExercise, selectedVariationId]);
+
+  const showLegend = Boolean(selectedExercise) && Boolean(activation) && !legendHidden;
+
+  const handleSelectExercise = (exerciseId: string | null) => {
+    setSelectedExerciseId(exerciseId);
+    setSelectedVariationId(null);
+    setLegendHidden(false);
   };
 
   return (
@@ -50,11 +77,45 @@ export default function HomePage() {
 
       <section className="workspace">
         <div className="stage">
-          <ViewerMount
-            selectedKey={selectedKey}
-            onSelect={handleSelect}
-            focusRequest={focusRequest}
-          />
+          <div className="stage-frame">
+            <ViewerMount
+              selectedKey={selectedKey}
+              onSelect={handleSelect}
+              focusRequest={focusRequest}
+              activation={activation}
+            />
+            {showLegend ? (
+              <div
+                className="stage-legend"
+                role="group"
+                aria-label="Activation heat map legend"
+              >
+                <div className="stage-legend-head">
+                  <span>Activation</span>
+                  <button
+                    type="button"
+                    className="stage-legend-dismiss"
+                    onClick={() => setLegendHidden(true)}
+                    aria-label="Hide activation legend"
+                  >
+                    ×
+                  </button>
+                </div>
+                <span
+                  className="stage-legend-bar"
+                  style={{ background: heatRampGradient() }}
+                  aria-hidden="true"
+                />
+                <div className="stage-legend-scale">
+                  <span>Low</span>
+                  <span>High</span>
+                </div>
+                <p className="stage-legend-note">
+                  Relative score, group means · {selectedExercise?.name}
+                </p>
+              </div>
+            ) : null}
+          </div>
           <p className="stage-hint">
             Drag to orbit · scroll/pinch to zoom · right-drag or two-finger drag to pan ·
             click a structure to pin it — click empty space to deselect
@@ -84,7 +145,16 @@ export default function HomePage() {
               onFocus={handleFocus}
             />
           ) : null}
-          {tab === 'exercises' ? <ExercisePanel /> : null}
+          {tab === 'exercises' ? (
+            <ExercisePanel
+              selectedExerciseId={selectedExerciseId}
+              selectedVariationId={selectedVariationId}
+              onSelectExercise={handleSelectExercise}
+              onSelectVariation={(_exerciseId, variationId) =>
+                setSelectedVariationId(variationId)
+              }
+            />
+          ) : null}
           {tab === 'about' ? (
             <div className="panel-body about">
               <h2>About this build</h2>
@@ -119,6 +189,15 @@ export default function HomePage() {
                 for Life Science, CC BY 4.0) and Z-Anatomy (Gauthier Kervyn, CC BY-SA 4.0).
                 See <code>public/models/ATTRIBUTION.md</code>.
               </p>
+
+              <h2>Sources &amp; method</h2>
+              <p>
+                Every exercise, form variation and activation claim in this build traces to a
+                numbered reference. The list below is generated from{' '}
+                <code>src/data/references.ts</code>; each entry carries its DOI/PMID and an
+                evidence-grade badge.
+              </p>
+              <ReferencesPanel embedded />
             </div>
           ) : null}
         </aside>

@@ -1,0 +1,3126 @@
+[
+ {
+  "id": "barbell-back-squat",
+  "name": "Barbell Back Squat",
+  "category": "squat",
+  "primaryMuscles": [
+   "quadriceps (vastus lateralis)",
+   "quadriceps (vastus medialis)",
+   "quadriceps (rectus femoris)",
+   "gluteus maximus"
+  ],
+  "secondaryMuscles": [
+   "adductor magnus",
+   "biceps femoris",
+   "semitendinosus",
+   "erector spinae",
+   "gastrocnemius",
+   "soleus"
+  ],
+  "variations": [
+   {
+    "id": "back-squat-depth",
+    "name": "Depth: full vs parallel vs partial",
+    "description": "Hip and knee flexion depth at a constant relative load.",
+    "effects": [
+     {
+      "muscle": "gluteus maximus",
+      "direction": "increase",
+      "magnitude": "relative contribution 35.4% (full) vs 28.0% (parallel) vs 16.9% (partial), p<0.001",
+      "note": "Contribution to the 4-muscle total in the concentric phase; vastus medialis/lateralis and biceps femoris contributions did not differ.",
+      "referenceIds": [
+       "caterisano2002"
+      ]
+     },
+     {
+      "muscle": "quadriceps (knee extensors)",
+      "direction": "increase",
+      "magnitude": "knee-extensor relative muscular effort rises with depth but not with barbell load",
+      "note": "Relative muscular effort = joint moment / angle-matched maximal voluntary torque.",
+      "referenceIds": [
+       "bryanton2012"
+      ]
+     },
+     {
+      "muscle": "erector spinae",
+      "direction": "increase",
+      "magnitude": "depth was the most consistent increaser of erector spinae and quadriceps activation",
+      "note": "Phase-specific %MVIC at 50/90/130 deg knee flexion.",
+      "referenceIds": [
+       "park2026"
+      ]
+     },
+     {
+      "muscle": "gluteus maximus",
+      "direction": "decrease",
+      "magnitude": "partial depth reduced gluteus maximus relative contribution to 16.9% vs 35.4% at full depth",
+      "note": "Same data as the increase entry, expressed for the partial-depth direction.",
+      "referenceIds": [
+       "caterisano2002"
+      ]
+     },
+     {
+      "muscle": "knee joint (patellofemoral compression)",
+      "direction": "increase",
+      "magnitude": "forces rise with knee flexion angle; 0-50 deg range minimises knee forces",
+      "note": "Mechanical stress, not EMG: squat produced greater tibiofemoral/PF compression than leg press; all forces increased with flexion.",
+      "referenceIds": [
+       "escamilla2001"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "caterisano2002",
+     "bryanton2012",
+     "park2026",
+     "escamilla2001"
+    ]
+   },
+   {
+    "id": "back-squat-stance-wide",
+    "name": "Stance width: wide",
+    "description": "Wider than shoulder-width stance with toes turned out.",
+    "effects": [
+     {
+      "muscle": "quadriceps (vastus medialis)",
+      "direction": "increase",
+      "magnitude": "greater peak and cumulative activation (p<0.015)",
+      "note": "18 lifters, high/low bar and 50%/80% 1RM conditions; other muscles not consistently changed.",
+      "referenceIds": [
+       "lee2026"
+      ]
+     },
+     {
+      "muscle": "knee joint (tibiofemoral and patellofemoral compression)",
+      "direction": "increase",
+      "magnitude": "wide stance generated greater TF and PF compressive forces than narrow during the squat",
+      "note": "Mechanical stress, not EMG; pattern reversed in the leg press.",
+      "referenceIds": [
+       "escamilla2001"
+      ]
+     },
+     {
+      "muscle": "posterior cruciate ligament (tensile force)",
+      "direction": "increase",
+      "magnitude": "wide stance generated greater PCL tensile forces than narrow",
+      "note": "Mechanical stress, not EMG.",
+      "referenceIds": [
+       "escamilla2001"
+      ]
+     },
+     {
+      "muscle": "hip extensors (net joint moment)",
+      "direction": "increase",
+      "magnitude": "low-bar wide stance produced the largest hip contribution to total moment",
+      "note": "Kinetic contribution, not EMG; hip vs knee contribution share.",
+      "referenceIds": [
+       "larsen2021"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "lee2026",
+     "escamilla2001",
+     "larsen2021"
+    ]
+   },
+   {
+    "id": "back-squat-stance-narrow",
+    "name": "Stance width: narrow",
+    "description": "Narrower stance, toes more forward.",
+    "effects": [
+     {
+      "muscle": "quadriceps (vastus medialis)",
+      "direction": "decrease",
+      "magnitude": "lower peak and cumulative activation than wide stance (p<0.015)",
+      "note": "Companion contrast to the wide-stance finding.",
+      "referenceIds": [
+       "lee2026"
+      ]
+     },
+     {
+      "muscle": "knee joint (tibiofemoral and patellofemoral compression)",
+      "direction": "decrease",
+      "magnitude": "narrow stance produced lower TF and PF compression than wide in the squat",
+      "note": "Mechanical stress, not EMG; in the leg press the direction reversed.",
+      "referenceIds": [
+       "escamilla2001"
+      ]
+     },
+     {
+      "muscle": "hip abduction (kinematics)",
+      "direction": "decrease",
+      "magnitude": "3.7 deg more peak knee flexion and 8.2 deg less hip abduction than wide stance",
+      "note": "Kinematic, not activation.",
+      "referenceIds": [
+       "lee2026"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "lee2026",
+     "escamilla2001"
+    ]
+   },
+   {
+    "id": "back-squat-low-bar",
+    "name": "Bar position: low bar",
+    "description": "Bar placed across the posterior deltoids/scapular spine with greater forward trunk lean.",
+    "effects": [
+     {
+      "muscle": "hamstrings (biceps femoris, semitendinosus)",
+      "direction": "increase",
+      "magnitude": "higher eccentric-phase EMG for all recorded muscles at 60% and 65% 1RM",
+      "note": "12 powerlifters; LBBS vs HBBS at matched absolute loads.",
+      "referenceIds": [
+       "murawa2020"
+      ]
+     },
+     {
+      "muscle": "erector spinae",
+      "direction": "increase",
+      "magnitude": "greater erector spinae activation in specific phase/depth comparisons",
+      "note": "Phase- and depth-dependent; not uniform across all depths.",
+      "referenceIds": [
+       "park2026"
+      ]
+     },
+     {
+      "muscle": "quadriceps (rectus femoris)",
+      "direction": "decrease",
+      "magnitude": "high-bar produced greater rectus femoris activation at selected depths",
+      "note": "Companion contrast to high-bar.",
+      "referenceIds": [
+       "park2026"
+      ]
+     },
+     {
+      "muscle": "hip extensors (net joint moment)",
+      "direction": "increase",
+      "magnitude": "low-bar wide stance largest hip moment contribution; high-bar narrow largest knee contribution",
+      "note": "Kinetic, not EMG.",
+      "referenceIds": [
+       "larsen2021"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "murawa2020",
+     "park2026",
+     "larsen2021"
+    ]
+   },
+   {
+    "id": "back-squat-high-bar",
+    "name": "Bar position: high bar",
+    "description": "Bar on the upper trapezius with a more upright trunk.",
+    "effects": [
+     {
+      "muscle": "quadriceps (vastus lateralis)",
+      "direction": "increase",
+      "magnitude": "greater vastus lateralis myoelectric activity and knee-moment contribution than low-bar wide",
+      "note": "High-bar narrow stance condition.",
+      "referenceIds": [
+       "larsen2021"
+      ]
+     },
+     {
+      "muscle": "gluteus maximus",
+      "direction": "decrease",
+      "magnitude": "less gluteus maximus myoelectric activity than low-bar wide stance",
+      "note": "Same comparison.",
+      "referenceIds": [
+       "larsen2021"
+      ]
+     },
+     {
+      "muscle": "quadriceps (rectus femoris)",
+      "direction": "increase",
+      "magnitude": "greater rectus femoris activation than low bar at selected depths",
+      "note": "Depth-specific.",
+      "referenceIds": [
+       "park2026"
+      ]
+     },
+     {
+      "muscle": "hamstrings (biceps femoris, semitendinosus)",
+      "direction": "decrease",
+      "magnitude": "lower eccentric EMG than low bar at 60-65% 1RM",
+      "note": "Companion contrast.",
+      "referenceIds": [
+       "murawa2020"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "larsen2021",
+     "park2026",
+     "murawa2020"
+    ]
+   },
+   {
+    "id": "back-squat-heel-elevation",
+    "name": "Heel elevation / wedge",
+    "description": "Heel lift or wedge board (0-5 cm) under the feet.",
+    "effects": [
+     {
+      "muscle": "knee joint (net knee moment)",
+      "direction": "increase",
+      "magnitude": "peak knee moment increased with heel elevation (p<0.001); prolonged mid-phase increase",
+      "note": "Mechanical stress, not EMG; ankle and hip moments unchanged.",
+      "referenceIds": [
+       "cai2026"
+      ]
+     },
+     {
+      "muscle": "lumbar spine (L3-L5 von Mises stress)",
+      "direction": "decrease",
+      "magnitude": "peak stress decreased overall, greatest reduction at L4, as heel height rose",
+      "note": "Finite-element estimate of spinal stress, not EMG.",
+      "referenceIds": [
+       "cai2026"
+      ]
+     },
+     {
+      "muscle": "quadriceps (vastus medialis)",
+      "direction": "increase",
+      "magnitude": "posterior wedge increased vastus medialis activity (p<0.001, 8 studies)",
+      "note": "Meta-analysis of 15 studies, n=269.",
+      "referenceIds": [
+       "ghasemi2024"
+      ]
+     },
+     {
+      "muscle": "quadriceps (rectus femoris)",
+      "direction": "increase",
+      "magnitude": "anterior wedge increased rectus femoris activity (p=0.021, 5 studies)",
+      "note": "Different wedge orientation than posterior wedge.",
+      "referenceIds": [
+       "ghasemi2024"
+      ]
+     },
+     {
+      "muscle": "quadriceps",
+      "direction": "decrease",
+      "magnitude": "forefoot-elevated squats produced lower quadriceps activation than flat-heel or heel-elevated",
+      "note": "Forefoot elevation is a distinct condition from heel elevation.",
+      "referenceIds": [
+       "bozkurt2026"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "cai2026",
+     "ghasemi2024",
+     "bozkurt2026"
+    ]
+   },
+   {
+    "id": "back-squat-tempo-bounce",
+    "name": "Tempo: bounce (rapid eccentric-concentric transition)",
+    "description": "Deliberate elastic bounce out of the bottom versus a controlled turnaround.",
+    "effects": [
+     {
+      "muscle": "biceps femoris",
+      "direction": "increase",
+      "magnitude": "+40% concentric activation",
+      "note": "10 lifters, 0-100% body mass; activation shifted posteriorly.",
+      "referenceIds": [
+       "achermann2026"
+      ]
+     },
+     {
+      "muscle": "gluteus maximus",
+      "direction": "increase",
+      "magnitude": "+37% concentric activation",
+      "note": "Same comparison.",
+      "referenceIds": [
+       "achermann2026"
+      ]
+     },
+     {
+      "muscle": "gluteus medius",
+      "direction": "increase",
+      "magnitude": "+28% concentric activation",
+      "note": "Same comparison.",
+      "referenceIds": [
+       "achermann2026"
+      ]
+     },
+     {
+      "muscle": "quadriceps",
+      "direction": "shift",
+      "magnitude": "quadriceps activation unchanged in the concentric phase",
+      "note": "Direction is a redistribution, not an increase.",
+      "referenceIds": [
+       "achermann2026"
+      ]
+     },
+     {
+      "muscle": "knee joint (net joint moment)",
+      "direction": "increase",
+      "magnitude": "+50%",
+      "note": "Mechanical stress, not EMG.",
+      "referenceIds": [
+       "achermann2026"
+      ]
+     },
+     {
+      "muscle": "lumbar spine (extension moment)",
+      "direction": "increase",
+      "magnitude": "+182%",
+      "note": "Mechanical stress, not EMG; large low-back load implication.",
+      "referenceIds": [
+       "achermann2026"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "achermann2026"
+    ]
+   },
+   {
+    "id": "back-squat-tempo-controlled",
+    "name": "Tempo: controlled eccentric (e.g. 2-4 s down)",
+    "description": "Slowed eccentric phase versus self-selected or fast eccentric.",
+    "effects": [
+     {
+      "muscle": "quadriceps (strength outcome)",
+      "direction": "shift",
+      "magnitude": "2/0/X/0 tempo gave the most favourable strength and jump trend; no significant between-group difference in maximal squat strength",
+      "note": "8-week RCT, n=30; outcome is performance, not EMG.",
+      "referenceIds": [
+       "hao2026"
+      ]
+     },
+     {
+      "muscle": "quadriceps (hypertrophy outcome)",
+      "direction": "shift",
+      "magnitude": "recommended repetition tempo for hypertrophy is 2-8 s per repetition",
+      "note": "Narrative review; evidence for tempo manipulation per se is limited.",
+      "referenceIds": [
+       "korakakis2023"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "hao2026",
+     "korakakis2023"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "escamilla2001",
+   "lee2026",
+   "murawa2020",
+   "larsen2021",
+   "caterisano2002",
+   "bryanton2012",
+   "park2026",
+   "cai2026",
+   "ghasemi2024",
+   "bozkurt2026",
+   "achermann2026",
+   "hao2026",
+   "korakakis2023",
+   "schoenfeld2010",
+   "clark2012",
+   "alqahtani2026",
+   "pallares2021"
+  ]
+ },
+ {
+  "id": "front-squat",
+  "name": "Front Squat",
+  "category": "squat",
+  "primaryMuscles": [
+   "quadriceps (vastus lateralis)",
+   "quadriceps (vastus medialis)",
+   "quadriceps (rectus femoris)"
+  ],
+  "secondaryMuscles": [
+   "gluteus maximus",
+   "erector spinae",
+   "adductor magnus"
+  ],
+  "variations": [
+   {
+    "id": "front-vs-back",
+    "name": "Front rack vs high-bar back squat",
+    "description": "Anterior bar position requiring a more upright trunk.",
+    "effects": [
+     {
+      "muscle": "quadriceps",
+      "direction": "shift",
+      "magnitude": "similar activation patterns between front squat and high-bar back squat",
+      "note": "Systematic review of 30 studies; the guided/Smith squat had the least activation.",
+      "referenceIds": [
+       "gener2020"
+      ]
+     },
+     {
+      "muscle": "erector spinae",
+      "direction": "shift",
+      "magnitude": "front squat increases lumbar lordosis versus back squat without changing lower-limb or trunk muscle activity at equal absolute load",
+      "note": "Kinematic/EMG comparison; supports similar activation with different spinal posture.",
+      "referenceIds": [
+       "gener2020"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "gener2020"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "gener2020"
+  ]
+ },
+ {
+  "id": "conventional-deadlift",
+  "name": "Conventional Deadlift",
+  "category": "hinge",
+  "primaryMuscles": [
+   "gluteus maximus",
+   "biceps femoris",
+   "semitendinosus",
+   "erector spinae"
+  ],
+  "secondaryMuscles": [
+   "quadriceps (vastus lateralis)",
+   "adductor magnus",
+   "latissimus dorsi",
+   "forearm flexors",
+   "trapezius"
+  ],
+  "variations": [
+   {
+    "id": "deadlift-sumo",
+    "name": "Sumo stance",
+    "description": "Wide stance (about 70 cm) with toes out about 42 deg and hands inside the legs.",
+    "effects": [
+     {
+      "muscle": "biceps femoris",
+      "direction": "decrease",
+      "magnitude": "lower peak activation than conventional in both phases",
+      "note": "30 experienced lifters at 85% 1RM.",
+      "referenceIds": [
+       "hanen2025"
+      ]
+     },
+     {
+      "muscle": "quadriceps (vastus lateralis)",
+      "direction": "increase",
+      "magnitude": "higher peak activation than conventional, phase 1 only",
+      "note": "Phase-specific.",
+      "referenceIds": [
+       "hanen2025"
+      ]
+     },
+     {
+      "muscle": "knee joint (frontal/transverse plane moment)",
+      "direction": "increase",
+      "magnitude": "greater frontal and transverse hip and knee moments; greater ankle inversion moment",
+      "note": "Mechanical stress, not EMG.",
+      "referenceIds": [
+       "hanen2025"
+      ]
+     },
+     {
+      "muscle": "hip extensors (net joint moment)",
+      "direction": "decrease",
+      "magnitude": "conventional generated higher hip extension moments",
+      "note": "Mechanical stress; hip moments did not differ significantly in the earlier 3-D study.",
+      "referenceIds": [
+       "hanen2025"
+      ]
+     },
+     {
+      "muscle": "lumbar spine (mechanical work)",
+      "direction": "decrease",
+      "magnitude": "vertical bar distance, mechanical work and predicted energy expenditure 25-40% greater in conventional",
+      "note": "Indirect load-volume marker; hip moments themselves did not differ.",
+      "referenceIds": [
+       "escamilla2000"
+      ]
+     },
+     {
+      "muscle": "adductor magnus",
+      "direction": "increase",
+      "magnitude": "conventional and sumo deadlift were tier 1 for adductor magnus (ischiocondylar) and gracilis force",
+      "note": "EMG-assisted musculoskeletal model, 15 participants.",
+      "referenceIds": [
+       "collings2026"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "hanen2025",
+     "escamilla2000",
+     "collings2026"
+    ]
+   },
+   {
+    "id": "deadlift-hex-bar",
+    "name": "Hex (trap) bar",
+    "description": "Neutral-grip frame bar with the load aligned to the mid-foot.",
+    "effects": [
+     {
+      "muscle": "knee joint (net joint moment)",
+      "direction": "increase",
+      "magnitude": "greater knee net joint moment than conventional or sumo",
+      "note": "3RM in strength-trained women.",
+      "referenceIds": [
+       "gundersen2025"
+      ]
+     },
+     {
+      "muscle": "lumbar spine (peak moment)",
+      "direction": "decrease",
+      "magnitude": "lower peak moments at the lumbar spine, hip and ankle than straight bar",
+      "note": "Inverse dynamics, 19 powerlifters.",
+      "referenceIds": [
+       "swinton2011"
+      ]
+     },
+     {
+      "muscle": "hip extensors (net joint moment)",
+      "direction": "decrease",
+      "magnitude": "lower peak hip moment than straight-bar deadlift",
+      "note": "Same study.",
+      "referenceIds": [
+       "swinton2011"
+      ]
+     },
+     {
+      "muscle": "whole-body (1RM load)",
+      "direction": "increase",
+      "magnitude": "1RM 265 +/- 41 kg vs 245 +/- 39 kg for straight bar (p<0.05)",
+      "note": "Load, not activation.",
+      "referenceIds": [
+       "swinton2011"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "gundersen2025",
+     "swinton2011"
+    ]
+   },
+   {
+    "id": "deadlift-grip-mixed",
+    "name": "Grip: mixed (alternated)",
+    "description": "One supinated and one pronated hand.",
+    "effects": [
+     {
+      "muscle": "brachioradialis",
+      "direction": "decrease",
+      "magnitude": "lowest brachioradialis activation regardless of load and sex (ES 0.64-0.68)",
+      "note": "29 resistance-trained athletes at 50/70/90% 1RM.",
+      "referenceIds": [
+       "pratt2020"
+      ]
+     },
+     {
+      "muscle": "flexor carpi ulnaris",
+      "direction": "decrease",
+      "magnitude": "lowest flexor carpi ulnaris activation (ES 0.64-0.68)",
+      "note": "Same study; mixed grip also rated easiest.",
+      "referenceIds": [
+       "pratt2020"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "pratt2020"
+    ]
+   },
+   {
+    "id": "deadlift-grip-double-overhand",
+    "name": "Grip: double overhand / hook",
+    "description": "Both hands pronated, or hook grip with the thumb locked.",
+    "effects": [
+     {
+      "muscle": "brachioradialis",
+      "direction": "increase",
+      "magnitude": "higher activation than mixed grip; recommended to develop grip strength",
+      "note": "Double overhand or hook.",
+      "referenceIds": [
+       "pratt2020"
+      ]
+     },
+     {
+      "muscle": "forearm flexors",
+      "direction": "increase",
+      "magnitude": "higher flexor carpi ulnaris activation than mixed grip",
+      "note": "Grip-strength rationale.",
+      "referenceIds": [
+       "pratt2020"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "pratt2020"
+    ]
+   },
+   {
+    "id": "deadlift-setup-close-bar",
+    "name": "Set-up: bar close to the shins",
+    "description": "Bar over the navicular versus over the 3rd metatarsophalangeal joint.",
+    "effects": [
+     {
+      "muscle": "hamstrings",
+      "direction": "increase",
+      "magnitude": "greater posterior-chain EMG amplitude",
+      "note": "Maximal isometric pulls, 10 experienced lifters.",
+      "referenceIds": [
+       "edington2018"
+      ]
+     },
+     {
+      "muscle": "erector spinae",
+      "direction": "increase",
+      "magnitude": "greater posterior-chain EMG amplitude",
+      "note": "Same comparison.",
+      "referenceIds": [
+       "edington2018"
+      ]
+     },
+     {
+      "muscle": "quadriceps",
+      "direction": "decrease",
+      "magnitude": "far-bar set-up produced more anterior-chain (quadriceps) amplitude",
+      "note": "Companion contrast.",
+      "referenceIds": [
+       "edington2018"
+      ]
+     },
+     {
+      "muscle": "lumbar spine (shear and compression)",
+      "direction": "shift",
+      "magnitude": "no difference in lumbar shear or compression between set-ups",
+      "note": "Mechanical stress; supports either set-up regarding spinal loading.",
+      "referenceIds": [
+       "edington2018"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "edington2018"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "hanen2025",
+   "escamilla2000",
+   "collings2026",
+   "gundersen2025",
+   "swinton2011",
+   "pratt2020",
+   "edington2018",
+   "cherni2026"
+  ]
+ },
+ {
+  "id": "romanian-deadlift",
+  "name": "Romanian Deadlift",
+  "category": "hinge",
+  "primaryMuscles": [
+   "biceps femoris",
+   "semitendinosus",
+   "gluteus maximus"
+  ],
+  "secondaryMuscles": [
+   "erector spinae",
+   "adductor magnus"
+  ],
+  "variations": [
+   {
+    "id": "rdl-vs-conventional",
+    "name": "RDL vs conventional deadlift",
+    "description": "Minimal knee flexion, hip-hinge only, bar kept close.",
+    "effects": [
+     {
+      "muscle": "quadriceps (rectus femoris)",
+      "direction": "decrease",
+      "magnitude": "25.26 +/- 14.21 %peak vs 58.57 +/- 13.73 %peak for conventional",
+      "note": "21 males at 70% RDL 1RM.",
+      "referenceIds": [
+       "lee2018"
+      ]
+     },
+     {
+      "muscle": "gluteus maximus",
+      "direction": "decrease",
+      "magnitude": "46.88 +/- 7.39 %peak vs 51.52 +/- 6.08 %peak for conventional",
+      "note": "Small difference.",
+      "referenceIds": [
+       "lee2018"
+      ]
+     },
+     {
+      "muscle": "knee joint (net joint torque)",
+      "direction": "decrease",
+      "magnitude": "lower knee and ankle net joint torques than conventional",
+      "note": "Mechanical stress.",
+      "referenceIds": [
+       "lee2018"
+      ]
+     },
+     {
+      "muscle": "erector spinae",
+      "direction": "decrease",
+      "magnitude": "lower erector spinae activation than biceps femoris and semitendinosus within the RDL",
+      "note": "Systematic review of deadlift variants.",
+      "referenceIds": [
+       "martinfuentes2020"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "lee2018",
+     "martinfuentes2020"
+    ]
+   },
+   {
+    "id": "rdl-stance-wide",
+    "name": "Stance width: wide",
+    "description": "Wide stance RDL.",
+    "effects": [
+     {
+      "muscle": "gluteus maximus",
+      "direction": "increase",
+      "magnitude": "significant increase in gluteus maximus EMG with wide stance",
+      "note": "30 trained men at 80% 1RM.",
+      "referenceIds": [
+       "koderi2020"
+      ]
+     },
+     {
+      "muscle": "multifidus",
+      "direction": "decrease",
+      "magnitude": "multifidus differences were significant specifically with narrow stance",
+      "note": "Companion contrast.",
+      "referenceIds": [
+       "koderi2020"
+      ]
+     },
+     {
+      "muscle": "quadriceps (vastus lateralis) and biceps femoris",
+      "direction": "shift",
+      "magnitude": "no significant difference across stance widths",
+      "note": "Null result for these muscles.",
+      "referenceIds": [
+       "koderi2020"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "koderi2020"
+    ]
+   },
+   {
+    "id": "rdl-stance-narrow",
+    "name": "Stance width: narrow",
+    "description": "Narrow stance RDL.",
+    "effects": [
+     {
+      "muscle": "multifidus",
+      "direction": "increase",
+      "magnitude": "significant multifidus differences with narrow stance",
+      "note": "30 trained men; wide stance allowed more repetitions.",
+      "referenceIds": [
+       "koderi2020"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "koderi2020"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "lee2018",
+   "martinfuentes2020",
+   "koderi2020"
+  ]
+ },
+ {
+  "id": "barbell-bench-press",
+  "name": "Barbell Bench Press",
+  "category": "horizontal push",
+  "primaryMuscles": [
+   "pectoralis major (sternocostal)",
+   "pectoralis major (clavicular)",
+   "triceps brachii",
+   "anterior deltoid"
+  ],
+  "secondaryMuscles": [
+   "biceps brachii (short head)",
+   "serratus anterior",
+   "rotator cuff"
+  ],
+  "variations": [
+   {
+    "id": "bench-grip-wide",
+    "name": "Grip width: wide (~1.5-2.0x biacromial)",
+    "description": "Hands outside 1.5x biacromial distance.",
+    "effects": [
+     {
+      "muscle": "pectoralis major (sternocostal)",
+      "direction": "increase",
+      "magnitude": "wide-to-narrow transition decreased sternocostal pectoralis activity",
+      "note": "Isometric holds, 12 men; relative change small.",
+      "referenceIds": [
+       "lehman2005"
+      ]
+     },
+     {
+      "muscle": "triceps brachii",
+      "direction": "decrease",
+      "magnitude": "wide grip produced lower triceps activation than medium and narrow",
+      "note": "6RM in 28 men; also in trained subgroup.",
+      "referenceIds": [
+       "saeterbakken2021"
+      ]
+     },
+     {
+      "muscle": "biceps brachii",
+      "direction": "increase",
+      "magnitude": "biceps activity increased with increasing grip width",
+      "note": "Likely a stabilising/co-contraction effect, not a target.",
+      "referenceIds": [
+       "saeterbakken2021"
+      ]
+     },
+     {
+      "muscle": "shoulder joint (net joint moment)",
+      "direction": "increase",
+      "magnitude": "wide and medium grips produced greater horizontal shoulder moments than narrow in the sticking region",
+      "note": "Mechanical stress, not EMG.",
+      "referenceIds": [
+       "larsen2020"
+      ]
+     },
+     {
+      "muscle": "glenohumeral joint (posterior shear force)",
+      "direction": "increase",
+      "magnitude": "wider 2.0x BAW grip increased posterior shear and rotator-cuff activity versus 1.0x BAW",
+      "note": "Musculoskeletal model, 10 strength athletes, 21 variations.",
+      "referenceIds": [
+       "noteboom2024"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "lehman2005",
+     "saeterbakken2021",
+     "larsen2020",
+     "noteboom2024"
+    ]
+   },
+   {
+    "id": "bench-grip-narrow",
+    "name": "Grip width: narrow (~1.0-1.5x biacromial)",
+    "description": "Hands at or just outside shoulder width.",
+    "effects": [
+     {
+      "muscle": "triceps brachii",
+      "direction": "increase",
+      "magnitude": "narrow grip increased triceps activation; triceps medialis greater than with wide grip",
+      "note": "Two independent studies agree.",
+      "referenceIds": [
+       "lehman2005",
+       "saeterbakken2021",
+       "larsen2020"
+      ]
+     },
+     {
+      "muscle": "pectoralis major (sternocostal)",
+      "direction": "decrease",
+      "magnitude": "narrower grip decreased sternocostal pectoralis activity (unless grip supinated)",
+      "note": "Effect reversed when the grip was supinated.",
+      "referenceIds": [
+       "lehman2005"
+      ]
+     },
+     {
+      "muscle": "anterior deltoid",
+      "direction": "decrease",
+      "magnitude": "medium grip produced greater anterior deltoid activity than narrow",
+      "note": "28 men, 6RM.",
+      "referenceIds": [
+       "saeterbakken2021"
+      ]
+     },
+     {
+      "muscle": "glenohumeral joint (posterior shear force)",
+      "direction": "decrease",
+      "magnitude": "narrow grip reduced glenohumeral posterior shear and rotator-cuff activity",
+      "note": "May lower instability/rotator-cuff risk.",
+      "referenceIds": [
+       "noteboom2024"
+      ]
+     },
+     {
+      "muscle": "whole-body (6RM load)",
+      "direction": "decrease",
+      "magnitude": "lower 6RM loads with narrow grip than medium or wide",
+      "note": "Performance trade-off.",
+      "referenceIds": [
+       "saeterbakken2021"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "lehman2005",
+     "saeterbakken2021",
+     "larsen2020",
+     "noteboom2024"
+    ]
+   },
+   {
+    "id": "bench-incline-30",
+    "name": "Bench angle: 30 deg incline",
+    "description": "Backrest raised 30 deg.",
+    "effects": [
+     {
+      "muscle": "pectoralis major (clavicular)",
+      "direction": "increase",
+      "magnitude": "122.5% vs 98.2% MVIC (30 vs 0 deg) at 26-50% of the concentric phase; peak upper-pectoral EMG at 30 deg",
+      "note": "Two independent studies agree on upper-pectoral emphasis.",
+      "referenceIds": [
+       "lauver2016",
+       "rodriguezridao2020"
+      ]
+     },
+     {
+      "muscle": "pectoralis major (sternocostal)",
+      "direction": "decrease",
+      "magnitude": "flat bench activated sternal pectoralis significantly more (SMD 1.80, 95% CI 0.40-3.19)",
+      "note": "Meta-analysis of 23 studies.",
+      "referenceIds": [
+       "lopezvivancos2023"
+      ]
+     },
+     {
+      "muscle": "pectoralis major (regional excitation)",
+      "direction": "shift",
+      "magnitude": "HD-EMG barycentre shifted cranially toward the clavicular region at 45 deg",
+      "note": "Regional redistribution rather than whole-muscle increase.",
+      "referenceIds": [
+       "cabral2022"
+      ]
+     },
+     {
+      "muscle": "anterior deltoid",
+      "direction": "increase",
+      "magnitude": "anterior deltoid EMG highest at 60 deg; inclinations above 45 deg increase it significantly",
+      "note": "Associated with lower pectoralis performance.",
+      "referenceIds": [
+       "rodriguezridao2020"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "lauver2016",
+     "rodriguezridao2020",
+     "lopezvivancos2023",
+     "cabral2022"
+    ]
+   },
+   {
+    "id": "bench-decline",
+    "name": "Bench angle: decline (-15 deg)",
+    "description": "Head-down bench angle.",
+    "effects": [
+     {
+      "muscle": "pectoralis major (sternocostal)",
+      "direction": "shift",
+      "magnitude": "conflicting: meta-analysis reports greater sternal activation with decline, whereas Barnett 1995 found horizontal > decline",
+      "note": "Contradiction retained explicitly; do not treat decline as an established sternal-head builder.",
+      "referenceIds": [
+       "lopezvivancos2023",
+       "barnett1995"
+      ]
+     },
+     {
+      "muscle": "anterior deltoid",
+      "direction": "decrease",
+      "magnitude": "anterior deltoid activity tended to increase as trunk inclination increased, so decline was lowest",
+      "note": "Trend statement from the original EMG study.",
+      "referenceIds": [
+       "barnett1995"
+      ]
+     },
+     {
+      "muscle": "triceps brachii (long head)",
+      "direction": "increase",
+      "magnitude": "long head more active in decline and flat than in the two incline conditions",
+      "note": "Barnett 1995, 80% max, 2-s lift.",
+      "referenceIds": [
+       "barnett1995"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "lopezvivancos2023",
+     "barnett1995"
+    ]
+   },
+   {
+    "id": "bench-arch",
+    "name": "Technique: arched back",
+    "description": "Thoracic/lumbar extension with scapular retraction and leg drive.",
+    "effects": [
+     {
+      "muscle": "whole-body (1RM)",
+      "direction": "increase",
+      "magnitude": "+4.2 kg (95% CI 0.0-8.4; ES 0.22) versus flat-back",
+      "note": "15 highly trained powerlifters.",
+      "referenceIds": [
+       "bartolomei2024"
+      ]
+     },
+     {
+      "muscle": "pectoralis major",
+      "direction": "shift",
+      "magnitude": "upper and lower pectoralis excitation similar between arched and flat",
+      "note": "No meaningful EMG difference.",
+      "referenceIds": [
+       "bartolomei2024"
+      ]
+     },
+     {
+      "muscle": "triceps brachii",
+      "direction": "increase",
+      "magnitude": "overall trend for increased triceps activation in the arched condition",
+      "note": "Trend, not statistically definitive.",
+      "referenceIds": [
+       "bartolomei2024"
+      ]
+     },
+     {
+      "muscle": "barbell displacement",
+      "direction": "decrease",
+      "magnitude": "flat-back produced greater barbell displacement at all loads (ES 0.40-0.61)",
+      "note": "Kinematics, not stress.",
+      "referenceIds": [
+       "bartolomei2024"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "bartolomei2024"
+    ]
+   },
+   {
+    "id": "bench-feet",
+    "name": "Foot placement: feet on floor vs hips/knees flexed",
+    "description": "Feet planted versus feet supported with active hip flexion.",
+    "effects": [
+     {
+      "muscle": "rectus abdominis",
+      "direction": "increase",
+      "magnitude": "hip/knee-flexed bench increased trunk-muscle activation (core stabilisation demand)",
+      "note": "20 young men at 60% 1RM; prime movers still showed the greatest activation.",
+      "referenceIds": [
+       "muyor2019"
+      ]
+     },
+     {
+      "muscle": "external oblique",
+      "direction": "increase",
+      "magnitude": "hip/knee-flexed bench increased trunk-muscle activation",
+      "note": "Same comparison.",
+      "referenceIds": [
+       "muyor2019"
+      ]
+     },
+     {
+      "muscle": "rectus femoris",
+      "direction": "increase",
+      "magnitude": "hip-flexed condition increased rectus femoris activation via hip-flexor traction",
+      "note": "Same comparison.",
+      "referenceIds": [
+       "muyor2019"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "muyor2019"
+    ]
+   },
+   {
+    "id": "bench-rom-upper-half",
+    "name": "Range of motion: upper half (partial)",
+    "description": "Elbow/shoulder partial ROM from mid-range to lockout.",
+    "effects": [
+     {
+      "muscle": "triceps brachii",
+      "direction": "increase",
+      "magnitude": "highest mean triceps excitation of the three ROMs; long and lateral heads highest peak EMG",
+      "note": "19 men, 10RM, full vs upper-half vs lower-half.",
+      "referenceIds": [
+       "fischer2025a"
+      ]
+     },
+     {
+      "muscle": "pectoralis major",
+      "direction": "increase",
+      "magnitude": "both partial ROMs produced greater pectoralis mean excitation than full ROM; sternocostal 15% region highest in upper-half",
+      "note": "Regional effect.",
+      "referenceIds": [
+       "fischer2025a"
+      ]
+     },
+     {
+      "muscle": "anterior deltoid",
+      "direction": "increase",
+      "magnitude": "both partial ROMs greater than full ROM",
+      "note": "Same study.",
+      "referenceIds": [
+       "fischer2025a"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "fischer2025a"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "lehman2005",
+   "saeterbakken2021",
+   "larsen2020",
+   "noteboom2024",
+   "lauver2016",
+   "rodriguezridao2020",
+   "lopezvivancos2023",
+   "cabral2022",
+   "barnett1995",
+   "bartolomei2024",
+   "muyor2019",
+   "fischer2025a",
+   "stastny2017",
+   "muyor2023"
+  ]
+ },
+ {
+  "id": "incline-bench-press",
+  "name": "Incline Bench Press",
+  "category": "horizontal push",
+  "primaryMuscles": [
+   "pectoralis major (clavicular)",
+   "anterior deltoid",
+   "triceps brachii"
+  ],
+  "secondaryMuscles": [
+   "pectoralis major (sternocostal)",
+   "serratus anterior"
+  ],
+  "variations": [
+   {
+    "id": "incline-30-vs-flat",
+    "name": "30 deg incline vs flat",
+    "description": "Moderate incline typically used for upper-chest emphasis.",
+    "effects": [
+     {
+      "muscle": "pectoralis major (clavicular)",
+      "direction": "increase",
+      "magnitude": "greater upper-pectoral EMG at 30-45 deg during mid-concentric phase (122.5-124% vs 98.2% MVIC)",
+      "note": "Two independent studies agree.",
+      "referenceIds": [
+       "lauver2016",
+       "rodriguezridao2020"
+      ]
+     },
+     {
+      "muscle": "triceps brachii",
+      "direction": "decrease",
+      "magnitude": "triceps activation 58.5-62.6% lower on incline than flat or decline",
+      "note": "Competitive bench press athletes, 6RM.",
+      "referenceIds": [
+       "saeterbakken2017"
+      ]
+     },
+     {
+      "muscle": "biceps brachii",
+      "direction": "increase",
+      "magnitude": "biceps activation 48.3-68.7% greater on incline than flat or decline",
+      "note": "Likely stabilisation.",
+      "referenceIds": [
+       "saeterbakken2017"
+      ]
+     },
+     {
+      "muscle": "whole-body (6RM load)",
+      "direction": "decrease",
+      "magnitude": "6RM load 18.5-21.5% lower on incline than flat or decline",
+      "note": "Performance trade-off.",
+      "referenceIds": [
+       "saeterbakken2017"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "lauver2016",
+     "rodriguezridao2020",
+     "saeterbakken2017"
+    ]
+   },
+   {
+    "id": "incline-45-plus",
+    "name": "45-60 deg incline",
+    "description": "Steep incline approaching a shoulder press.",
+    "effects": [
+     {
+      "muscle": "anterior deltoid",
+      "direction": "increase",
+      "magnitude": "highest anterior deltoid EMG at 60 deg; above 45 deg pectoralis performance declines",
+      "note": "30 trained adults at 60% 1RM.",
+      "referenceIds": [
+       "rodriguezridao2020"
+      ]
+     },
+     {
+      "muscle": "pectoralis major (clavicular)",
+      "direction": "shift",
+      "magnitude": "HD-EMG excitation barycentre shifts cranially, concentrating in the clavicular head",
+      "note": "Regional redistribution at 45 deg.",
+      "referenceIds": [
+       "cabral2022"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "rodriguezridao2020",
+     "cabral2022"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "lauver2016",
+   "rodriguezridao2020",
+   "saeterbakken2017",
+   "cabral2022"
+  ]
+ },
+ {
+  "id": "overhead-press",
+  "name": "Overhead Press",
+  "category": "vertical push",
+  "primaryMuscles": [
+   "anterior deltoid",
+   "lateral deltoid",
+   "triceps brachii",
+   "upper trapezius"
+  ],
+  "secondaryMuscles": [
+   "posterior deltoid",
+   "pectoralis major (clavicular)",
+   "serratus anterior",
+   "erector spinae"
+  ],
+  "variations": [
+   {
+    "id": "ohp-front-vs-back",
+    "name": "Bar path: front vs behind the neck",
+    "description": "Bar pressed in front of the face versus behind the head.",
+    "effects": [
+     {
+      "muscle": "posterior deltoid",
+      "direction": "increase",
+      "magnitude": "behind-neck press: ES 9.00 ascending and 8.65 descending vs front press",
+      "note": "8 competitive bodybuilders; very large effects.",
+      "referenceIds": [
+       "coratella2022"
+      ]
+     },
+     {
+      "muscle": "lateral deltoid",
+      "direction": "increase",
+      "magnitude": "behind-neck press: ES 3.68 ascending, 4.56 descending vs front press",
+      "note": "Same study.",
+      "referenceIds": [
+       "coratella2022"
+      ]
+     },
+     {
+      "muscle": "anterior deltoid",
+      "direction": "increase",
+      "magnitude": "behind-neck press greater anterior deltoid excitation in the descending phase (ES 7.66)",
+      "note": "Phase-specific; front press greater in other comparisons.",
+      "referenceIds": [
+       "coratella2022"
+      ]
+     },
+     {
+      "muscle": "pectoralis major",
+      "direction": "increase",
+      "magnitude": "front press greater pectoralis excitation (ES 3.11 ascending, 4.20 descending)",
+      "note": "Opposite direction to the deltoid findings.",
+      "referenceIds": [
+       "coratella2022"
+      ]
+     },
+     {
+      "muscle": "pectoralis major",
+      "direction": "increase",
+      "magnitude": "front press greater HD-EMG amplitude (ES 0.70-0.74) and anterior deltoid (ES 1.00-1.03)",
+      "note": "Independent HD-EMG replication in 14 trained men.",
+      "referenceIds": [
+       "padovan2026"
+      ]
+     },
+     {
+      "muscle": "posterior deltoid / upper trapezius / triceps",
+      "direction": "increase",
+      "magnitude": "behind-neck press greater descending-phase excitation (ES 1.11, 0.72, 2.01)",
+      "note": "HD-EMG replication.",
+      "referenceIds": [
+       "padovan2026"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "coratella2022",
+     "padovan2026"
+    ]
+   },
+   {
+    "id": "ohp-barbell-vs-machine",
+    "name": "Implement: barbell vs machine",
+    "description": "Free barbell versus guided shoulder-press machine.",
+    "effects": [
+     {
+      "muscle": "shoulder muscles (composite)",
+      "direction": "decrease",
+      "magnitude": "machine press excited muscles less than barbell; barbell requires more stabilisation",
+      "note": "Anterior/medial/posterior deltoid, upper trapezius, pectoralis, triceps.",
+      "referenceIds": [
+       "coratella2022"
+      ]
+     },
+     {
+      "muscle": "anterior deltoid",
+      "direction": "decrease",
+      "magnitude": "anterior deltoid lower in back machine press than back barbell press (ES 1.42)",
+      "note": "Example contrast from the same study.",
+      "referenceIds": [
+       "coratella2022"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "coratella2022"
+    ]
+   },
+   {
+    "id": "ohp-implement-dumbbell-kettlebell",
+    "name": "Implement: dumbbell vs kettlebell",
+    "description": "Seated press at matched load.",
+    "effects": [
+     {
+      "muscle": "shoulder and back muscles",
+      "direction": "shift",
+      "magnitude": "no significant differences at 6 kg or 70% 1RM; kettlebell trended higher for all muscles except upper trapezius",
+      "note": "Preliminary report, 20 subjects.",
+      "referenceIds": [
+       "blazkiewicz2022"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "blazkiewicz2022"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "coratella2022",
+   "padovan2026",
+   "blazkiewicz2022"
+  ]
+ },
+ {
+  "id": "barbell-row",
+  "name": "Barbell Bent-Over Row",
+  "category": "horizontal pull",
+  "primaryMuscles": [
+   "latissimus dorsi",
+   "middle trapezius",
+   "rhomboids",
+   "posterior deltoid"
+  ],
+  "secondaryMuscles": [
+   "biceps brachii",
+   "brachialis",
+   "erector spinae",
+   "gluteus maximus",
+   "hamstrings"
+  ],
+  "variations": [
+   {
+    "id": "row-torso-angle",
+    "name": "Torso angle: bent-over vs more upright",
+    "description": "Standing bent-over row versus inverted row (more upright torso).",
+    "effects": [
+     {
+      "muscle": "latissimus dorsi",
+      "direction": "decrease",
+      "magnitude": "bent-over row lower latissimus activation than inverted row",
+      "note": "7 healthy men; inverted row elicited the highest lat, upper-back and hip-extensor activation.",
+      "referenceIds": [
+       "fenwick2009"
+      ]
+     },
+     {
+      "muscle": "upper back (trapezius/rhomboids)",
+      "direction": "decrease",
+      "magnitude": "lower than inverted row",
+      "note": "Same comparison.",
+      "referenceIds": [
+       "fenwick2009"
+      ]
+     },
+     {
+      "muscle": "lumbar spine (load)",
+      "direction": "increase",
+      "magnitude": "standing bent-over row produced the largest lumbar spine load of the three rowing exercises",
+      "note": "Mechanical stress, not EMG.",
+      "referenceIds": [
+       "fenwick2009"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "fenwick2009"
+    ]
+   },
+   {
+    "id": "row-grip-narrow",
+    "name": "Grip width: narrow",
+    "description": "Hands closer than shoulder width on a barbell.",
+    "effects": [
+     {
+      "muscle": "whole-body (1RM)",
+      "direction": "increase",
+      "magnitude": "narrow grips yielded higher estimated 1RM (p<0.001) in the incline prone row",
+      "note": "23 trained adults, four barbell variations.",
+      "referenceIds": [
+       "fusco2026"
+      ]
+     },
+     {
+      "muscle": "biceps brachii",
+      "direction": "increase",
+      "magnitude": "grip width significantly influenced biceps activation (p=0.001)",
+      "note": "Direction reported as a main effect of width; exact contrast not specified.",
+      "referenceIds": [
+       "fusco2026"
+      ]
+     },
+     {
+      "muscle": "middle trapezius",
+      "direction": "shift",
+      "magnitude": "grip width influenced middle trapezius activation (p=0.044)",
+      "note": "Main effect only.",
+      "referenceIds": [
+       "fusco2026"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "fusco2026"
+    ]
+   },
+   {
+    "id": "row-grip-orientation",
+    "name": "Forearm/grip orientation (pronated vs neutral vs supinated)",
+    "description": "Rotating the forearm changes which elbow flexors and scapular muscles contribute.",
+    "effects": [
+     {
+      "muscle": "middle trapezius / latissimus dorsi / middle deltoid / posterior deltoid",
+      "direction": "shift",
+      "magnitude": "significant main effects of forearm angle (p=0.002-0.049)",
+      "note": "Forearm angle consistently altered activation patterns in the incline prone row.",
+      "referenceIds": [
+       "fusco2026"
+      ]
+     },
+     {
+      "muscle": "biceps brachii / brachioradialis / triceps brachii",
+      "direction": "shift",
+      "magnitude": "significant main effects of forearm angle (p=0.006-0.040)",
+      "note": "Same study.",
+      "referenceIds": [
+       "fusco2026"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "fusco2026"
+    ]
+   },
+   {
+    "id": "row-rom-upper-half",
+    "name": "Range of motion: upper half",
+    "description": "Partial row from mid-range to full elbow flexion.",
+    "effects": [
+     {
+      "muscle": "latissimus dorsi",
+      "direction": "increase",
+      "magnitude": "upper-half ROM greater mean excitation than lower-half (d=-0.59) and full ROM (d=-0.58)",
+      "note": "16 trained males, 10RM, 2-s phases.",
+      "referenceIds": [
+       "fischer2025b"
+      ]
+     },
+     {
+      "muscle": "trapezius transversus",
+      "direction": "decrease",
+      "magnitude": "lower peak excitation in upper-half than lower-half (d=0.42) or full ROM (d=0.54)",
+      "note": "Opposite direction to latissimus.",
+      "referenceIds": [
+       "fischer2025b"
+      ]
+     },
+     {
+      "muscle": "posterior deltoid and biceps brachii",
+      "direction": "shift",
+      "magnitude": "no significant difference between ROMs",
+      "note": "Null result.",
+      "referenceIds": [
+       "fischer2025b"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "fischer2025b"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "fenwick2009",
+   "fusco2026",
+   "fischer2025b",
+   "fonza2026a"
+  ]
+ },
+ {
+  "id": "pull-up",
+  "name": "Pull-Up",
+  "category": "vertical pull",
+  "primaryMuscles": [
+   "latissimus dorsi",
+   "teres major",
+   "lower trapezius"
+  ],
+  "secondaryMuscles": [
+   "biceps brachii",
+   "brachialis",
+   "infraspinatus",
+   "pectoralis major",
+   "rectus abdominis"
+  ],
+  "variations": [
+   {
+    "id": "pullup-vs-chinup",
+    "name": "Supinated (chin-up) vs pronated (pull-up)",
+    "description": "Hands supinated versus pronated at shoulder width.",
+    "effects": [
+     {
+      "muscle": "biceps brachii",
+      "direction": "increase",
+      "magnitude": "significantly higher in chin-up than pull-up (range across conditions 78-96% MVIC)",
+      "note": "25 participants; latissimus 117-130% MVIC overall.",
+      "referenceIds": [
+       "youdas2010"
+      ]
+     },
+     {
+      "muscle": "pectoralis major",
+      "direction": "increase",
+      "magnitude": "significantly higher in chin-up than pull-up (44-57% MVIC)",
+      "note": "Same study.",
+      "referenceIds": [
+       "youdas2010"
+      ]
+     },
+     {
+      "muscle": "lower trapezius",
+      "direction": "decrease",
+      "magnitude": "significantly more active in the pull-up than the chin-up (45-56% MVIC)",
+      "note": "Companion contrast.",
+      "referenceIds": [
+       "youdas2010"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "youdas2010"
+    ]
+   },
+   {
+    "id": "pullup-grip-wide-angle",
+    "name": "Grip width and rotation: wide (50% metacarpal span) with 30 deg angle",
+    "description": "Wide, angled grips (neutral-grip handles rotated).",
+    "effects": [
+     {
+      "muscle": "pectoralis major",
+      "direction": "increase",
+      "magnitude": "+14% MVIC versus narrow/0 deg conditions",
+      "note": "21 males, 10 conditions, OpenSim model.",
+      "referenceIds": [
+       "pouly2026"
+      ]
+     },
+     {
+      "muscle": "rectus abdominis",
+      "direction": "increase",
+      "magnitude": "+15% MVIC",
+      "note": "Same study.",
+      "referenceIds": [
+       "pouly2026"
+      ]
+     },
+     {
+      "muscle": "shoulder joint (net joint moment)",
+      "direction": "increase",
+      "magnitude": "+7% with wide hand position",
+      "note": "Mechanical stress; authors advise caution.",
+      "referenceIds": [
+       "pouly2026"
+      ]
+     },
+     {
+      "muscle": "infraspinatus / lower trapezius / latissimus dorsi",
+      "direction": "decrease",
+      "magnitude": "0 deg grip increased activation up to 60% MVIC versus 30 deg",
+      "note": "Companion contrast: rotation, not width.",
+      "referenceIds": [
+       "pouly2026"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "pouly2026"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "youdas2010",
+   "pouly2026",
+   "rabello2024"
+  ]
+ },
+ {
+  "id": "lat-pulldown",
+  "name": "Lat Pulldown",
+  "category": "vertical pull",
+  "primaryMuscles": [
+   "latissimus dorsi",
+   "teres major",
+   "middle trapezius"
+  ],
+  "secondaryMuscles": [
+   "biceps brachii",
+   "brachialis",
+   "posterior deltoid",
+   "infraspinatus"
+  ],
+  "variations": [
+   {
+    "id": "pulldown-grip-width",
+    "name": "Grip width: narrow / medium / wide",
+    "description": "Pronated grips at 1.0, 1.5 and 2.0x biacromial distance.",
+    "effects": [
+     {
+      "muscle": "latissimus dorsi",
+      "direction": "shift",
+      "magnitude": "similar activation across grip widths (no significant difference)",
+      "note": "15 men, 6RM; medium grip showed minor advantages.",
+      "referenceIds": [
+       "andersen2014"
+      ]
+     },
+     {
+      "muscle": "trapezius and infraspinatus",
+      "direction": "shift",
+      "magnitude": "similar activation across grip widths",
+      "note": "Null result.",
+      "referenceIds": [
+       "andersen2014"
+      ]
+     },
+     {
+      "muscle": "biceps brachii",
+      "direction": "decrease",
+      "magnitude": "lower with narrow than medium grip in the concentric phase (p=0.03)",
+      "note": "Small effect.",
+      "referenceIds": [
+       "andersen2014"
+      ]
+     },
+     {
+      "muscle": "whole-body (6RM load)",
+      "direction": "decrease",
+      "magnitude": "narrow and medium (80.3 and 80.0 kg) higher than wide (77.3 kg; p=0.02)",
+      "note": "Performance, not activation.",
+      "referenceIds": [
+       "andersen2014"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "andersen2014"
+    ]
+   },
+   {
+    "id": "pulldown-wide-anterior",
+    "name": "Hand position: wide anterior",
+    "description": "Wide pronated grip pulled to the front of the chest.",
+    "effects": [
+     {
+      "muscle": "latissimus dorsi",
+      "direction": "increase",
+      "magnitude": "wide anterior grip produced greater latissimus activity than wide posterior, supinated or close grip, in both phases",
+      "note": "10 men at 10RM; normalised RMS EMG.",
+      "referenceIds": [
+       "signorile2002"
+      ]
+     },
+     {
+      "muscle": "triceps brachii (long head)",
+      "direction": "increase",
+      "magnitude": "wide anterior greater than wide posterior, supinated and close grip",
+      "note": "Same study.",
+      "referenceIds": [
+       "signorile2002"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "signorile2002"
+    ]
+   },
+   {
+    "id": "pulldown-front-vs-back",
+    "name": "Bar path: front vs behind the neck",
+    "description": "Bar pulled to the chest versus behind the neck.",
+    "effects": [
+     {
+      "muscle": "latissimus dorsi",
+      "direction": "increase",
+      "magnitude": "front pulldown greater descending-phase excitation (ES 0.97)",
+      "note": "14 trained men, HD-EMG, 8RM.",
+      "referenceIds": [
+       "padovan2024b"
+      ]
+     },
+     {
+      "muscle": "pectoralis major",
+      "direction": "increase",
+      "magnitude": "front pulldown greater descending-phase excitation (ES 1.17)",
+      "note": "Same study.",
+      "referenceIds": [
+       "padovan2024b"
+      ]
+     },
+     {
+      "muscle": "latissimus dorsi",
+      "direction": "increase",
+      "magnitude": "behind-neck greater ascending-phase excitation (ES 0.63)",
+      "note": "Phase-dependent reversal.",
+      "referenceIds": [
+       "padovan2024b"
+      ]
+     },
+     {
+      "muscle": "posterior deltoid",
+      "direction": "increase",
+      "magnitude": "front pulldown greater ascending-phase excitation (ES 1.77)",
+      "note": "Same study.",
+      "referenceIds": [
+       "padovan2024b"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "padovan2024b"
+    ]
+   },
+   {
+    "id": "pulldown-trunk-inclination",
+    "name": "Trunk inclination: 30 deg back-lean with wide pronated grip",
+    "description": "Leaning back during the pulldown.",
+    "effects": [
+     {
+      "muscle": "posterior deltoid",
+      "direction": "increase",
+      "magnitude": "greater than upright wide pronated (p=0.011) and wide neutral (p=0.017)",
+      "note": "40 trained men; no other muscle differed across 7 variants.",
+      "referenceIds": [
+       "buonsenso2025"
+      ]
+     },
+     {
+      "muscle": "latissimus dorsi",
+      "direction": "shift",
+      "magnitude": "no significant difference across all seven grip/width/trunk variants",
+      "note": "Challenges the assumption that grip targets the lats.",
+      "referenceIds": [
+       "buonsenso2025"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "buonsenso2025"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "andersen2014",
+   "signorile2002",
+   "padovan2024b",
+   "buonsenso2025"
+  ]
+ },
+ {
+  "id": "biceps-curl",
+  "name": "Biceps Curl",
+  "category": "elbow flexion",
+  "primaryMuscles": [
+   "biceps brachii (long head)",
+   "biceps brachii (short head)",
+   "brachialis"
+  ],
+  "secondaryMuscles": [
+   "brachioradialis",
+   "forearm flexors"
+  ],
+  "variations": [
+   {
+    "id": "curl-incline-vs-preacher",
+    "name": "Shoulder position: incline (extended) vs preacher (flexed)",
+    "description": "Incline dumbbell curl trains the biceps at long length; preacher at short length.",
+    "effects": [
+     {
+      "muscle": "biceps brachii",
+      "direction": "increase",
+      "magnitude": "incline +22.1% vs preacher +18.9% (Hedges' g=0.33)",
+      "note": "12-week within-participant RCT, 21 untrained adults, MRI.",
+      "referenceIds": [
+       "kobayashi2026"
+      ]
+     },
+     {
+      "muscle": "brachialis",
+      "direction": "decrease",
+      "magnitude": "incline +17.1% vs preacher +21.1% (g=0.50)",
+      "note": "Preacher favoured the deeper elbow flexors.",
+      "referenceIds": [
+       "kobayashi2026"
+      ]
+     },
+     {
+      "muscle": "brachioradialis",
+      "direction": "decrease",
+      "magnitude": "incline +13.5% vs preacher +17.6% (g=0.47)",
+      "note": "Same study.",
+      "referenceIds": [
+       "kobayashi2026"
+      ]
+     },
+     {
+      "muscle": "total elbow flexors",
+      "direction": "shift",
+      "magnitude": "total elbow-flexor hypertrophy did not differ (+17.6% vs +19.2%, p=0.134)",
+      "note": "Exercise-specific redistribution, not more total growth.",
+      "referenceIds": [
+       "kobayashi2026"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "kobayashi2026"
+    ]
+   },
+   {
+    "id": "curl-rom-initial",
+    "name": "Range of motion: initial (long-length) partial",
+    "description": "Elbow extended to mid-range (e.g. 0-68 deg) versus mid-range to full flexion.",
+    "effects": [
+     {
+      "muscle": "biceps brachii",
+      "direction": "increase",
+      "magnitude": "initial ROM produced greater distal biceps CSA at 70% of muscle length; 8.9% vs 3.4% thickness in a 5-week study",
+      "note": "Two independent trials favour initial ROM for regional growth.",
+      "referenceIds": [
+       "pedrosa2023",
+       "sato2021"
+      ]
+     },
+     {
+      "muscle": "biceps brachii",
+      "direction": "increase",
+      "magnitude": "initial partial ROM slight superiority at 70% length (SMD 0.10, BF=4.87)",
+      "note": "Trained individuals, 8 weeks; full ROM slightly better for strength.",
+      "referenceIds": [
+       "havers2025"
+      ]
+     },
+     {
+      "muscle": "biceps brachii (strength)",
+      "direction": "decrease",
+      "magnitude": "full ROM produced small strength advantages (MVC at 100 deg SMD 0.24; 1RM SMD 0.17)",
+      "note": "Bayesian evidence weak-to-moderate.",
+      "referenceIds": [
+       "havers2025"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "pedrosa2023",
+     "sato2021",
+     "havers2025"
+    ]
+   },
+   {
+    "id": "curl-shoulder-extension-cable",
+    "name": "Cable curl: peak shoulder extension vs neutral shoulder",
+    "description": "Shoulder set at individual peak extension angle to lengthen the biceps.",
+    "effects": [
+     {
+      "muscle": "elbow flexors",
+      "direction": "shift",
+      "magnitude": "similar hypertrophy in both conditions (~7-9%); Bayes factors favour the null",
+      "note": "10 weeks, 24 untrained men, resistance profile and ROM matched.",
+      "referenceIds": [
+       "larsen2026"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "larsen2026"
+    ]
+   },
+   {
+    "id": "curl-grip",
+    "name": "Grip: supinated vs semi-supinated vs neutral",
+    "description": "Rotating the forearm during a barbell curl.",
+    "effects": [
+     {
+      "muscle": "brachioradialis",
+      "direction": "increase",
+      "magnitude": "greater than biceps brachii during the eccentric phase in supinated and semi-supinated grips",
+      "note": "12 trained males, Bayesian analysis.",
+      "referenceIds": [
+       "uysal2026"
+      ]
+     },
+     {
+      "muscle": "biceps brachii",
+      "direction": "shift",
+      "magnitude": "similar to brachioradialis in concentric and combined phases",
+      "note": "Phase-dependent contribution.",
+      "referenceIds": [
+       "uysal2026"
+      ]
+     },
+     {
+      "muscle": "biceps brachii",
+      "direction": "increase",
+      "magnitude": "supinated grip increased biceps activity in the bench-press hold model",
+      "note": "Supporting evidence from a different task (isometric bench hold).",
+      "referenceIds": [
+       "lehman2005"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "uysal2026",
+     "lehman2005"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "kobayashi2026",
+   "pedrosa2023",
+   "sato2021",
+   "havers2025",
+   "larsen2026",
+   "uysal2026",
+   "lehman2005",
+   "pedrosa2026",
+   "besomi2020",
+   "vigotsky2022"
+  ]
+ },
+ {
+  "id": "triceps-pushdown",
+  "name": "Triceps Pushdown",
+  "category": "elbow extension",
+  "primaryMuscles": [
+   "triceps brachii (lateral head)",
+   "triceps brachii (medial head)"
+  ],
+  "secondaryMuscles": [
+   "triceps brachii (long head)",
+   "anconeus"
+  ],
+  "variations": [
+   {
+    "id": "pushdown-vs-overhead",
+    "name": "Arm position: neutral (pushdown) vs overhead",
+    "description": "Elbow extension with the shoulder neutral versus flexed overhead.",
+    "effects": [
+     {
+      "muscle": "triceps brachii (long head)",
+      "direction": "decrease",
+      "magnitude": "neutral-arm training +19.6% vs overhead +28.5% (d=0.61)",
+      "note": "12-week within-participant RCT, MRI; overhead used 34-39% lower absolute loads.",
+      "referenceIds": [
+       "maeo2023"
+      ]
+     },
+     {
+      "muscle": "triceps brachii (lateral + medial heads)",
+      "direction": "decrease",
+      "magnitude": "+10.5% vs +14.6% (d=0.39)",
+      "note": "Overhead also greater for monoarticular heads.",
+      "referenceIds": [
+       "maeo2023"
+      ]
+     },
+     {
+      "muscle": "whole triceps brachii",
+      "direction": "decrease",
+      "magnitude": "+13.9% vs +19.9% (d=0.54)",
+      "note": "Long-length training effect.",
+      "referenceIds": [
+       "maeo2023"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "maeo2023"
+    ]
+   },
+   {
+    "id": "pushdown-vs-close-grip-bench",
+    "name": "Exercise: pushdown vs close-grip bench press",
+    "description": "Isolation versus compound elbow extension.",
+    "effects": [
+     {
+      "muscle": "triceps brachii",
+      "direction": "shift",
+      "magnitude": "close-grip bench press uses a narrower grip (~95% biacromial) and emphasises power at lower loads; direct triceps EMG comparison not established here",
+      "note": "Biomechanical study; no equivalent EMG head-specific comparison located.",
+      "referenceIds": [
+       "lockie2017"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "lockie2017"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "maeo2023",
+   "lockie2017",
+   "wakahara2012"
+  ]
+ },
+ {
+  "id": "overhead-triceps-extension",
+  "name": "Overhead Triceps Extension",
+  "category": "elbow extension",
+  "primaryMuscles": [
+   "triceps brachii (long head)"
+  ],
+  "secondaryMuscles": [
+   "triceps brachii (lateral head)",
+   "triceps brachii (medial head)"
+  ],
+  "variations": [
+   {
+    "id": "overhead-arm-position",
+    "name": "Shoulder flexed overhead",
+    "description": "Shoulder flexed so the long head is trained at long muscle length.",
+    "effects": [
+     {
+      "muscle": "triceps brachii (long head)",
+      "direction": "increase",
+      "magnitude": "+28.5% vs +19.6% for neutral-arm training (d=0.61)",
+      "note": "MRI-measured muscle volume, 12 weeks.",
+      "referenceIds": [
+       "maeo2023"
+      ]
+     },
+     {
+      "muscle": "whole triceps brachii",
+      "direction": "increase",
+      "magnitude": "+19.9% vs +13.9% (d=0.54)",
+      "note": "Greater hypertrophy despite lower absolute loads.",
+      "referenceIds": [
+       "maeo2023"
+      ]
+     },
+     {
+      "muscle": "triceps brachii (regional)",
+      "direction": "shift",
+      "magnitude": "regional activation along the muscle predicts regional hypertrophy after training",
+      "note": "T2-weighted MRI mapping; supports length-dependent regional growth.",
+      "referenceIds": [
+       "wakahara2012"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "maeo2023",
+     "wakahara2012"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "maeo2023",
+   "wakahara2012"
+  ]
+ },
+ {
+  "id": "leg-press",
+  "name": "Leg Press",
+  "category": "knee extension",
+  "primaryMuscles": [
+   "quadriceps (vastus lateralis)",
+   "quadriceps (vastus medialis)",
+   "quadriceps (rectus femoris)"
+  ],
+  "secondaryMuscles": [
+   "gluteus maximus",
+   "adductor magnus",
+   "hamstrings"
+  ],
+  "variations": [
+   {
+    "id": "leg-press-foot-high-vs-low",
+    "name": "Foot placement: high vs low on the platform",
+    "description": "Feet high (more hip flexion) versus low (more knee flexion) on the foot plate.",
+    "effects": [
+     {
+      "muscle": "knee joint (tibiofemoral/patellofemoral force)",
+      "direction": "shift",
+      "magnitude": "no difference in knee forces between high and low foot placement",
+      "note": "10 experienced lifters; the squat produced greater forces than either leg-press placement.",
+      "referenceIds": [
+       "escamilla2001"
+      ]
+     },
+     {
+      "muscle": "quadriceps and hamstrings",
+      "direction": "decrease",
+      "magnitude": "lower muscle activity than the free-weight squat",
+      "note": "Squat generated greater quadriceps and hamstrings activity than both leg-press variants.",
+      "referenceIds": [
+       "escamilla2001"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "escamilla2001"
+    ]
+   },
+   {
+    "id": "leg-press-stance-wide",
+    "name": "Stance: wide",
+    "description": "Wider foot stance on the platform.",
+    "effects": [
+     {
+      "muscle": "knee joint (tibiofemoral/patellofemoral force)",
+      "direction": "decrease",
+      "magnitude": "narrow stance produced greater TF and PF compression than wide in the leg press",
+      "note": "Opposite direction to the squat; mechanical stress, not EMG.",
+      "referenceIds": [
+       "escamilla2001"
+      ]
+     },
+     {
+      "muscle": "hamstrings",
+      "direction": "increase",
+      "magnitude": "wide-stance leg press generated greater hamstrings activity than narrow",
+      "note": "Part of the same 3-condition comparison.",
+      "referenceIds": [
+       "escamilla2001"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "escamilla2001"
+    ]
+   },
+   {
+    "id": "leg-press-vs-leg-extension",
+    "name": "Leg press vs knee extension (exercise selection)",
+    "description": "Multi-joint versus single-joint quadriceps training at matched volume.",
+    "effects": [
+     {
+      "muscle": "quadriceps (rectus femoris)",
+      "direction": "decrease",
+      "magnitude": "leg press +1.1% vs knee extension +13.2% (p<=0.001)",
+      "note": "12-week within-participant RCT, MRI, 17 untrained adults.",
+      "referenceIds": [
+       "kinoshita2026"
+      ]
+     },
+     {
+      "muscle": "quadriceps (vasti)",
+      "direction": "shift",
+      "magnitude": "+4.4-6.2% vs +5.0-7.2%; comparable between exercises (p>=0.319)",
+      "note": "No meaningful difference for the vasti.",
+      "referenceIds": [
+       "kinoshita2026"
+      ]
+     },
+     {
+      "muscle": "gluteus maximus",
+      "direction": "increase",
+      "magnitude": "leg press +15.4%; knee extension did not increase it",
+      "note": "Explains the multi-joint advantage for hip extensors.",
+      "referenceIds": [
+       "kinoshita2026"
+      ]
+     },
+     {
+      "muscle": "adductor magnus",
+      "direction": "increase",
+      "magnitude": "leg press +6.2%; knee extension did not increase it",
+      "note": "Same study.",
+      "referenceIds": [
+       "kinoshita2026"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "kinoshita2026"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "escamilla2001",
+   "kinoshita2026"
+  ]
+ },
+ {
+  "id": "leg-extension",
+  "name": "Leg Extension",
+  "category": "knee extension",
+  "primaryMuscles": [
+   "quadriceps (rectus femoris)",
+   "quadriceps (vastus lateralis)",
+   "quadriceps (vastus medialis)"
+  ],
+  "secondaryMuscles": [],
+  "variations": [
+   {
+    "id": "legext-hip-angle",
+    "name": "Hip angle: 40 deg vs 90 deg flexion",
+    "description": "Seat back angle changes rectus femoris length (biarticular).",
+    "effects": [
+     {
+      "muscle": "quadriceps (rectus femoris)",
+      "direction": "increase",
+      "magnitude": "40 deg hip flexion produced greater hypertrophy than 90 deg (BF>100, extreme evidence)",
+      "note": "10 weeks, 22 untrained men, within-participant.",
+      "referenceIds": [
+       "larsen2025b"
+      ]
+     },
+     {
+      "muscle": "quadriceps (vastus lateralis)",
+      "direction": "shift",
+      "magnitude": "no difference between hip angles (BF=0.07, strong evidence for null)",
+      "note": "Monoarticular vastus unaffected.",
+      "referenceIds": [
+       "larsen2025b"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "larsen2025b"
+    ]
+   },
+   {
+    "id": "legext-vs-leg-press",
+    "name": "Leg extension vs leg press",
+    "description": "Single-joint knee extension versus multi-joint leg press.",
+    "effects": [
+     {
+      "muscle": "quadriceps (rectus femoris)",
+      "direction": "increase",
+      "magnitude": "knee extension +13.2% vs leg press +1.1% (p<=0.001)",
+      "note": "Knee extension is the more effective rectus femoris stimulus.",
+      "referenceIds": [
+       "kinoshita2026"
+      ]
+     },
+     {
+      "muscle": "quadriceps (whole)",
+      "direction": "shift",
+      "magnitude": "+7.1% vs +4.9%, not significantly different (p>=0.319)",
+      "note": "Equivalent for whole-quadriceps volume.",
+      "referenceIds": [
+       "kinoshita2026"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "kinoshita2026"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "larsen2025b",
+   "kinoshita2026"
+  ]
+ },
+ {
+  "id": "leg-curl",
+  "name": "Leg Curl",
+  "category": "knee flexion",
+  "primaryMuscles": [
+   "biceps femoris",
+   "semitendinosus",
+   "semimembranosus"
+  ],
+  "secondaryMuscles": [
+   "gastrocnemius",
+   "popliteus"
+  ],
+  "variations": [
+   {
+    "id": "legcurl-seated-vs-prone",
+    "name": "Hip position: seated vs prone",
+    "description": "Seated curl trains hamstrings at longer length (hip flexed); prone at shorter length.",
+    "effects": [
+     {
+      "muscle": "hamstrings (whole)",
+      "direction": "increase",
+      "magnitude": "seated +14% vs prone +9% muscle volume",
+      "note": "12-week within-participant RCT, MRI.",
+      "referenceIds": [
+       "maeo2021"
+      ]
+     },
+     {
+      "muscle": "hamstrings (biarticular)",
+      "direction": "increase",
+      "magnitude": "seated +8-24% vs prone +4-19%",
+      "note": "Greater long-length growth.",
+      "referenceIds": [
+       "maeo2021"
+      ]
+     },
+     {
+      "muscle": "hamstrings (monoarticular)",
+      "direction": "shift",
+      "magnitude": "+10% vs +9%; no difference",
+      "note": "Short head of biceps femoris is not length-sensitive in the same way.",
+      "referenceIds": [
+       "maeo2021"
+      ]
+     },
+     {
+      "muscle": "hamstring damage protection",
+      "direction": "shift",
+      "magnitude": "both conditions similarly reduced eccentric-exercise muscle damage",
+      "note": "Functional outcome, not hypertrophy.",
+      "referenceIds": [
+       "maeo2021"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "maeo2021"
+    ]
+   },
+   {
+    "id": "legcurl-hip-flexion-angle",
+    "name": "Hip flexion angle: 0 vs 40 vs 80 deg",
+    "description": "Changing hip angle alters hamstring length and region-specific activation.",
+    "effects": [
+     {
+      "muscle": "semitendinosus",
+      "direction": "increase",
+      "magnitude": "preferentially activated over biceps femoris and semimembranosus across all conditions",
+      "note": "9 male bodybuilders, MRI T2 mapping.",
+      "referenceIds": [
+       "mitsuya2026"
+      ]
+     },
+     {
+      "muscle": "biceps femoris long head / semimembranosus",
+      "direction": "shift",
+      "magnitude": "activation is region-specific and longitudinally compartmentalised depending on hip flexion angle",
+      "note": "Objective T2 activation dissociated from perceived contraction.",
+      "referenceIds": [
+       "mitsuya2026"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "mitsuya2026"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "maeo2021",
+   "mitsuya2026"
+  ]
+ },
+ {
+  "id": "hip-thrust",
+  "name": "Barbell Hip Thrust",
+  "category": "hip extension",
+  "primaryMuscles": [
+   "gluteus maximus"
+  ],
+  "secondaryMuscles": [
+   "biceps femoris",
+   "gluteus medius",
+   "adductor magnus"
+  ],
+  "variations": [
+   {
+    "id": "hipthrust-vs-squat",
+    "name": "Hip thrust vs back squat",
+    "description": "Horizontal hip extension with the upper back supported versus a vertical squat.",
+    "effects": [
+     {
+      "muscle": "gluteus maximus (upper)",
+      "direction": "increase",
+      "magnitude": "mean 69.5% vs 29.4%; peak 172% vs 84.9% MVIC (hip thrust vs squat)",
+      "note": "13 trained women at estimated 10RM.",
+      "referenceIds": [
+       "contreras2015"
+      ]
+     },
+     {
+      "muscle": "gluteus maximus (lower)",
+      "direction": "increase",
+      "magnitude": "mean 86.8% vs 45.4%; peak 216% vs 130% MVIC",
+      "note": "Same study.",
+      "referenceIds": [
+       "contreras2015"
+      ]
+     },
+     {
+      "muscle": "biceps femoris",
+      "direction": "increase",
+      "magnitude": "mean 40.8% vs 14.9%; peak 86.9% vs 37.5% MVIC",
+      "note": "Same study.",
+      "referenceIds": [
+       "contreras2015"
+      ]
+     },
+     {
+      "muscle": "quadriceps (vastus lateralis)",
+      "direction": "shift",
+      "magnitude": "no difference (mean 99.5% vs 110%; peak 216% vs 244%)",
+      "note": "Null result.",
+      "referenceIds": [
+       "contreras2015"
+      ]
+     },
+     {
+      "muscle": "gluteus maximus",
+      "direction": "increase",
+      "magnitude": "peak EMG higher than back squat (95% CI 4-56% MVIC) and split squat (6-58% MVIC)",
+      "note": "12 male team-sport athletes at 3RM; ground reaction force was lower in the thrust.",
+      "referenceIds": [
+       "williams2021"
+      ]
+     },
+     {
+      "muscle": "gluteus maximus (hypertrophy)",
+      "direction": "shift",
+      "magnitude": "9 weeks of squat vs hip thrust produced similar gluteal hypertrophy despite higher acute EMG in the thrust",
+      "note": "Critical counter-example to EMG-as-hypertrophy-proxy.",
+      "referenceIds": [
+       "plotkin2023"
+      ]
+     },
+     {
+      "muscle": "quadriceps (hypertrophy)",
+      "direction": "decrease",
+      "magnitude": "squat produced greater quadriceps growth (+3.6 cm2; 95% CI 0.7-6.4)",
+      "note": "Thigh hypertrophy favoured the squat.",
+      "referenceIds": [
+       "plotkin2023"
+      ]
+     },
+     {
+      "muscle": "adductor magnus (hypertrophy)",
+      "direction": "decrease",
+      "magnitude": "squat produced greater adductor growth (+2.5 cm2; 95% CI 1.2-3.9)",
+      "note": "Same trial.",
+      "referenceIds": [
+       "plotkin2023"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "contreras2015",
+     "williams2021",
+     "plotkin2023"
+    ]
+   },
+   {
+    "id": "hipthrust-vs-glute-bridge",
+    "name": "Hip thrust vs glute bridge",
+    "description": "Elevated upper back with greater hip ROM versus floor bridge.",
+    "effects": [
+     {
+      "muscle": "gluteus maximus (upper and lower)",
+      "direction": "decrease",
+      "magnitude": "glute bridge elicited greater peak and mean upper and lower gluteus maximus activity than the thrust",
+      "note": "10 males; the thrust had greater vastus lateralis activity.",
+      "referenceIds": [
+       "kennedy2024"
+      ]
+     },
+     {
+      "muscle": "gluteus medius",
+      "direction": "decrease",
+      "magnitude": "glute bridge greater mean activity",
+      "note": "Same study.",
+      "referenceIds": [
+       "kennedy2024"
+      ]
+     },
+     {
+      "muscle": "vastus lateralis",
+      "direction": "increase",
+      "magnitude": "hip thrust greater peak and mean activity",
+      "note": "Companion contrast.",
+      "referenceIds": [
+       "kennedy2024"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "kennedy2024"
+    ]
+   },
+   {
+    "id": "hipthrust-exercise-selection",
+    "name": "Programming: emphasised single-joint hip extension",
+    "description": "Using the hip thrust as the primary gluteus maximus stimulus.",
+    "effects": [
+     {
+      "muscle": "gluteus maximus",
+      "direction": "increase",
+      "magnitude": "resistance training has a moderate pooled effect on gluteus maximus hypertrophy (SMD 0.71, 95% CI 0.50-0.91)",
+      "note": "Meta-analysis of 12 studies; hip thrust recommended when prioritising gluteus maximus.",
+      "referenceIds": [
+       "krauseneto2025"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "krauseneto2025"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "contreras2015",
+   "williams2021",
+   "plotkin2023",
+   "kennedy2024",
+   "krauseneto2025"
+  ]
+ },
+ {
+  "id": "calf-raise",
+  "name": "Calf Raise",
+  "category": "plantarflexion",
+  "primaryMuscles": [
+   "gastrocnemius (medial head)",
+   "gastrocnemius (lateral head)",
+   "soleus"
+  ],
+  "secondaryMuscles": [
+   "tibialis posterior",
+   "peroneus longus"
+  ],
+  "variations": [
+   {
+    "id": "calf-foot-rotation",
+    "name": "Foot rotation: out vs in vs forward",
+    "description": "Toes pointed out, in, or straight during a seated leg-press calf raise.",
+    "effects": [
+     {
+      "muscle": "gastrocnemius (medial head)",
+      "direction": "increase",
+      "magnitude": "foot-out 8.4% vs foot-in 3.8% vs forward 5.8% muscle thickness gain",
+      "note": "9 weeks, 22 young men, randomised leg allocation.",
+      "referenceIds": [
+       "nunes2020"
+      ]
+     },
+     {
+      "muscle": "gastrocnemius (lateral head)",
+      "direction": "increase",
+      "magnitude": "foot-in 9.1% vs foot-out 5.5% vs forward 6.4%",
+      "note": "Opposite head-specific pattern.",
+      "referenceIds": [
+       "nunes2020"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "nunes2020"
+    ]
+   },
+   {
+    "id": "calf-rom-initial",
+    "name": "Range of motion: initial (long-length) partial",
+    "description": "Partial ROM from full dorsiflexion to neutral, versus full or top-range partial.",
+    "effects": [
+     {
+      "muscle": "gastrocnemius (medial head)",
+      "direction": "increase",
+      "magnitude": "initial ROM +15.2% vs full +6.7% vs final +3.4% (p<=0.009)",
+      "note": "8 weeks, 42 young women, ultrasound.",
+      "referenceIds": [
+       "kassiano2023"
+      ]
+     },
+     {
+      "muscle": "gastrocnemius (lateral head)",
+      "direction": "increase",
+      "magnitude": "initial ROM +14.9% vs final +6.2% (p<0.024); not different from full +7.3%",
+      "note": "Same study.",
+      "referenceIds": [
+       "kassiano2023"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "kassiano2023"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "nunes2020",
+   "kassiano2023"
+  ]
+ },
+ {
+  "id": "lateral-raise",
+  "name": "Lateral Raise",
+  "category": "shoulder abduction",
+  "primaryMuscles": [
+   "lateral deltoid"
+  ],
+  "secondaryMuscles": [
+   "posterior deltoid",
+   "anterior deltoid",
+   "upper trapezius",
+   "supraspinatus"
+  ],
+  "variations": [
+   {
+    "id": "lateral-raise-db-vs-cable",
+    "name": "Implement: dumbbell vs cable",
+    "description": "Free dumbbells versus a constant-tension cable.",
+    "effects": [
+     {
+      "muscle": "lateral deltoid (proximal and distal)",
+      "direction": "shift",
+      "magnitude": "similar muscle-thickness gains (3.3-4.6% overall); Bayes factors moderate-to-extreme for the null",
+      "note": "8 weeks, 24 trained participants, within-participant, ROM matched.",
+      "referenceIds": [
+       "larsen2025"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "larsen2025"
+    ]
+   },
+   {
+    "id": "lateral-raise-internal-rotation",
+    "name": "Technique: internal rotation / thumbs-down",
+    "description": "Shoulder internally rotated during abduction.",
+    "effects": [
+     {
+      "muscle": "lateral deltoid",
+      "direction": "increase",
+      "magnitude": "lateral raise with internal rotation produced the greatest middle-deltoid activation among exercises reviewed",
+      "note": "Systematic review of 33 studies.",
+      "referenceIds": [
+       "rabello2024"
+      ]
+     },
+     {
+      "muscle": "posterior deltoid",
+      "direction": "increase",
+      "magnitude": "lateral raise produced 24% MVIC, greater than bench press or fly",
+      "note": "13 trained men, 60% 1RM, 12 reps.",
+      "referenceIds": [
+       "campos2020"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "rabello2024",
+     "campos2020"
+    ]
+   },
+   {
+    "id": "lateral-raise-vs-press",
+    "name": "Lateral raise vs shoulder press",
+    "description": "Isolation abduction versus compound overhead press.",
+    "effects": [
+     {
+      "muscle": "lateral deltoid",
+      "direction": "increase",
+      "magnitude": "30.3% vs 27.9% MVIC (lateral raise vs shoulder press; both greater than bench press 5% and fly 3.4%)",
+      "note": "13 trained men.",
+      "referenceIds": [
+       "campos2020"
+      ]
+     },
+     {
+      "muscle": "anterior deltoid",
+      "direction": "decrease",
+      "magnitude": "21.2% vs 33.3% MVIC (lateral raise vs shoulder press)",
+      "note": "Companion contrast.",
+      "referenceIds": [
+       "campos2020"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "campos2020"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "larsen2025",
+   "rabello2024",
+   "campos2020"
+  ]
+ },
+ {
+  "id": "chest-fly",
+  "name": "Chest Fly",
+  "category": "shoulder horizontal adduction",
+  "primaryMuscles": [
+   "pectoralis major (sternocostal)",
+   "pectoralis major (clavicular)"
+  ],
+  "secondaryMuscles": [
+   "anterior deltoid",
+   "biceps brachii (short head)"
+  ],
+  "variations": [
+   {
+    "id": "fly-vs-bench-press",
+    "name": "Fly vs bench press",
+    "description": "Extended-elbow horizontal adduction versus pressing.",
+    "effects": [
+     {
+      "muscle": "pectoralis major",
+      "direction": "decrease",
+      "magnitude": "traditional bench press produced greater pectoralis activation than other pectoral variants (p=0.023 to 0.001)",
+      "note": "Meta-analysis of 23 studies.",
+      "referenceIds": [
+       "lopezvivancos2023"
+      ]
+     },
+     {
+      "muscle": "anterior deltoid",
+      "direction": "decrease",
+      "magnitude": "dumbbell fly 18.8% MVIC vs bench press 21.4% MVIC (not significant)",
+      "note": "13 trained men, 60% 1RM; both below shoulder press.",
+      "referenceIds": [
+       "campos2020"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "lopezvivancos2023",
+     "campos2020"
+    ]
+   },
+   {
+    "id": "fly-incline",
+    "name": "Incline dumbbell fly",
+    "description": "Fly performed on an incline bench.",
+    "effects": [
+     {
+      "muscle": "anterior deltoid",
+      "direction": "increase",
+      "magnitude": "inclined dumbbell fly produced the greatest anterior-deltoid activation among individual exercises reviewed",
+      "note": "Systematic review of deltoid activation.",
+      "referenceIds": [
+       "rabello2024"
+      ]
+     },
+     {
+      "muscle": "pectoralis major (clavicular)",
+      "direction": "shift",
+      "magnitude": "incline fly is grouped with horizontal adduction (inclined) as the highest anterior-deltoid activation",
+      "note": "Indirect evidence for upper-chest/ant-deltoid emphasis.",
+      "referenceIds": [
+       "rabello2024"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "rabello2024"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "lopezvivancos2023",
+   "campos2020",
+   "rabello2024"
+  ]
+ },
+ {
+  "id": "plank",
+  "name": "Plank",
+  "category": "core",
+  "primaryMuscles": [
+   "rectus abdominis",
+   "external oblique",
+   "internal oblique",
+   "transversus abdominis"
+  ],
+  "secondaryMuscles": [
+   "erector spinae",
+   "multifidus",
+   "gluteus maximus",
+   "anterior deltoid"
+  ],
+  "variations": [
+   {
+    "id": "plank-stable-vs-unstable",
+    "name": "Surface: stable vs unstable",
+    "description": "Floor versus Bosu/rings, including dual instability.",
+    "effects": [
+     {
+      "muscle": "rectus abdominis",
+      "direction": "increase",
+      "magnitude": "unstable surface SMD 0.51 (95% CI 0.37-0.66)",
+      "note": "Meta-analysis of 86 studies, 1783 participants.",
+      "referenceIds": [
+       "batista2024"
+      ]
+     },
+     {
+      "muscle": "external oblique",
+      "direction": "increase",
+      "magnitude": "SMD 0.44 (0.28-0.61)",
+      "note": "Same meta-analysis.",
+      "referenceIds": [
+       "batista2024"
+      ]
+     },
+     {
+      "muscle": "internal oblique",
+      "direction": "increase",
+      "magnitude": "SMD 1.04 (0.02-2.07)",
+      "note": "Largest pooled effect.",
+      "referenceIds": [
+       "batista2024"
+      ]
+     },
+     {
+      "muscle": "erector spinae",
+      "direction": "increase",
+      "magnitude": "SMD 0.37 (0.04-0.71); multifidus SMD 0.35 (0.08-0.61)",
+      "note": "Same meta-analysis.",
+      "referenceIds": [
+       "batista2024"
+      ]
+     },
+     {
+      "muscle": "rectus abdominis (upper and lower)",
+      "direction": "increase",
+      "magnitude": "dual instability greater than stable or Bosu alone",
+      "note": "16 active males; anterior deltoid was greater on the stable surface.",
+      "referenceIds": [
+       "saglam2026"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "batista2024",
+     "saglam2026"
+    ]
+   },
+   {
+    "id": "plank-vs-rollout",
+    "name": "Plank vs roll-out / pike",
+    "description": "Static hold versus dynamic Swiss-ball roll-out and pike.",
+    "effects": [
+     {
+      "muscle": "rectus abdominis",
+      "direction": "decrease",
+      "magnitude": "plank-type holds lower than roll-out (upper 63% MVIC; lower 53%) and pike (upper 46%; lower 55%)",
+      "note": "18 subjects, MVIC-normalised EMG; roll-out and pike were the most effective.",
+      "referenceIds": [
+       "escamilla2010"
+      ]
+     },
+     {
+      "muscle": "external oblique",
+      "direction": "decrease",
+      "magnitude": "pike 84% MVIC, roll-out 46% MVIC; higher than most other exercises",
+      "note": "Same study.",
+      "referenceIds": [
+       "escamilla2010"
+      ]
+     },
+     {
+      "muscle": "lumbar paraspinals",
+      "direction": "shift",
+      "magnitude": "low (<10% MVIC) in all exercises including roll-out and pike",
+      "note": "Favourable spine-load profile.",
+      "referenceIds": [
+       "escamilla2010"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "escamilla2010"
+    ]
+   },
+   {
+    "id": "plank-training-status",
+    "name": "Training status",
+    "description": "Trained versus untrained individuals holding to failure.",
+    "effects": [
+     {
+      "muscle": "erector spinae",
+      "direction": "decrease",
+      "magnitude": "untrained individuals showed greater erector spinae activation across all phases (p=0.024)",
+      "note": "30 healthy subjects; multifidus also higher in untrained (p=0.027).",
+      "referenceIds": [
+       "fonza2026b"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "fonza2026b"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "batista2024",
+   "saglam2026",
+   "escamilla2010",
+   "fonza2026b",
+   "olivalozano2020"
+  ]
+ },
+ {
+  "id": "crunch",
+  "name": "Crunch / Sit-Up",
+  "category": "core",
+  "primaryMuscles": [
+   "rectus abdominis"
+  ],
+  "secondaryMuscles": [
+   "external oblique",
+   "internal oblique",
+   "rectus femoris"
+  ],
+  "variations": [
+   {
+    "id": "crunch-vs-rollout",
+    "name": "Crunch vs roll-out / pike",
+    "description": "Traditional floor crunch or bent-knee sit-up versus dynamic Swiss-ball exercises.",
+    "effects": [
+     {
+      "muscle": "rectus abdominis",
+      "direction": "decrease",
+      "magnitude": "crunch and sit-up were among the lowest for upper and lower rectus abdominis (7-44% MVIC range)",
+      "note": "18 subjects; roll-out and pike superior.",
+      "referenceIds": [
+       "escamilla2010"
+      ]
+     },
+     {
+      "muscle": "latissimus dorsi",
+      "direction": "decrease",
+      "magnitude": "7-8% MVIC, lowest of the exercises tested",
+      "note": "Same study.",
+      "referenceIds": [
+       "escamilla2010"
+      ]
+     },
+     {
+      "muscle": "rectus femoris",
+      "direction": "decrease",
+      "magnitude": "6-10% MVIC, among the lowest",
+      "note": "Hip flexor involvement minimised.",
+      "referenceIds": [
+       "escamilla2010"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "escamilla2010"
+    ]
+   },
+   {
+    "id": "core-exercise-class",
+    "name": "Exercise class: free-weight vs traditional vs stability",
+    "description": "How core exercise category changes which trunk muscle dominates.",
+    "effects": [
+     {
+      "muscle": "rectus abdominis / external oblique / erector spinae",
+      "direction": "increase",
+      "magnitude": "greatest activity in free-weight exercises",
+      "note": "Systematic review of core EMG.",
+      "referenceIds": [
+       "olivalozano2020"
+      ]
+     },
+     {
+      "muscle": "internal oblique",
+      "direction": "increase",
+      "magnitude": "greatest activity in core-stability exercises",
+      "note": "Same review.",
+      "referenceIds": [
+       "olivalozano2020"
+      ]
+     },
+     {
+      "muscle": "multifidus",
+      "direction": "increase",
+      "magnitude": "greatest activation in traditional exercises",
+      "note": "Same review.",
+      "referenceIds": [
+       "olivalozano2020"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "olivalozano2020"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "escamilla2010",
+   "olivalozano2020"
+  ]
+ }
+]
