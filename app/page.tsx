@@ -4,17 +4,19 @@ import { useMemo, useState } from 'react';
 import ViewerMount from '@/components/ViewerMount';
 import InfoPanel from '@/components/InfoPanel';
 import ExercisePanel from '@/components/ExercisePanel';
+import TrainPanel from '@/components/TrainPanel';
 import ReferencesPanel from '@/components/ReferencesPanel';
 import type { FocusRequest } from '@/components/MuscleViewer';
 import { STRUCTURE_COUNTS } from '@/data/anatomy';
 import { getExercise } from '@/data/exercises';
 import { buildActivationMap, heatRampGradient } from '@/lib/heatmap';
 
-type TabId = 'muscle' | 'exercises' | 'about';
+type TabId = 'muscle' | 'exercises' | 'train' | 'about';
 
 const TABS: Array<{ id: TabId; label: string }> = [
   { id: 'muscle', label: 'Muscle' },
   { id: 'exercises', label: 'Exercises' },
+  { id: 'train', label: 'Train' },
   { id: 'about', label: 'About' },
 ];
 
@@ -24,6 +26,7 @@ export default function HomePage() {
   const [focusRequest, setFocusRequest] = useState<FocusRequest | null>(null);
   const [selectedExerciseId, setSelectedExerciseId] = useState<string | null>(null);
   const [selectedVariationId, setSelectedVariationId] = useState<string | null>(null);
+  const [trainingMuscles, setTrainingMuscles] = useState<string[]>([]);
   const [legendHidden, setLegendHidden] = useState(false);
 
   const handleSelect = (key: string | null) => {
@@ -55,6 +58,20 @@ export default function HomePage() {
     setSelectedExerciseId(exerciseId);
     setSelectedVariationId(null);
     setLegendHidden(false);
+  };
+
+  /** Train / InfoPanel reverse lookup → Exercises tab with the movement open. */
+  const openExercise = (exerciseId: string) => {
+    handleSelectExercise(exerciseId);
+    setTab('exercises');
+  };
+
+  /** InfoPanel "Add to training selection" → Train tab, deduplicated. */
+  const addTrainingMuscle = (muscleKey: string) => {
+    setTrainingMuscles((previous) =>
+      previous.includes(muscleKey) ? previous : [...previous, muscleKey],
+    );
+    setTab('train');
   };
 
   return (
@@ -143,6 +160,9 @@ export default function HomePage() {
               selectedKey={selectedKey}
               onSelect={handleSelect}
               onFocus={handleFocus}
+              onOpenExercise={openExercise}
+              onAddTrainingMuscle={addTrainingMuscle}
+              trainingMuscleKeys={trainingMuscles}
             />
           ) : null}
           {tab === 'exercises' ? (
@@ -153,6 +173,13 @@ export default function HomePage() {
               onSelectVariation={(_exerciseId, variationId) =>
                 setSelectedVariationId(variationId)
               }
+            />
+          ) : null}
+          {tab === 'train' ? (
+            <TrainPanel
+              selectedMuscles={trainingMuscles}
+              onSelectedMusclesChange={setTrainingMuscles}
+              onOpenExercise={openExercise}
             />
           ) : null}
           {tab === 'about' ? (

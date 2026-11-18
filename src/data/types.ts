@@ -11,7 +11,14 @@ export interface ExerciseFormVariation {
   effects: {
     muscle: string;
     direction: 'increase' | 'decrease' | 'shift';
-    magnitude?: number;
+    /**
+     * Reported change versus the reference form. The research dataset stores the
+     * source's own wording ("+40 % concentric activation", "no significant
+     * difference"), so this is free text; `ResearchEffect.magnitude` in
+     * src/data/exercises.ts additionally parses an explicit leading signed
+     * percentage into a number for sorting.
+     */
+    magnitude?: string | number;
     note?: string;
     referenceIds: string[];
   }[];
@@ -28,6 +35,13 @@ export interface ExerciseDef {
    * means `gym` (see `exerciseSetting` in src/data/exercises.ts).
    */
   context?: 'home' | 'gym' | 'both';
+  /**
+   * Implements the movement needs: `band`, `barbell`, `dumbbell`, `machine`,
+   * `cable`, `pull-up-bar`, `bench`, `step`, `kettlebell`, `bodyweight`.
+   * Free text on purpose — `EXERCISE_EQUIPMENT_LABELS` in src/data/exercises.ts
+   * is the display vocabulary and unknown tags fall back to their raw string.
+   */
+  equipment?: string[];
   primaryMuscles: string[];
   secondaryMuscles: string[];
   variations: ExerciseFormVariation[];
@@ -43,5 +57,18 @@ export interface Reference {
   doi?: string;
   pmid?: string;
   url?: string;
-  evidenceLevel?: 'textbook' | 'systematic-review' | 'rct' | 'cohort' | 'expert-opinion';
+  /**
+   * Free-form evidence label used by the research set ("RCT", "EMG cohort",
+   * "systematic review/meta-analysis", "biomechanical crossover",
+   * "cadaveric/biomechanical", "review", "textbook"…). The union is kept for
+   * backwards compatibility only; `evidenceGrade` in src/data/references.ts is
+   * the single place that maps labels onto high/moderate/low.
+   */
+  evidenceLevel?:
+    | 'textbook'
+    | 'systematic-review'
+    | 'rct'
+    | 'cohort'
+    | 'expert-opinion'
+    | (string & {});
 }

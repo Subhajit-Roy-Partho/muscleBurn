@@ -3,14 +3,20 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
   EXERCISES,
+  EXERCISE_EQUIPMENT_FILTERS,
+  EXERCISE_EQUIPMENT_FILTER_LABELS,
   EXERCISE_REGION_LABELS,
   EXERCISE_SETTING_LABELS,
+  equipmentLabel,
+  exerciseEquipment,
   exerciseMatches,
+  exerciseMatchesEquipment,
   exerciseMatchesSetting,
   exerciseRegions,
   exerciseSetting,
   getExercise,
   listRegions,
+  type ExerciseEquipmentFilter,
   type ExerciseRegion,
   type ExerciseSettingFilter,
   type ResearchExercise,
@@ -27,6 +33,7 @@ import {
 } from '@/data/references';
 import { isNonMuscleConcept } from '@/data/muscleNameMap';
 import { buildActivationMap, heatColor, heatRampGradient } from '@/lib/heatmap';
+import ExerciseFigure from '@/components/ExerciseFigure';
 
 export interface ExercisePanelProps {
   /** Optional controlled selection (URL / 3D-viewer integration). */
@@ -112,6 +119,43 @@ function SettingBadge({ exercise }: { exercise: Pick<ResearchExercise, 'context'
     >
       <span className="mbx-setting-dot" aria-hidden="true" />
       {EXERCISE_SETTING_LABELS[setting]}
+    </span>
+  );
+}
+
+const EQUIPMENT_HINTS: Record<string, string> = {
+  bodyweight: 'No equipment beyond the floor (a bench or step may be used for support).',
+  band: 'Elastic resistance band.',
+  barbell: 'Barbell.',
+  dumbbell: 'Dumbbell(s).',
+  kettlebell: 'Kettlebell.',
+  machine: 'Selectorised or plate-loaded machine.',
+  cable: 'Cable stack or pulley station.',
+  'pull-up-bar': 'Pull-up bar or equivalent fixed bar.',
+  bench: 'Bench, chair or step for support.',
+  step: 'Step or raised platform.',
+};
+
+function EquipmentBadges({
+  exercise,
+  className = 'mbx-equipment-badges',
+}: {
+  exercise: Pick<ResearchExercise, 'equipment'>;
+  className?: string;
+}) {
+  const tags = exerciseEquipment(exercise);
+  if (tags.length === 0) return null;
+  return (
+    <span className={className}>
+      {tags.map((tag) => (
+        <span
+          key={tag}
+          className={`mbx-equipment mbx-equipment-${tag}`}
+          title={EQUIPMENT_HINTS[tag] ?? equipmentLabel(tag)}
+        >
+          {equipmentLabel(tag)}
+        </span>
+      ))}
     </span>
   );
 }
@@ -338,6 +382,13 @@ const PANEL_STYLES = `
 .mbx-setting-gym .mbx-setting-dot { background: var(--accent); }
 .mbx-setting-both { background: rgba(232,180,90,.1); border-color: rgba(232,180,90,.35); }
 .mbx-setting-both .mbx-setting-dot { background: linear-gradient(90deg, var(--teal) 50%, var(--accent) 50%); }
+.mbx-equipment-badges { display: inline-flex; align-items: center; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+.mbx-equipment { display: inline-flex; align-items: center; font-size: .6rem; letter-spacing: .02em; color: var(--text); border: 1px solid rgba(255,255,255,.16); border-radius: 999px; padding: 1px 7px; white-space: nowrap; }
+.mbx-equipment-band { background: rgba(79,179,164,.14); border-color: rgba(79,179,164,.45); color: #dffbf5; }
+.mbx-equipment-bodyweight { background: rgba(138,163,184,.12); border-color: rgba(138,163,184,.32); }
+.mbx-equipment-barbell, .mbx-equipment-dumbbell, .mbx-equipment-kettlebell { background: rgba(224,87,79,.1); border-color: rgba(224,87,79,.32); }
+.mbx-equipment-machine, .mbx-equipment-cable { background: rgba(232,180,90,.1); border-color: rgba(232,180,90,.32); }
+.mbx-equipment-bench, .mbx-equipment-step, .mbx-equipment-pull-up-bar { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.2); }
 .mbx-filter-chip:focus-visible, .mbx-chip:focus-visible, .mbx-back:focus-visible, .mbx-variation-select:focus-visible, .mbx-exercise:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .mbx-clear { border: 0; background: none; color: var(--accent-soft); font-size: .72rem; padding: 0; text-decoration: underline; }
 .mbx-back { align-self: flex-start; border: 0; background: none; color: var(--accent-soft); font-size: .78rem; padding: 0; }
@@ -347,6 +398,7 @@ const PANEL_STYLES = `
 .mbx-exercise:hover { border-color: var(--accent); }
 .mbx-exercise-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .mbx-exercise-name { font-size: .86rem; font-weight: 600; }
+.mbx-exercise-badges { display: inline-flex; align-items: center; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
 .mbx-exercise-meta { font-size: .7rem; color: var(--muted); }
 .mbx-detail-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 4px; }
 .mbx-detail-head h2 { margin: 0; font-size: 1.08rem; }
@@ -355,6 +407,9 @@ const PANEL_STYLES = `
 .mbx-muscles { display: grid; grid-template-columns: 78px minmax(0,1fr); gap: 4px 10px; margin: 0 0 12px; }
 .mbx-muscles dt { color: var(--accent-soft); font-size: .68rem; text-transform: uppercase; letter-spacing: .07em; padding-top: 2px; }
 .mbx-muscles dd { margin: 0; font-size: .78rem; line-height: 1.45; }
+.mbx-detail-top { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-start; margin: 2px 0 12px; }
+.mbx-detail-top .mbx-muscles { flex: 1 1 190px; min-width: 0; margin: 0; }
+.mbx-detail-top .mbx-figure { width: 248px; }
 .mbx-activation { border: 1px solid var(--line); border-radius: 9px; background: #0a1118; padding: 10px; margin-bottom: 14px; }
 .mbx-activation-head { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; margin-bottom: 8px; }
 .mbx-activation-head h4 { margin: 0; font-size: .74rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
@@ -418,6 +473,7 @@ export default function ExercisePanel({
   const [query, setQuery] = useState('');
   const [regions, setRegions] = useState<ExerciseRegion[]>([]);
   const [setting, setSetting] = useState<ExerciseSettingFilter>('all');
+  const [equipment, setEquipment] = useState<ExerciseEquipmentFilter>('all');
   const [selectedId, setSelectedId] = useState<string | null>(selectedExerciseId);
   const [activeVariationId, setActiveVariationId] = useState<string | null>(
     selectedVariationId,
@@ -437,6 +493,7 @@ export default function ExercisePanel({
     () =>
       EXERCISES.filter((exercise) => {
         if (!exerciseMatchesSetting(exercise, setting)) return false;
+        if (!exerciseMatchesEquipment(exercise, equipment)) return false;
         if (
           regions.length > 0 &&
           !regions.some((region) => exerciseRegions(exercise).includes(region))
@@ -445,7 +502,7 @@ export default function ExercisePanel({
         }
         return exerciseMatches(exercise, query);
       }),
-    [regions, query, setting],
+    [equipment, regions, query, setting],
   );
 
   const settingCounts = useMemo(
@@ -456,6 +513,17 @@ export default function ExercisePanel({
     }),
     [],
   );
+
+  const equipmentCounts = useMemo(() => {
+    const counts = { all: EXERCISES.length } as Record<ExerciseEquipmentFilter, number>;
+    for (const filter of EXERCISE_EQUIPMENT_FILTERS) {
+      if (filter === 'all') continue;
+      counts[filter] = EXERCISES.filter((exercise) =>
+        exerciseMatchesEquipment(exercise, filter),
+      ).length;
+    }
+    return counts;
+  }, []);
 
   const selected = selectedId ? getExercise(selectedId) : undefined;
   const activeVariation =
@@ -518,6 +586,7 @@ export default function ExercisePanel({
   const clearFilters = () => {
     setRegions([]);
     setSetting('all');
+    setEquipment('all');
   };
 
   return (
@@ -602,6 +671,30 @@ export default function ExercisePanel({
         ) : null}
       </div>
 
+      <div className="mbx-filter">
+        <span className="mbx-eyebrow">Equipment</span>
+        <div className="mbx-chips" role="group" aria-label="Filter by equipment">
+          {EXERCISE_EQUIPMENT_FILTERS.map((filter) => (
+            <button
+              key={filter}
+              type="button"
+              className="mbx-filter-chip"
+              aria-pressed={equipment === filter}
+              aria-label={`${EXERCISE_EQUIPMENT_FILTER_LABELS[filter]} (${equipmentCounts[filter]} exercises)`}
+              onClick={() => setEquipment(filter)}
+            >
+              {EXERCISE_EQUIPMENT_FILTER_LABELS[filter]}
+              <span className="mbx-filter-count">{equipmentCounts[filter]}</span>
+            </button>
+          ))}
+        </div>
+        {equipment !== 'all' ? (
+          <button type="button" className="mbx-clear" onClick={() => setEquipment('all')}>
+            Clear equipment
+          </button>
+        ) : null}
+      </div>
+
       {browsing ? (
         <>
           {selected ? (
@@ -620,6 +713,9 @@ export default function ExercisePanel({
               : ''}
             {setting !== 'all'
               ? ` · ${EXERCISE_SETTING_LABELS[setting === 'home' ? 'home' : 'gym']} setting`
+              : ''}
+            {equipment !== 'all'
+              ? ` · ${EXERCISE_EQUIPMENT_FILTER_LABELS[equipment]} equipment`
               : ''}
           </p>
           {filtered.length === 0 ? (
@@ -644,7 +740,10 @@ export default function ExercisePanel({
                   >
                     <span className="mbx-exercise-row">
                       <span className="mbx-exercise-name">{exercise.name}</span>
-                      <SettingBadge exercise={exercise} />
+                      <span className="mbx-exercise-badges">
+                        <EquipmentBadges exercise={exercise} />
+                        <SettingBadge exercise={exercise} />
+                      </span>
                     </span>
                     <span className="mbx-exercise-meta">
                       {capitalize(exercise.category)} ·{' '}
@@ -668,6 +767,7 @@ export default function ExercisePanel({
           <div className="mbx-detail-head">
             <h2>{selected.name}</h2>
             <span className="mbx-detail-tags">
+              <EquipmentBadges exercise={selected} className="mbx-equipment-badges" />
               <SettingBadge exercise={selected} />
               <span className="pill">{capitalize(selected.category)}</span>
             </span>
@@ -680,16 +780,24 @@ export default function ExercisePanel({
             ))}
           </div>
 
-          <dl className="mbx-muscles">
-            <dt>Primary</dt>
-            <dd>{selected.primaryMuscles.map(capitalize).join(', ')}</dd>
-            <dt>Secondary</dt>
-            <dd>
-              {selected.secondaryMuscles.length > 0
-                ? selected.secondaryMuscles.map(capitalize).join(', ')
-                : '—'}
-            </dd>
-          </dl>
+          <div className="mbx-detail-top">
+            <ExerciseFigure
+              exerciseId={selected.id}
+              exerciseName={selected.name}
+              category={selected.category}
+              width={248}
+            />
+            <dl className="mbx-muscles">
+              <dt>Primary</dt>
+              <dd>{selected.primaryMuscles.map(capitalize).join(', ')}</dd>
+              <dt>Secondary</dt>
+              <dd>
+                {selected.secondaryMuscles.length > 0
+                  ? selected.secondaryMuscles.map(capitalize).join(', ')
+                  : '—'}
+              </dd>
+            </dl>
+          </div>
 
           <ActivationSummary exercise={selected} variation={activeVariation} />
 

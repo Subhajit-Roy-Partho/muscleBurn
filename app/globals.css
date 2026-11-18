@@ -724,3 +724,361 @@ body {
   color: var(--muted);
   font-style: italic;
 }
+
+/* ---------- train panel (multi-muscle reverse lookup) ---------- */
+
+.mbt-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mbt-block {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.mbt-legend {
+  padding: 0;
+  margin-bottom: 6px;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.mbt-search {
+  margin-bottom: 0;
+}
+
+.mbt-search-empty {
+  margin: 0;
+}
+
+.mbt-region {
+  margin-bottom: 8px;
+}
+
+.mbt-region:last-child {
+  margin-bottom: 0;
+}
+
+.mbt-region-label {
+  margin: 8px 0 4px;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+}
+
+.mbt-options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 2px 8px;
+}
+
+.mbt-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 4px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.mbt-option:hover {
+  background: var(--panel-soft);
+}
+
+.mbt-option input {
+  accent-color: var(--accent);
+  width: 13px;
+  height: 13px;
+  flex: none;
+  margin: 0;
+}
+
+.mbt-option input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.mbt-option-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mbt-option-count {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  color: var(--muted);
+}
+
+.mbt-eyebrow {
+  margin: 0 0 4px;
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.mbt-chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.mbt-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: rgba(224, 87, 79, 0.16);
+  color: #ffe6e2;
+  font-family: inherit;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.mbt-chip:hover {
+  background: rgba(224, 87, 79, 0.26);
+}
+
+.mbt-chip:focus-visible,
+.mbt-toggle:focus-visible,
+.mbt-result:focus-visible,
+.mbt-link:focus-visible,
+.mbt-add:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.mbt-chip-x {
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.mbt-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mbt-control {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mbt-toggle {
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--panel-soft);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.mbt-toggle[aria-pressed="true"] {
+  background: rgba(224, 87, 79, 0.18);
+  border-color: var(--accent);
+  color: #ffe6e2;
+}
+
+.mbt-result-count {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.mbt-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mbt-result {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-soft);
+  color: var(--text);
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.mbt-result:hover {
+  border-color: var(--accent);
+}
+
+.mbt-result-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mbt-result-name {
+  flex: 1;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.mbt-setting {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.62rem;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  padding: 1px 7px;
+  white-space: nowrap;
+}
+
+.mbt-setting-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--muted);
+}
+
+.mbt-setting-home {
+  background: rgba(79, 179, 164, 0.12);
+  border-color: rgba(79, 179, 164, 0.4);
+}
+
+.mbt-setting-home .mbt-setting-dot {
+  background: var(--teal);
+}
+
+.mbt-setting-gym {
+  background: rgba(224, 87, 79, 0.12);
+  border-color: rgba(224, 87, 79, 0.4);
+}
+
+.mbt-setting-gym .mbt-setting-dot {
+  background: var(--accent);
+}
+
+.mbt-setting-both {
+  background: rgba(232, 180, 90, 0.1);
+  border-color: rgba(232, 180, 90, 0.35);
+}
+
+.mbt-setting-both .mbt-setting-dot {
+  background: linear-gradient(90deg, var(--teal) 50%, var(--accent) 50%);
+}
+
+.mbt-score {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.mbt-matches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.mbt-match {
+  font-size: 0.64rem;
+  border-radius: 999px;
+  padding: 1px 6px;
+  border: 1px solid var(--line-strong);
+  color: var(--muted);
+}
+
+.mbt-match-primary {
+  border-color: rgba(224, 87, 79, 0.45);
+  background: rgba(224, 87, 79, 0.12);
+  color: #ffd9d5;
+}
+
+.mbt-link {
+  border: 0;
+  background: none;
+  color: var(--accent-soft);
+  font: inherit;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.mbt-caption {
+  margin: 0;
+  font-size: 0.68rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.mbt-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* InfoPanel reverse-lookup section */
+
+.mbt-info {
+  margin-top: 16px;
+  padding-top: 4px;
+  border-top: 1px solid var(--line);
+}
+
+.mbt-info .mbt-info-note {
+  margin: 0 0 8px;
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.mbt-info-list {
+  margin-bottom: 10px;
+}
+
+.mbt-info-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.mbt-add[aria-pressed="true"] {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: #ffe6e2;
+}

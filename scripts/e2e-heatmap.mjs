@@ -18,8 +18,11 @@
  *   5. switch the Setting filter to Home, select "Push-Up", and repeat the
  *      legend + >2 % recolour check against the squat frame — proving a
  *      home/bodyweight exercise drives the same 3D heat map;
- *   6. open About and count the rendered reference entries (>= 90);
- *   7. fail on any uncaught page error or console error.
+ *   6. reset Setting to All, activate the Equipment = Bands filter, assert the
+ *      list narrows to the 13 band records, select "Band Row" and repeat the
+ *      legend + >2 % recolour check against the home frame;
+ *   7. open About and count the rendered reference entries (>= 90);
+ *   8. fail on any uncaught page error or console error.
  *
  * Playwright is resolved exactly like scripts/ci-smoke.mjs (NODE_PATH or an
  * out-of-repo install); it is never added to package.json.
@@ -330,6 +333,14 @@ try {
 
   // Exercises tab → the squat.
   await page.getByRole('tab', { name: 'Exercises' }).click();
+  const searchLabel = (await page.locator('.mbx-search .search-label').first().innerText())
+    .replace(/\s+/g, ' ')
+    .trim();
+  check(
+    'exercise search header counts all 48 records',
+    /^search 48 exercises$/i.test(searchLabel),
+    JSON.stringify(searchLabel),
+  );
   const exerciseButton = page
     .getByRole('button', { name: new RegExp(EXERCISE_NAME, 'i') })
     .first();
@@ -427,6 +438,90 @@ try {
     `3D canvas recoloured for the home exercise (> ${(MIN_CHANGED_FRACTION * 100).toFixed(0)} % of pixels changed)`,
     homeFraction > MIN_CHANGED_FRACTION,
     `${(homeFraction * 100).toFixed(1)} % of ${after.width * after.height} pixels changed`,
+  );
+
+  /* ------------------- third scenario: a band exercise ------------------- */
+
+  // Back to the list, clear the setting filter, then narrow by Equipment = Bands.
+  await page.getByRole('button', { name: /All exercises/i }).first().click();
+  const allSettings = page.getByRole('button', { name: /^All settings \(/i });
+  await allSettings.click();
+  check(
+    'Setting reset to All before the band scenario',
+    (await allSettings.getAttribute('aria-pressed')) === 'true',
+  );
+
+  const bandFilter = page.getByRole('button', { name: /^Bands \(/i });
+  await bandFilter.waitFor({ state: 'visible', timeout: 20000 });
+  await bandFilter.click();
+  const bandPressed = await bandFilter.getAttribute('aria-pressed');
+  check('Equipment = Bands filter chip is active', bandPressed === 'true', `aria-pressed=${bandPressed}`);
+
+  const resultCountText = (await page.locator('.mbx-result-count').first().innerText())
+    .replace(/\s+/g, ' ')
+    .trim();
+  check(
+    'Equipment = Bands narrows the list to the band records',
+    /^13 exercises · Bands equipment$/.test(resultCountText),
+    JSON.stringify(resultCountText),
+  );
+
+  const squatRowsUnderBand = await page
+    .getByRole('button', { name: new RegExp(`^${EXERCISE_NAME}\\b`, 'i') })
+    .count();
+  check(
+    'Equipment = Bands hides barbell exercises',
+    squatRowsUnderBand === 0,
+    `${squatRowsUnderBand} squat row(s) visible`,
+  );
+
+  const rowBandBadges = await page.locator('.mbx-exercise .mbx-equipment-band').count();
+  check(
+    'band rows carry a "Band" equipment badge',
+    rowBandBadges > 0,
+    `${rowBandBadges} band badge(s) on the visible rows`,
+  );
+
+  const bandExerciseButton = page
+    .getByRole('button', { name: /^Band Row\b/i })
+    .first();
+  let bandButtonVisible = true;
+  try {
+    await bandExerciseButton.waitFor({ state: 'visible', timeout: 20000 });
+  } catch {
+    bandButtonVisible = false;
+  }
+  check('Band Row is listed under Equipment = Bands', bandButtonVisible, 'Band Row');
+  if (bandButtonVisible) await bandExerciseButton.click();
+
+  let bandLegendAppeared = true;
+  try {
+    await legend.waitFor({ state: 'visible', timeout: 30000 });
+  } catch {
+    bandLegendAppeared = false;
+  }
+  const bandLegendText = bandLegendAppeared ? await legend.innerText() : '';
+  check(
+    'legend names the band exercise',
+    bandLegendAppeared && /Band Row/i.test(bandLegendText),
+    bandLegendAppeared ? JSON.stringify(bandLegendText.replace(/\s+/g, ' ').trim()) : 'legend missing',
+  );
+
+  const bandBadge = page.locator('.mbx-detail .mbx-equipment-band');
+  const bandBadgeText = (await bandBadge.count()) ? await bandBadge.first().innerText() : '';
+  check(
+    'detail header carries the Band equipment badge',
+    /^Band$/.test(bandBadgeText.trim()),
+    JSON.stringify(bandBadgeText.trim()),
+  );
+
+  await page.waitForTimeout(RENDER_SETTLE_MS);
+  const bandFrame = decodePng(await canvas.screenshot());
+  const bandFraction = changedFraction(homeFrame, bandFrame);
+  check(
+    `3D canvas recoloured for the band exercise (> ${(MIN_CHANGED_FRACTION * 100).toFixed(0)} % of pixels changed)`,
+    bandFraction > MIN_CHANGED_FRACTION,
+    `${(bandFraction * 100).toFixed(1)} % of ${homeFrame.width * homeFrame.height} pixels changed`,
   );
 
   // About tab → references.

@@ -9,6 +9,11 @@ import {
   type StructureInfo,
 } from '@/data/anatomy';
 import { lookupMuscleMeta } from '@/data/muscles/meta';
+import {
+  exercisesForMuscle,
+  getTrainableMuscle,
+  resolveMuscleKey,
+} from '@/data/exerciseMuscleIndex';
 import { REGION_LABELS, SIDE_LABELS } from '@/lib/muscleColors';
 import { formatPoint, getDerivedAttachments } from '@/lib/modelRegistry';
 
@@ -16,6 +21,12 @@ interface InfoPanelProps {
   selectedKey: string | null;
   onSelect: (key: string) => void;
   onFocus: (key: string) => void;
+  /** Open an exercise in the Exercises tab (reverse lookup result). */
+  onOpenExercise?: (exerciseId: string) => void;
+  /** Add a trainable muscle to the Train tab selection and switch to it. */
+  onAddTrainingMuscle?: (muscleKey: string) => void;
+  /** Current Train tab selection, for the button's pressed state. */
+  trainingMuscleKeys?: string[];
 }
 
 const LAYER_LABELS: Record<StructureInfo['layer'], string> = {
@@ -40,11 +51,26 @@ const matches = (structure: StructureInfo, needle: string): boolean => {
   return haystack.includes(needle);
 };
 
-export default function InfoPanel({ selectedKey, onSelect, onFocus }: InfoPanelProps) {
+export default function InfoPanel({
+  selectedKey,
+  onSelect,
+  onFocus,
+  onOpenExercise,
+  onAddTrainingMuscle,
+  trainingMuscleKeys = [],
+}: InfoPanelProps) {
   const [query, setQuery] = useState('');
   const selected = getStructure(selectedKey);
   const meta = selected && !selected.isBone ? lookupMuscleMeta(selected.name) : null;
   const derived = selected && !selected.isBone ? getDerivedAttachments(selected.key) : null;
+
+  const trainableKey = selected && !selected.isBone ? resolveMuscleKey(selected.name) : null;
+  const trainable = trainableKey ? getTrainableMuscle(trainableKey) : undefined;
+  const trainingEntries = useMemo(
+    () => (trainableKey ? exercisesForMuscle(trainableKey) : []),
+    [trainableKey],
+  );
+  const inTraining = trainableKey ? trainingMuscleKeys.includes(trainableKey) : false;
 
   const results = useMemo(() => {
     const trimmed = query.trim().toLowerCase();
@@ -164,6 +190,59 @@ export default function InfoPanel({ selectedKey, onSelect, onFocus }: InfoPanelP
               </dd>
             </dl>
           )}
+
+          {!selected.isBone ? (
+            <section className="mbt-info" aria-labelledby="mbt-info-heading">
+              <h3 id="mbt-info-heading">Exercises that train this</h3>
+              {trainable ? (
+                <>
+                  <p className="muted fineprint mbt-info-note">
+                    {trainingEntries.length}{' '}
+                    {trainingEntries.length === 1 ? 'exercise trains' : 'exercises train'}{' '}
+                    {trainable.label.toLowerCase()} as a primary or secondary mover; primary
+                    matches are listed first.
+                  </p>
+                  {trainingEntries.length > 0 ? (
+                    <ul className="search-results mbt-info-list">
+                      {trainingEntries.slice(0, 6).map((entry) => (
+                        <li key={entry.exercise.id}>
+                          <button
+                            type="button"
+                            className="result"
+                            onClick={() => onOpenExercise?.(entry.exercise.id)}
+                          >
+                            <span>{entry.exercise.name}</span>{' '}
+                            <span className="pill">{entry.role}</span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="muted">No exercise in the dataset trains this muscle yet.</p>
+                  )}
+                  {onAddTrainingMuscle ? (
+                    <div className="mbt-info-actions">
+                      <button
+                        type="button"
+                        className="chip mbt-add"
+                        aria-pressed={inTraining}
+                        onClick={() => onAddTrainingMuscle(trainable.key)}
+                      >
+                        {inTraining
+                          ? 'In training selection · open Train'
+                          : '+ Add to training selection'}
+                      </button>
+                    </div>
+                  ) : null}
+                </>
+              ) : (
+                <p className="muted">
+                  This muscle is not named by the exercise dataset, so there is nothing to
+                  cross-reference yet.
+                </p>
+              )}
+            </section>
+          ) : null}
 
           {selected.isBone && selected.tissue ? (
             <p className="muted fineprint">Tissue: {selected.tissue}</p>

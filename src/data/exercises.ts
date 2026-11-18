@@ -34,6 +34,88 @@ export type ExerciseSettingFilter = 'all' | 'home' | 'gym';
 
 export const EXERCISE_SETTING_FILTERS: ExerciseSettingFilter[] = ['all', 'home', 'gym'];
 
+/* -------------------------------- equipment -------------------------------- */
+
+/**
+ * Equipment tag → display label. Tags are free text in the raw data; this map is
+ * the presentation vocabulary, and unknown tags fall back to their raw string so
+ * a newly added implement renders without a code change.
+ */
+export const EXERCISE_EQUIPMENT_LABELS: Record<string, string> = {
+  bodyweight: 'Bodyweight',
+  band: 'Band',
+  barbell: 'Barbell',
+  dumbbell: 'Dumbbell',
+  kettlebell: 'Kettlebell',
+  machine: 'Machine',
+  cable: 'Cable',
+  'pull-up-bar': 'Pull-up bar',
+  bench: 'Bench',
+  step: 'Step',
+};
+
+/** Equipment filter chip values; `all` is the neutral option. */
+export type ExerciseEquipmentFilter = 'all' | 'bodyweight' | 'band' | 'free-weights' | 'machine';
+
+export const EXERCISE_EQUIPMENT_FILTERS: ExerciseEquipmentFilter[] = [
+  'all',
+  'bodyweight',
+  'band',
+  'free-weights',
+  'machine',
+];
+
+export const EXERCISE_EQUIPMENT_FILTER_LABELS: Record<ExerciseEquipmentFilter, string> = {
+  all: 'All',
+  bodyweight: 'Bodyweight',
+  band: 'Bands',
+  'free-weights': 'Free weights',
+  machine: 'Machine / cable',
+};
+
+/** Tags each non-`all` filter accepts. A record matches on any overlap. */
+export const EXERCISE_EQUIPMENT_GROUPS: Record<
+  Exclude<ExerciseEquipmentFilter, 'all'>,
+  string[]
+> = {
+  bodyweight: ['bodyweight'],
+  band: ['band'],
+  'free-weights': ['barbell', 'dumbbell', 'kettlebell'],
+  machine: ['machine', 'cable'],
+};
+
+/**
+ * Equipment tags for an exercise. Records that predate the field return `[]`
+ * (unknown) rather than a guess, so they are only visible under `All`.
+ */
+export function exerciseEquipment(exercise: Pick<ExerciseDef, 'equipment'>): string[] {
+  return exercise.equipment ?? [];
+}
+
+/** Display label for one equipment tag. */
+export function equipmentLabel(tag: string): string {
+  return EXERCISE_EQUIPMENT_LABELS[tag] ?? tag;
+}
+
+/**
+ * How many pieces of equipment an exercise needs. `bodyweight` is free, so it
+ * does not count; a band-only movement is 1, barbell + bench is 2.
+ */
+export function exerciseEquipmentCount(exercise: Pick<ExerciseDef, 'equipment'>): number {
+  return exerciseEquipment(exercise).filter((tag) => tag !== 'bodyweight').length;
+}
+
+/** AND-composed with the search, region and setting filters. */
+export function exerciseMatchesEquipment(
+  exercise: Pick<ExerciseDef, 'equipment'>,
+  filter: ExerciseEquipmentFilter,
+): boolean {
+  if (filter === 'all') return true;
+  const tags = exerciseEquipment(exercise);
+  if (tags.length === 0) return false;
+  return EXERCISE_EQUIPMENT_GROUPS[filter].some((tag) => tags.includes(tag));
+}
+
 /**
  * `Home` includes home-only and dual-use movements, `Gym` includes gym-only and
  * dual-use ones, so a `both` exercise is never hidden from either setting.
@@ -85,6 +167,7 @@ interface RawExercise {
   name: string;
   category: string;
   context?: ExerciseSetting;
+  equipment?: string[];
   primaryMuscles: string[];
   secondaryMuscles: string[];
   variations: RawVariation[];
@@ -118,17 +201,19 @@ function mapEffect(effect: RawEffect): ResearchEffect {
 const RAW_EXERCISES = rawExercises as unknown as RawExercise[];
 
 /**
- * All 36 exercises / 114 variations / 314 effects. IDs are stable.
+ * All 48 exercises / 154 variations / 401 effects. IDs are stable.
  *
- * 22 gym movements (7 of which are genuinely home-capable, tagged `both`) plus
- * the 14 cited home/bodyweight movements from the home-exercise-extension
- * workspace, tagged `home`.
+ * 22 gym movements (7 of which are genuinely home-capable, tagged `both`), the
+ * 14 cited home/bodyweight movements from the home-exercise-extension workspace
+ * (tagged `home`) and the 12 cited resistance-band movements from the
+ * band-exercise-extension workspace (tagged `home`, `equipment: ["band"]`).
  */
 export const EXERCISES: ResearchExercise[] = RAW_EXERCISES.map((exercise) => ({
   id: exercise.id,
   name: exercise.name,
   category: exercise.category,
   context: exercise.context,
+  equipment: exercise.equipment,
   primaryMuscles: exercise.primaryMuscles,
   secondaryMuscles: exercise.secondaryMuscles,
   variations: exercise.variations.map((variation) => ({

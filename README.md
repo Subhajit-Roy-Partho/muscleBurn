@@ -4,9 +4,11 @@ Interactive 3D muscle viewer for skeletal anatomy, built as a statically exporte
 Next.js (App Router + TypeScript) app. The figure is the **Écorché** full-body
 atlas — one named mesh per anatomical structure — hovered and selected in 3D, with
 attachments, actions and innervation in the side panel. An exercise layer records
-how form variations shift demand across muscles, with citation hooks: **36 cited
-exercises (22 gym + 14 home/bodyweight)** backed by **114 references**, filterable
-by body region and by Home/Gym setting.
+how form variations shift demand across muscles, with citation hooks: **48 cited
+exercises (22 gym + 14 home/bodyweight + 12 resistance-band)** backed by **143
+references**, filterable by body region, Home/Gym setting and equipment. A
+reverse lookup goes the other way — pick a muscle and see which movements train
+it — and each exercise opens an animated figure that demonstrates the movement.
 
 > **Educational only.** This is not medical advice, not a diagnostic tool, and not a
 > training prescription. Exercise effects are placeholders until replaced with
@@ -77,8 +79,11 @@ components/
   ViewerMount.tsx       client-side mount for the 3D viewer (ssr: false)
   MuscleViewer.tsx      canvas, meshopt GLTF load, raycast picking, presets,
                         camera tweens, layer + side toggles, hover tooltip
-  InfoPanel.tsx         structure search + attachments/action/innervation
-  ExercisePanel.tsx     exercise list / empty state
+  InfoPanel.tsx         structure search + attachments/action/innervation,
+                        reverse lookup (muscle → exercises)
+  ExercisePanel.tsx     exercise list, region/setting/equipment filters, detail
+  ExerciseFigure.tsx    animated SVG demo of the selected movement
+  TrainPanel.tsx        muscle-first exercise finder
 lib/
   paths.ts              BASE_PATH + model URL
   muscleColors.ts       per-region palette and labels
@@ -89,8 +94,10 @@ src/data/
   anatomy.ts            typed index over structures.json, region classifier
   muscles/meta.ts       curated origin/insertion/action/innervation (~127 muscles)
   types.ts              exercise/reference schema
-  exercises.ts          exercise records (36) + region/setting filters
-  references.ts         citations (114)
+  exercises.ts          exercise records (48) + region/setting/equipment filters
+  exerciseMuscleIndex.ts reverse index: muscle → ranked exercises
+  exercisePoses.ts      per-exercise keyframes for the animated figure
+  references.ts         citations (143)
 ```
 
 ## How the atlas is wired
@@ -122,22 +129,67 @@ src/data/
 - `ExerciseFormVariation` — `{ id, name, description, effects: [{ muscle,
   direction: 'increase' | 'decrease' | 'shift', magnitude?, note?,
   referenceIds }], referenceIds }`
-- `ExerciseDef` — `{ id, name, category, context?, primaryMuscles,
-  secondaryMuscles, variations, referenceIds }`
+- `ExerciseDef` — `{ id, name, category, context?, equipment?, primaryMuscles,
+  secondaryMuscles, variations, referenceIds }`; `magnitude` is the source's
+  wording (free text, occasionally a signed percentage) and `evidenceLevel` is a
+  free-form research label mapped to high/moderate/low by `evidenceGrade`.
 - `Reference` — `{ id, title, authors, year, journal?, doi?, pmid?, url?,
   evidenceLevel? }`
 
 ### Home / Gym setting
 
 `context` is `'home' | 'gym' | 'both'`; records without it are treated as `gym`.
-The 14 `home` entries come from `docs/research/home-exercise-extension.md`
-(no equipment assumed). Seven of the 22 gym movements are tagged `both` because
-they need no equipment beyond a bar/pull-up bar or a single dumbbell and are
-realistically performed at home: pull-up, biceps curl, hip thrust, calf raise,
-lateral raise, plank, crunch. The remaining 15 stay `gym` (barbell/machine/bench
-set-ups). The Exercise tab exposes this as an All / Home / Gym chip row combined
-with the region filter and search; `Home` and `Gym` both include `both`
-exercises, so nothing is hidden from either setting.
+There are 26 `home` entries: the 14 bodyweight movements from
+`docs/research/home-exercise-extension.md` and the 12 resistance-band movements
+from `docs/research/band-exercise-extension.md`. Seven of the 22 gym movements
+are tagged `both` because they need no equipment beyond a bar/pull-up bar or a
+single dumbbell and are realistically performed at home: pull-up, biceps curl,
+hip thrust, calf raise, lateral raise, plank, crunch. The remaining 15 stay `gym`
+(barbell/machine/bench set-ups). The Exercise tab exposes this as an All / Home /
+Gym chip row combined with the region and equipment filters and the search;
+`Home` and `Gym` both include `both` exercises, so nothing is hidden from either
+setting.
+
+### Equipment
+
+`equipment` is a free-text tag array (`band`, `bodyweight`, `barbell`,
+`dumbbell`, `kettlebell`, `machine`, `cable`, `pull-up-bar`, `bench`, `step`).
+The Exercise tab exposes All / Bodyweight / Bands / Free weights (barbell,
+dumbbell, kettlebell) / Machine / cable chip rows, AND-composed with the search,
+region and setting filters, and renders the tags as badges on every row.
+
+The tags describe the implement each record's evidence was collected with, not
+every possible way to perform the movement. The 36 pre-band records were tagged
+by inspecting their names and variation text:
+
+| Tag | Records |
+|---|---|
+| barbell | barbell back squat, front squat, conventional deadlift, Romanian deadlift, barbell bench press, incline bench press, overhead press, barbell row, barbell hip thrust |
+| dumbbell | biceps curl, overhead triceps extension, lateral raise, chest fly |
+| machine / cable | lat pulldown (machine + cable), triceps pushdown (cable), overhead triceps extension (cable), leg press, leg extension, leg curl, calf raise, biceps curl (cable), lateral raise (cable), chest fly (cable) |
+| pull-up-bar | pull-up, inverted row |
+| bench / step (support only) | barbell bench press, incline bench press, barbell hip thrust, chest fly, Bulgarian split squat, bench dip, single-leg calf raise, step-up |
+| bodyweight | plank, crunch, push-up, bodyweight squat, Bulgarian split squat, reverse lunge, glute bridge, inverted row, bench dip, pike push-up, Nordic hamstring curl, single-leg calf raise, side plank, step-up, superman |
+| band | the 12 band records plus the existing band pull-apart |
+
+### Band training caveat
+
+Band evidence is thinner than barbell evidence, and it is not uniformly
+transferable. In the one full-text, load-matched comparison (Iversen 2017,
+`10.1080/17461391.2017.1337229`) a band squat produced **11–15 % lower
+normalised quadriceps EMG** than a barbell squat at a matched 10RM: the band
+squat is a legitimate hip-extensor/glute movement at home, **not a quadriceps
+substitute**. Band tension also depends on colour, brand, elongation and anchor
+geometry (Uchida 2016 shows manufacturer tables overestimate tension for 5 of 8
+Thera-Band colours), so "matched 10RM" carries extra error — prescribe rep
+ranges, not exact loads.
+
+Band shoulder press, band triceps extension/pushdown and band Pallof press were
+**deliberately omitted**: no EMG, training or biomechanical study of those
+movements was found across Europe PMC, Crossref, Semantic Scholar and Scopus, so
+including them would have meant inventing directions and magnitudes from
+extrapolation. See `docs/research/band-exercise-extension.md` §7–8 for the full
+omission and gap list.
 
 Exercise and reference records are a curated subset of the cited literature;
 every effect carries `referenceIds`. Methodology, caveats and the educational
@@ -155,7 +207,8 @@ disclaimer are unchanged.
 - References: append to `src/data/raw/references.json`; only cite what you have
   verified — never invent a DOI or PMID.
 - Verification: `npx tsc --noEmit`, `npm run build`, `node scripts/validate-mapping.mjs
-  --strict`, then `node scripts/e2e-heatmap.mjs` (Playwright resolved out-of-repo).
+  --strict`, then `node scripts/e2e-heatmap.mjs` and `node scripts/e2e-figure.mjs`
+  (Playwright resolved out-of-repo).
 
 ## License
 

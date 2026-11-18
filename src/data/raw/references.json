@@ -2131,5 +2131,556 @@
   "evidenceLevel": "biomechanical crossover",
   "metadataSource": "crossref",
   "citedBy": 37
+ },
+ {
+  "id": "lopes2019",
+  "title": "Effects of training with elastic resistance versus conventional resistance on muscular strength: A systematic review and meta-analysis",
+  "authors": [
+   "Jaqueline Santos Silva Lopes",
+   "Aryane Flauzino Machado",
+   "Jéssica Kirsch Micheletti",
+   "Aline Castilho de Almeida",
+   "Allysiê Priscila Cavina",
+   "Carlos Marcelo Pastre"
+  ],
+  "year": 2019,
+  "journal": "SAGE Open Medicine",
+  "doi": "10.1177/2050312119831116",
+  "pmid": "30815258",
+  "url": "https://doi.org/10.1177/2050312119831116",
+  "evidenceLevel": "systematic review/meta-analysis",
+  "metadataSource": "crossref",
+  "citedBy": 129
+ },
+ {
+  "id": "iversen2017",
+  "title": "Multiple-joint exercises using elastic resistance bands vs. conventional resistance-training equipment: A cross-over study",
+  "authors": [
+   "Vegard M. Iversen",
+   "Paul Jarle Mork",
+   "Ottar Vasseljen",
+   "Ronny Bergquist",
+   "Marius S. Fimland"
+  ],
+  "year": 2017,
+  "journal": "European Journal of Sport Science",
+  "doi": "10.1080/17461391.2017.1337229",
+  "pmid": "28628370",
+  "url": "https://doi.org/10.1080/17461391.2017.1337229",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 52
+ },
+ {
+  "id": "bergquist2018",
+  "title": "Muscle Activity in Upper-Body Single-Joint Resistance Exercises with Elastic Resistance Bands vs. Free Weights",
+  "authors": [
+   "Ronny Bergquist",
+   "Vegard Moe Iversen",
+   "Paul J Mork",
+   "Marius Steiro Fimland"
+  ],
+  "year": 2018,
+  "journal": "Journal of Human Kinetics",
+  "doi": "10.1515/hukin-2017-0137",
+  "pmid": "29599855",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5873332/",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 30
+ },
+ {
+  "id": "andersen2010",
+  "title": "Muscle Activation and Perceived Loading During Rehabilitation Exercises: Comparison of Dumbbells and Elastic Resistance",
+  "authors": [
+   "Lars L. Andersen",
+   "Christoffer H. Andersen",
+   "Ole S. Mortensen",
+   "Otto M. Poulsen",
+   "Inger Birthe T. Bjørnlund",
+   "Mette K. Zebis"
+  ],
+  "year": 2010,
+  "journal": "Physical Therapy",
+  "doi": "10.2522/ptj.20090167",
+  "pmid": "20133444",
+  "url": "https://doi.org/10.2522/ptj.20090167",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 189
+ },
+ {
+  "id": "jakobsen2014",
+  "title": "Effectiveness of Hamstring Knee Rehabilitation Exercise Performed in Training Machine vs. Elastic Resistance",
+  "authors": [
+   "Markus Due Jakobsen",
+   "Emil Sundstrup",
+   "Christoffer H. Andersen",
+   "Roger Persson",
+   "Mette K. Zebis",
+   "Lars L. Andersen"
+  ],
+  "year": 2014,
+  "journal": "American Journal of Physical Medicine & Rehabilitation",
+  "doi": "10.1097/phm.0000000000000043",
+  "pmid": "24398577",
+  "url": "https://doi.org/10.1097/phm.0000000000000043",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 26
+ },
+ {
+  "id": "saeterbakken2014",
+  "title": "Effects of Replacing Free Weights With Elastic Band Resistance in Squats on Trunk Muscle Activation",
+  "authors": [
+   "Atle H. Saeterbakken",
+   "Vidar Andersen",
+   "Maria K. Kolnes",
+   "Marius S. Fimland"
+  ],
+  "year": 2014,
+  "journal": "Journal of Strength and Conditioning Research",
+  "doi": "10.1519/jsc.0000000000000516",
+  "pmid": "24832981",
+  "url": "https://doi.org/10.1519/jsc.0000000000000516",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 20
+ },
+ {
+  "id": "shi2024",
+  "title": "Kinetics, Kinematics, and Muscle Activity Patterns During Back Squat With Different Contributions of Elastic Resistance",
+  "authors": [
+   "Lin Shi",
+   "Mark Lyons",
+   "Michael Duncan",
+   "Sitong Chen",
+   "Dong Han",
+   "Chengbo Yang"
+  ],
+  "year": 2024,
+  "journal": "International Journal of Sports Physiology and Performance",
+  "doi": "10.1123/ijspp.2024-0009",
+  "pmid": "39043365",
+  "url": "https://doi.org/10.1123/ijspp.2024-0009",
+  "evidenceLevel": "biomechanical crossover",
+  "metadataSource": "crossref",
+  "citedBy": 6
+ },
+ {
+  "id": "ebben2002",
+  "title": "Electromyographic and Kinetic Analysis of Traditional, Chain, and Elastic Band Squats",
+  "authors": [
+   "WILLIAM P. EBBEN",
+   "RANDALL L. JENSEN"
+  ],
+  "year": 2002,
+  "journal": "The Journal of Strength and Conditioning Research",
+  "doi": "10.1519/1533-4287(2002)016<0547:eakaot>2.0.co;2",
+  "pmid": "12423183",
+  "url": "https://doi.org/10.1519/1533-4287(2002)016<0547:eakaot>2.0.co;2",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 3
+ },
+ {
+  "id": "martins2022",
+  "title": "Looped Elastic Resistance during Squats: How Do Band Position and Stiffness Affect Hip Myoelectric Activity?",
+  "authors": [
+   "Eduardo C. Martins",
+   "Lucas B. Steffen",
+   "Diogo Gomes",
+   "Walter Herzog",
+   "Alessandro Haupenthal",
+   "Heiliane de Brito Fontana"
+  ],
+  "year": 2022,
+  "journal": "Journal of Functional Morphology and Kinesiology",
+  "doi": "10.3390/jfmk7030060",
+  "pmid": "35997376",
+  "url": "https://doi.org/10.3390/jfmk7030060",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 9
+ },
+ {
+  "id": "mullaney2011",
+  "title": "Electromyographic Analysis of the Triceps Surae Muscle Complex During Achilles Tendon Rehabilitation Program Exercises",
+  "authors": [
+   "Michael Mullaney",
+   "Timothy F. Tyler",
+   "Malachy McHugh",
+   "Karl Orishimo",
+   "Ian Kremenic",
+   "Jessica Caggiano",
+   "Abi Ramsey"
+  ],
+  "year": 2011,
+  "journal": "Sports Health: A Multidisciplinary Approach",
+  "doi": "10.1177/1941738111416911",
+  "pmid": "23016056",
+  "url": "https://doi.org/10.1177/1941738111416911",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 10
+ },
+ {
+  "id": "calatayud2014",
+  "title": "Muscle Activity Levels in Upper-Body Push Exercises With Different Loads and Stability Conditions",
+  "authors": [
+   "Joaquin Calatayud",
+   "Sebastien Borreani",
+   "Juan Carlos Colado",
+   "Fernando Martin",
+   "Michael E. Rogers"
+  ],
+  "year": 2014,
+  "journal": "The Physician and Sportsmedicine",
+  "doi": "10.3810/psm.2014.11.2097",
+  "pmid": "25419894",
+  "url": "https://doi.org/10.3810/psm.2014.11.2097",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 53
+ },
+ {
+  "id": "vinstrup2015",
+  "title": "Core Muscle Activity, Exercise Preference, and Perceived Exertion during Core Exercise with Elastic Resistance versus Machine",
+  "authors": [
+   "Jonas Vinstrup",
+   "Emil Sundstrup",
+   "Mikkel Brandt",
+   "Markus D. Jakobsen",
+   "Joaquin Calatayud",
+   "Lars L. Andersen"
+  ],
+  "year": 2015,
+  "journal": "Scientifica",
+  "doi": "10.1155/2015/403068",
+  "pmid": "26557405",
+  "url": "https://doi.org/10.1155/2015/403068",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 9
+ },
+ {
+  "id": "vinstrup2017",
+  "title": "Electromyographic evaluation of high-intensity elastic resistance exercises for lower extremity muscles during bed rest",
+  "authors": [
+   "Jonas Vinstrup",
+   "Sebastian Skals",
+   "Joaquin Calatayud",
+   "Markus Due Jakobsen",
+   "Emil Sundstrup",
+   "Matheus Daros Pinto",
+   "Mikel Izquierdo",
+   "Yuling Wang",
+   "Mette K. Zebis",
+   "Lars Louis Andersen"
+  ],
+  "year": 2017,
+  "journal": "European Journal of Applied Physiology",
+  "doi": "10.1007/s00421-017-3620-2",
+  "pmid": "28447184",
+  "url": "https://doi.org/10.1007/s00421-017-3620-2",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 12
+ },
+ {
+  "id": "zhu2025",
+  "title": "Biomechanical Evaluation of Posterior Deltoid Exercises and Kinematic Trajectory Modeling for Rehabilitation Robotics",
+  "authors": [
+   "Qinghui Zhu",
+   "Zhizi Chen",
+   "Li Feng"
+  ],
+  "year": 2025,
+  "journal": "Acta of Bioengineering and Biomechanics",
+  "doi": "10.37190/abb/217836",
+  "pmid": "41964926",
+  "url": "https://doi.org/10.37190/abb/217836",
+  "evidenceLevel": "biomechanical",
+  "metadataSource": "crossref",
+  "citedBy": 0
+ },
+ {
+  "id": "tsuruike2020",
+  "title": "Analysis of Scapular Muscle EMG Activity During Elastic Resistance Oscillation Exercises From the Perspective of Different Arm Positions",
+  "authors": [
+   "Masaaki Tsuruike",
+   "Todd S. Ellenbecker",
+   "Yoshinori Kagaya",
+   "Luke Lemings"
+  ],
+  "year": 2020,
+  "journal": "Sports Health: A Multidisciplinary Approach",
+  "doi": "10.1177/1941738120929305",
+  "pmid": "32525452",
+  "url": "https://doi.org/10.1177/1941738120929305",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 18
+ },
+ {
+  "id": "bishop2018",
+  "title": "Electromyographic Analysis of Gluteus Maximus, Gluteus Medius, and Tensor Fascia Latae During Therapeutic Exercises With and Without Elastic Resistance",
+  "authors": [
+   "Barton N. Bishop",
+   "Jay Greenstein",
+   "Jena L. Etnoyer-Slaski",
+   "Heidi Sterling",
+   "Robert Topp"
+  ],
+  "year": 2018,
+  "journal": "International Journal of Sports Physical Therapy",
+  "doi": "10.26603/ijspt20180668",
+  "pmid": "30140560",
+  "url": "https://doi.org/10.26603/ijspt20180668",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 32
+ },
+ {
+  "id": "cambridge2012",
+  "title": "Progressive hip rehabilitation: The effects of resistance band placement on gluteal activation during two common exercises",
+  "authors": [
+   "Edward D.J. Cambridge",
+   "Natalie Sidorkewicz",
+   "Dianne M. Ikeda",
+   "Stuart M. McGill"
+  ],
+  "year": 2012,
+  "journal": "Clinical Biomechanics",
+  "doi": "10.1016/j.clinbiomech.2012.03.002",
+  "pmid": "22464817",
+  "url": "https://doi.org/10.1016/j.clinbiomech.2012.03.002",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 35
+ },
+ {
+  "id": "martinruiz2026",
+  "title": "Comparison of Upper-Limb Muscle Activation Levels in Different Physical Fitness Exercises Using Dumbbells and Elastic Tubes",
+  "authors": [
+   "Julio Martín-Ruiz",
+   "Laura Ruiz-Sanchis",
+   "Ignacio Tamarit Grancha",
+   "Clara Gallego Cerveró",
+   "Juan Vicente-Mampel",
+   "Luis Baraja-Vegas"
+  ],
+  "year": 2026,
+  "journal": "Sports Health: A Multidisciplinary Approach",
+  "doi": "10.1177/19417381251353769",
+  "pmid": "40734261",
+  "url": "https://doi.org/10.1177/19417381251353769",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 0
+ },
+ {
+  "id": "garcialopez2010",
+  "title": "Influence of “In Series” Elastic Resistance on Muscular Performance During a Biceps-curl Set on the Cable Machine",
+  "authors": [
+   "David García-López",
+   "Azael J Herrero",
+   "Gustavo González-Calvo",
+   "Matthew R Rhea",
+   "Pedro J Marín"
+  ],
+  "year": 2010,
+  "journal": "Journal of Strength and Conditioning Research",
+  "doi": "10.1519/jsc.0b013e3181e3482f",
+  "pmid": "20703162",
+  "url": "https://doi.org/10.1519/jsc.0b013e3181e3482f",
+  "evidenceLevel": "biomechanical crossover",
+  "metadataSource": "crossref",
+  "citedBy": 6
+ },
+ {
+  "id": "uchida2016",
+  "title": "Thera-Band® elastic band tension: reference values for physical activity",
+  "authors": [
+   "Marco Carlos Uchida",
+   "Márcio Makoto Nishida",
+   "Ricardo Aurélio Carvalho Sampaio",
+   "Toshio Moritani",
+   "Hidenori Arai"
+  ],
+  "year": 2016,
+  "journal": "Journal of Physical Therapy Science",
+  "doi": "10.1589/jpts.28.1266",
+  "pmid": "27190465",
+  "url": "https://doi.org/10.1589/jpts.28.1266",
+  "evidenceLevel": "biomechanical",
+  "metadataSource": "crossref",
+  "citedBy": 71
+ },
+ {
+  "id": "shoepe2010",
+  "title": "Elastic Band Prediction Equations for Combined Free-Weight and Elastic Band Bench Presses and Squats",
+  "authors": [
+   "Todd C Shoepe",
+   "David A Ramirez",
+   "Hawley C Almstedt"
+  ],
+  "year": 2010,
+  "journal": "Journal of Strength and Conditioning Research",
+  "doi": "10.1519/jsc.0b013e318199d963",
+  "pmid": "19816220",
+  "url": "https://doi.org/10.1519/jsc.0b013e318199d963",
+  "evidenceLevel": "biomechanical",
+  "metadataSource": "crossref",
+  "citedBy": 21
+ },
+ {
+  "id": "li2026a",
+  "title": "Comparison of Muscle Activation between Variable Resistance Training and Free Weight Training: A Systematic Review and Meta-Analysis",
+  "authors": [
+   "Jie Li",
+   "Zongwei Chen",
+   "Mingjun Gong"
+  ],
+  "year": 2026,
+  "journal": "Journal of Human Kinetics",
+  "doi": "10.5114/jhk/202810",
+  "pmid": "42211795",
+  "url": "https://doi.org/10.5114/jhk/202810",
+  "evidenceLevel": "systematic review/meta-analysis",
+  "metadataSource": "crossref",
+  "citedBy": 3
+ },
+ {
+  "id": "li2026b",
+  "title": "Comparison of Variable Resistance and Free Weight Training on Long-Term and Acute Effects on Different Assessments of Strength: A Systematic Review and Meta-Analysis",
+  "authors": [
+   "Jie Li",
+   "Zongwei Chen",
+   "Kai Xu",
+   "Yifan Wang",
+   "Mingjun Gong"
+  ],
+  "year": 2026,
+  "journal": "Journal of Strength & Conditioning Research",
+  "doi": "10.1519/jsc.0000000000005369",
+  "pmid": "41460711",
+  "url": "https://doi.org/10.1519/jsc.0000000000005369",
+  "evidenceLevel": "systematic review/meta-analysis",
+  "metadataSource": "crossref",
+  "citedBy": 6
+ },
+ {
+  "id": "seguin2022",
+  "title": "The Efficacy of Upper-Extremity Elastic Resistance Training on Shoulder Strength and Performance: A Systematic Review",
+  "authors": [
+   "Rachel C. Seguin",
+   "Alan C. Cudlip",
+   "Michael W. R. Holmes"
+  ],
+  "year": 2022,
+  "journal": "Sports",
+  "doi": "10.3390/sports10020024",
+  "pmid": "35202063",
+  "url": "https://doi.org/10.3390/sports10020024",
+  "evidenceLevel": "systematic review/meta-analysis",
+  "metadataSource": "crossref",
+  "citedBy": 21
+ },
+ {
+  "id": "jakobsen2013",
+  "title": "Muscle activity during leg strengthening exercise using free weights and elastic resistance: Effects of ballistic vs controlled contractions",
+  "authors": [
+   "Markus Due Jakobsen",
+   "Emil Sundstrup",
+   "Christoffer H. Andersen",
+   "Per Aagaard",
+   "Lars L. Andersen"
+  ],
+  "year": 2013,
+  "journal": "Human Movement Science",
+  "doi": "10.1016/j.humov.2012.07.002",
+  "pmid": "23231756",
+  "url": "https://doi.org/10.1016/j.humov.2012.07.002",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 72
+ },
+ {
+  "id": "meng2025",
+  "title": "Effects of elastic band resistance training on lower limb strength and balance function in older adults: a systematic review and meta-analysis",
+  "authors": [
+   "Yunchen Meng",
+   "Yiling Hu",
+   "Wang Yang",
+   "Yaqi Xue",
+   "Sanjun Yang"
+  ],
+  "year": 2025,
+  "journal": "Frontiers in Sports and Active Living",
+  "doi": "10.3389/fspor.2025.1649305",
+  "pmid": "41278596",
+  "url": "https://doi.org/10.3389/fspor.2025.1649305",
+  "evidenceLevel": "systematic review/meta-analysis",
+  "metadataSource": "crossref",
+  "citedBy": 11
+ },
+ {
+  "id": "schott2026",
+  "title": "Effects of elastic band training versus free weight training in community-dwelling older adults: A randomized controlled trial",
+  "authors": [
+   "Nadja Schott",
+   "Philipp Straßer",
+   "Benjamin Holfelder"
+  ],
+  "year": 2026,
+  "journal": "Experimental Gerontology",
+  "doi": "10.1016/j.exger.2026.113182",
+  "pmid": "42217686",
+  "url": "https://doi.org/10.1016/j.exger.2026.113182",
+  "evidenceLevel": "RCT",
+  "metadataSource": "crossref",
+  "citedBy": 0
+ },
+ {
+  "id": "bench2021",
+  "title": "Examining Muscle Activity Differences During Single and Dual Vector Elastic Resistance Exercises",
+  "authors": [
+   "Ryan WG Bench",
+   "Sydney E Thompson",
+   "Alan C Cudlip",
+   "Michael WR Holmes"
+  ],
+  "year": 2021,
+  "journal": "International Journal of Sports Physical Therapy",
+  "doi": "10.26603/001c.21309",
+  "pmid": "33842028",
+  "url": "https://doi.org/10.26603/001c.21309",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 4
+ },
+ {
+  "id": "calatayud2019",
+  "title": "Upper-Body Exercises With External Resistance Are Well Tolerated and Enhance Muscle Activity in People With Hemophilia",
+  "authors": [
+   "Joaquín Calatayud",
+   "Sofía Pérez-Alenda",
+   "Juan J Carrasco",
+   "Adrián Escriche",
+   "Carlos Cruz-Montecinos",
+   "Lars L Andersen",
+   "Santiago Bonanad",
+   "Felipe Querol",
+   "José Casaña"
+  ],
+  "year": 2019,
+  "journal": "Physical Therapy",
+  "doi": "10.1093/ptj/pzy136",
+  "pmid": "30690577",
+  "url": "https://doi.org/10.1093/ptj/pzy136",
+  "evidenceLevel": "EMG cohort",
+  "metadataSource": "crossref",
+  "citedBy": 15
  }
 ]

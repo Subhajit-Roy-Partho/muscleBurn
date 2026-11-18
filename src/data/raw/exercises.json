@@ -4,6 +4,9 @@
   "name": "Barbell Back Squat",
   "category": "squat",
   "context": "gym",
+  "equipment": [
+   "barbell"
+  ],
   "primaryMuscles": [
    "quadriceps (vastus lateralis)",
    "quadriceps (vastus medialis)",
@@ -435,6 +438,9 @@
   "name": "Front Squat",
   "category": "squat",
   "context": "gym",
+  "equipment": [
+   "barbell"
+  ],
   "primaryMuscles": [
    "quadriceps (vastus lateralis)",
    "quadriceps (vastus medialis)",
@@ -484,6 +490,9 @@
   "name": "Conventional Deadlift",
   "category": "hinge",
   "context": "gym",
+  "equipment": [
+   "barbell"
+  ],
   "primaryMuscles": [
    "gluteus maximus",
    "biceps femoris",
@@ -730,6 +739,9 @@
   "name": "Romanian Deadlift",
   "category": "hinge",
   "context": "gym",
+  "equipment": [
+   "barbell"
+  ],
   "primaryMuscles": [
    "biceps femoris",
    "semitendinosus",
@@ -855,6 +867,10 @@
   "name": "Barbell Bench Press",
   "category": "horizontal push",
   "context": "gym",
+  "equipment": [
+   "barbell",
+   "bench"
+  ],
   "primaryMuscles": [
    "pectoralis major (sternocostal)",
    "pectoralis major (clavicular)",
@@ -1217,6 +1233,10 @@
   "name": "Incline Bench Press",
   "category": "horizontal push",
   "context": "gym",
+  "equipment": [
+   "barbell",
+   "bench"
+  ],
   "primaryMuscles": [
    "pectoralis major (clavicular)",
    "anterior deltoid",
@@ -1318,6 +1338,9 @@
   "name": "Overhead Press",
   "category": "vertical push",
   "context": "gym",
+  "equipment": [
+   "barbell"
+  ],
   "primaryMuscles": [
    "anterior deltoid",
    "lateral deltoid",
@@ -1455,6 +1478,9 @@
   "name": "Barbell Bent-Over Row",
   "category": "horizontal pull",
   "context": "gym",
+  "equipment": [
+   "barbell"
+  ],
   "primaryMuscles": [
    "latissimus dorsi",
    "middle trapezius",
@@ -1621,6 +1647,9 @@
   "name": "Pull-Up",
   "category": "vertical pull",
   "context": "both",
+  "equipment": [
+   "pull-up-bar"
+  ],
   "primaryMuscles": [
    "latissimus dorsi",
    "teres major",
@@ -1729,6 +1758,10 @@
   "name": "Lat Pulldown",
   "category": "vertical pull",
   "context": "gym",
+  "equipment": [
+   "machine",
+   "cable"
+  ],
   "primaryMuscles": [
    "latissimus dorsi",
    "teres major",
@@ -1902,6 +1935,10 @@
   "name": "Biceps Curl",
   "category": "elbow flexion",
   "context": "both",
+  "equipment": [
+   "dumbbell",
+   "cable"
+  ],
   "primaryMuscles": [
    "biceps brachii (long head)",
    "biceps brachii (short head)",
@@ -2074,6 +2111,9 @@
   "name": "Triceps Pushdown",
   "category": "elbow extension",
   "context": "gym",
+  "equipment": [
+   "cable"
+  ],
   "primaryMuscles": [
    "triceps brachii (lateral head)",
    "triceps brachii (medial head)"
@@ -2151,6 +2191,10 @@
   "name": "Overhead Triceps Extension",
   "category": "elbow extension",
   "context": "gym",
+  "equipment": [
+   "dumbbell",
+   "cable"
+  ],
   "primaryMuscles": [
    "triceps brachii (long head)"
   ],
@@ -2208,6 +2252,9 @@
   "name": "Leg Press",
   "category": "knee extension",
   "context": "gym",
+  "equipment": [
+   "machine"
+  ],
   "primaryMuscles": [
    "quadriceps (vastus lateralis)",
    "quadriceps (vastus medialis)",
@@ -2332,6 +2379,9 @@
   "name": "Leg Extension",
   "category": "knee extension",
   "context": "gym",
+  "equipment": [
+   "machine"
+  ],
   "primaryMuscles": [
    "quadriceps (rectus femoris)",
    "quadriceps (vastus lateralis)",
@@ -2406,6 +2456,9 @@
   "name": "Leg Curl",
   "category": "knee flexion",
   "context": "gym",
+  "equipment": [
+   "machine"
+  ],
   "primaryMuscles": [
    "biceps femoris",
    "semitendinosus",
@@ -2501,6 +2554,10 @@
   "name": "Barbell Hip Thrust",
   "category": "hip extension",
   "context": "both",
+  "equipment": [
+   "barbell",
+   "bench"
+  ],
   "primaryMuscles": [
    "gluteus maximus"
   ],
@@ -2664,6 +2721,9 @@
   "name": "Calf Raise",
   "category": "plantarflexion",
   "context": "both",
+  "equipment": [
+   "machine"
+  ],
   "primaryMuscles": [
    "gastrocnemius (medial head)",
    "gastrocnemius (lateral head)",
@@ -2741,6 +2801,10 @@
   "name": "Lateral Raise",
   "category": "shoulder abduction",
   "context": "both",
+  "equipment": [
+   "dumbbell",
+   "cable"
+  ],
   "primaryMuscles": [
    "lateral deltoid"
   ],
@@ -2839,6 +2903,11 @@
   "name": "Chest Fly",
   "category": "shoulder horizontal adduction",
   "context": "gym",
+  "equipment": [
+   "dumbbell",
+   "cable",
+   "bench"
+  ],
   "primaryMuscles": [
    "pectoralis major (sternocostal)",
    "pectoralis major (clavicular)"
@@ -2917,6 +2986,9 @@
   "name": "Plank",
   "category": "core",
   "context": "both",
+  "equipment": [
+   "bodyweight"
+  ],
   "primaryMuscles": [
    "rectus abdominis",
    "external oblique",
@@ -3056,6 +3128,9 @@
   "name": "Crunch / Sit-Up",
   "category": "core",
   "context": "both",
+  "equipment": [
+   "bodyweight"
+  ],
   "primaryMuscles": [
    "rectus abdominis"
   ],
@@ -3150,6 +3225,9 @@
   "name": "Push-Up",
   "category": "horizontal push",
   "context": "home",
+  "equipment": [
+   "bodyweight"
+  ],
   "primaryMuscles": [
    "pectoralis major (sternocostal)",
    "pectoralis major (clavicular)",
@@ -3449,6 +3527,9 @@
   "name": "Bodyweight Squat",
   "category": "squat",
   "context": "home",
+  "equipment": [
+   "bodyweight"
+  ],
   "primaryMuscles": [
    "quadriceps (vastus lateralis)",
    "quadriceps (vastus medialis)",
@@ -3672,6 +3753,10 @@
   "name": "Bulgarian Split Squat",
   "category": "squat",
   "context": "home",
+  "equipment": [
+   "bodyweight",
+   "bench"
+  ],
   "primaryMuscles": [
    "quadriceps (vastus lateralis)",
    "quadriceps (vastus medialis)",
@@ -3837,6 +3922,9 @@
   "name": "Reverse Lunge",
   "category": "lunge",
   "context": "home",
+  "equipment": [
+   "bodyweight"
+  ],
   "primaryMuscles": [
    "gluteus maximus",
    "quadriceps (vastus lateralis)",
@@ -3935,6 +4023,9 @@
   "name": "Glute Bridge",
   "category": "hip extension",
   "context": "home",
+  "equipment": [
+   "bodyweight"
+  ],
   "primaryMuscles": [
    "gluteus maximus"
   ],
@@ -4014,6 +4105,10 @@
   "name": "Inverted Row",
   "category": "horizontal pull",
   "context": "home",
+  "equipment": [
+   "bodyweight",
+   "pull-up-bar"
+  ],
   "primaryMuscles": [
    "latissimus dorsi",
    "middle trapezius",
@@ -4103,6 +4198,10 @@
   "name": "Bench Dip",
   "category": "elbow extension",
   "context": "home",
+  "equipment": [
+   "bodyweight",
+   "bench"
+  ],
   "primaryMuscles": [
    "triceps brachii",
    "pectoralis major (sternocostal)",
@@ -4151,6 +4250,9 @@
   "name": "Pike Push-Up",
   "category": "vertical push",
   "context": "home",
+  "equipment": [
+   "bodyweight"
+  ],
   "primaryMuscles": [
    "anterior deltoid",
    "triceps brachii",
@@ -4283,6 +4385,9 @@
   "name": "Nordic Hamstring Curl",
   "category": "knee flexion",
   "context": "home",
+  "equipment": [
+   "bodyweight"
+  ],
   "primaryMuscles": [
    "biceps femoris",
    "semitendinosus",
@@ -4390,6 +4495,10 @@
   "name": "Single-Leg Calf Raise",
   "category": "plantarflexion",
   "context": "home",
+  "equipment": [
+   "bodyweight",
+   "step"
+  ],
   "primaryMuscles": [
    "gastrocnemius (medial head)",
    "gastrocnemius (lateral head)",
@@ -4495,6 +4604,9 @@
   "name": "Side Plank",
   "category": "core",
   "context": "home",
+  "equipment": [
+   "bodyweight"
+  ],
   "primaryMuscles": [
    "internal oblique",
    "external oblique",
@@ -4633,6 +4745,10 @@
   "name": "Step-Up",
   "category": "lunge",
   "context": "home",
+  "equipment": [
+   "bodyweight",
+   "step"
+  ],
   "primaryMuscles": [
    "gluteus maximus",
    "gluteus medius",
@@ -4742,6 +4858,9 @@
   "name": "Band Pull-Apart",
   "category": "horizontal pull",
   "context": "home",
+  "equipment": [
+   "band"
+  ],
   "primaryMuscles": [
    "posterior deltoid",
    "middle trapezius",
@@ -4847,6 +4966,9 @@
   "name": "Superman (Prone Back Extension)",
   "category": "hip extension",
   "context": "home",
+  "equipment": [
+   "bodyweight"
+  ],
   "primaryMuscles": [
    "erector spinae",
    "multifidus",
@@ -4899,6 +5021,1516 @@
   ],
   "referenceIds": [
    "atalay2025"
+  ]
+ },
+ {
+  "id": "band-row",
+  "name": "Band Row",
+  "category": "horizontal pull",
+  "context": "home",
+  "equipment": [
+   "band"
+  ],
+  "primaryMuscles": [
+   "latissimus dorsi",
+   "middle trapezius",
+   "rhomboids",
+   "biceps brachii"
+  ],
+  "secondaryMuscles": [
+   "posterior deltoid",
+   "lateral deltoid",
+   "external oblique",
+   "erector spinae",
+   "lower trapezius"
+  ],
+  "variations": [
+   {
+    "id": "band-row-modality",
+    "name": "Resistance modality: band vs cable or barbell",
+    "description": "Single-arm band row compared with a conventional row at a matched 10RM.",
+    "effects": [
+     {
+      "muscle": "latissimus dorsi",
+      "direction": "decrease",
+      "magnitude": "11-13% lower normalized EMG than the conventional row at a matched 10RM (p<0.001)",
+      "note": "29 men and women, cross-over; the authors judged this magnitude small enough for bands to be a viable rowing modality.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     },
+     {
+      "muscle": "posterior deltoid",
+      "direction": "decrease",
+      "magnitude": "lower in the first concentric and second eccentric phases (p<0.01)",
+      "note": "Same cross-over.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     },
+     {
+      "muscle": "lateral deltoid",
+      "direction": "decrease",
+      "magnitude": "lower than the conventional row (main effect, p<0.001)",
+      "note": "Recorded as deltoideus medius in the source.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     },
+     {
+      "muscle": "biceps brachii",
+      "direction": "decrease",
+      "magnitude": "lower in the first concentric phase (p<0.01)",
+      "note": "Same cross-over.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     },
+     {
+      "muscle": "external oblique",
+      "direction": "decrease",
+      "magnitude": "lower than the conventional row (main effect in favour of conventional equipment, p<0.001)",
+      "note": "The conventional row in this study was the heavier, more stabilised condition.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "iversen2017"
+    ]
+   },
+   {
+    "id": "band-row-prestretch",
+    "name": "Setup: pre-stretch and stance",
+    "description": "Step back or shorten the band so it is under tension at the start of the pull.",
+    "effects": [
+     {
+      "muscle": "latissimus dorsi",
+      "direction": "increase",
+      "magnitude": "band and conventional row activation were similar at the end range where the band was elongated",
+      "note": "Phase analysis, same 29-participant cross-over; pre-stretch is the practical lever because a slack band under-loads the first part of the pull.",
+      "referenceIds": [
+       "iversen2017",
+       "uchida2016"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "iversen2017",
+     "uchida2016"
+    ]
+   },
+   {
+    "id": "band-row-outcome",
+    "name": "Training outcome: band vs conventional equipment",
+    "description": "Pooled comparison of variable resistance and free weights.",
+    "effects": [
+     {
+      "muscle": "latissimus dorsi",
+      "direction": "shift",
+      "magnitude": "no overall EMG difference between variable resistance and free weights (SMD 0.07, p=0.493)",
+      "note": "Meta-analysis of 11 studies; concentric-phase advantage for variable resistance (SMD 0.32).",
+      "referenceIds": [
+       "li2026a"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "li2026a"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "iversen2017",
+   "uchida2016",
+   "li2026a"
+  ]
+ },
+ {
+  "id": "band-lat-pulldown",
+  "name": "Band Lat Pulldown",
+  "category": "vertical pull",
+  "context": "home",
+  "equipment": [
+   "band"
+  ],
+  "primaryMuscles": [
+   "latissimus dorsi",
+   "teres major",
+   "biceps brachii"
+  ],
+  "secondaryMuscles": [
+   "posterior deltoid",
+   "lateral deltoid",
+   "middle trapezius",
+   "lower trapezius",
+   "rhomboids",
+   "external oblique"
+  ],
+  "variations": [
+   {
+    "id": "band-pulldown-modality",
+    "name": "Resistance modality: band vs cable",
+    "description": "Overhead-anchored band pulldown compared with a cable pulldown machine at a matched 10RM.",
+    "effects": [
+     {
+      "muscle": "latissimus dorsi",
+      "direction": "decrease",
+      "magnitude": "11-15% lower normalized EMG than the cable pulldown at a matched 10RM (p<0.001)",
+      "note": "29 men and women, within-subject cross-over; EMG normalized to MVC and split into four contraction phases. The deficit was concentrated in the phases where the band was slack and was largely absent at the end range.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     },
+     {
+      "muscle": "biceps brachii",
+      "direction": "decrease",
+      "magnitude": "lower than the cable pulldown in the first concentric and second eccentric phases (p<0.01)",
+      "note": "Same 29-participant cross-over.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     },
+     {
+      "muscle": "posterior deltoid",
+      "direction": "decrease",
+      "magnitude": "lower than cable in the first concentric phase (p<0.01)",
+      "note": "Ancillary muscle in the same comparison.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     },
+     {
+      "muscle": "external oblique",
+      "direction": "increase",
+      "magnitude": "higher than the cable pulldown in all four phases (main effect in favour of the band)",
+      "note": "The standing band pulldown loaded the trunk more than the seated cable exercise.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "iversen2017"
+    ]
+   },
+   {
+    "id": "band-pulldown-prestretch",
+    "name": "Anchor height: pre-stretch the band",
+    "description": "Anchor overhead so the band is already taut at the start of the pull rather than slack.",
+    "effects": [
+     {
+      "muscle": "latissimus dorsi",
+      "direction": "increase",
+      "magnitude": "the band-versus-cable deficit was largely eliminated at the end range where the band was most elongated",
+      "note": "Phase analysis from the same cross-over. Practically, anchoring lower or stepping back increases pre-stretch and shifts the load earlier in the range.",
+      "referenceIds": [
+       "iversen2017",
+       "uchida2016"
+      ]
+     },
+     {
+      "muscle": "latissimus dorsi",
+      "direction": "increase",
+      "magnitude": "external resistance rises non-linearly with band elongation (tested from 25% to 250% elongation)",
+      "note": "Mechanical, not EMG: measured Thera-Band tension-elongation values; the manufacturer reference table overestimated tension for 5 of 8 colours.",
+      "referenceIds": [
+       "uchida2016"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "iversen2017",
+     "uchida2016"
+    ]
+   },
+   {
+    "id": "band-pulldown-outcome",
+    "name": "Training outcome: band vs conventional equipment",
+    "description": "Pooled EMG and strength comparisons of variable resistance (bands or chains) against free weights.",
+    "effects": [
+     {
+      "muscle": "latissimus dorsi",
+      "direction": "shift",
+      "magnitude": "no overall EMG difference between variable resistance and free weights across 11 studies (SMD 0.07, p=0.493)",
+      "note": "Meta-analysis of multi-joint exercises in trained adults; variable resistance was higher in the concentric phase (SMD 0.32, p=0.033) and with larger variable-load proportions (SMD 0.38, p=0.036).",
+      "referenceIds": [
+       "li2026a"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "li2026a"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "iversen2017",
+   "uchida2016",
+   "li2026a"
+  ]
+ },
+ {
+  "id": "band-hamstring-curl",
+  "name": "Band Hamstring Curl",
+  "category": "knee flexion",
+  "context": "home",
+  "equipment": [
+   "band"
+  ],
+  "primaryMuscles": [
+   "biceps femoris",
+   "semitendinosus"
+  ],
+  "secondaryMuscles": [
+   "semimembranosus",
+   "gastrocnemius (medial head)",
+   "gluteus maximus"
+  ],
+  "variations": [
+   {
+    "id": "band-hamcurl-modality",
+    "name": "Resistance modality: band vs machine",
+    "description": "Prone or seated band leg curl compared with a training-machine hamstring curl at 10RM.",
+    "effects": [
+     {
+      "muscle": "biceps femoris",
+      "direction": "shift",
+      "magnitude": "peak normalized EMG above 80% MVIC with both modalities; slightly lower with the band at 30-50 degrees of knee flexion (p<0.05)",
+      "note": "19 participants (6 women, 13 men), cross-over, EMG normalized to MVIC and synchronized to knee angle with inclinometers.",
+      "referenceIds": [
+       "jakobsen2014"
+      ]
+     },
+     {
+      "muscle": "semitendinosus",
+      "direction": "shift",
+      "magnitude": "peak normalized EMG above 80% MVIC with both modalities; slightly lower with the band at 30-50 degrees of knee flexion (p<0.05)",
+      "note": "Same cross-over.",
+      "referenceIds": [
+       "jakobsen2014"
+      ]
+     },
+     {
+      "muscle": "biceps femoris",
+      "direction": "decrease",
+      "magnitude": "perceived loading was higher for the band at equal or slightly lower EMG (Borg CR10 7.58 vs 5.92, p<0.001)",
+      "note": "The band version felt harder while producing similar peak activity, which matters for effort-based progression at home.",
+      "referenceIds": [
+       "jakobsen2014"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "jakobsen2014"
+    ]
+   },
+   {
+    "id": "band-hamcurl-joint-angle",
+    "name": "Joint angle: extended vs flexed knee",
+    "description": "Where in the curl range the band loses tension relative to a machine.",
+    "effects": [
+     {
+      "muscle": "biceps femoris",
+      "direction": "decrease",
+      "magnitude": "lower band EMG specifically at 30-50 degrees of knee flexion, the more extended part of the range, during the eccentric phase",
+      "note": "At more flexed knee angles the two modalities did not differ. A band anchored so it is taut at 30-50 degrees narrows the gap.",
+      "referenceIds": [
+       "jakobsen2014"
+      ]
+     },
+     {
+      "muscle": "semitendinosus",
+      "direction": "decrease",
+      "magnitude": "lower band EMG at 30-50 degrees of knee flexion during the concentric phase",
+      "note": "Same analysis.",
+      "referenceIds": [
+       "jakobsen2014"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "jakobsen2014"
+    ]
+   },
+   {
+    "id": "band-hamcurl-phase",
+    "name": "Contraction phase: concentric vs eccentric",
+    "description": "Phase-specific activation within the same curl repetition.",
+    "effects": [
+     {
+      "muscle": "biceps femoris",
+      "direction": "decrease",
+      "magnitude": "eccentric EMG lower than concentric EMG for both band and machine",
+      "note": "Concentric activity exceeded eccentric regardless of exercise or muscle, so the eccentric phase is not automatically the higher-stimulus phase.",
+      "referenceIds": [
+       "jakobsen2014"
+      ]
+     },
+     {
+      "muscle": "semitendinosus",
+      "direction": "decrease",
+      "magnitude": "eccentric EMG lower than concentric EMG for both modalities",
+      "note": "Same study.",
+      "referenceIds": [
+       "jakobsen2014"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "jakobsen2014"
+    ]
+   },
+   {
+    "id": "band-hamcurl-prone",
+    "name": "Setup: prone knee flexion in bed or on the floor",
+    "description": "Band anchored to a bed frame or door with the participant prone, a common home and rehabilitation setup.",
+    "effects": [
+     {
+      "muscle": "biceps femoris",
+      "direction": "increase",
+      "magnitude": "72% nEMG during prone band knee flexion at a Borg CR10 of 8",
+      "note": "22 healthy participants; absolute activation level, not a between-modality comparison. The same battery found 71% nEMG for semitendinosus.",
+      "referenceIds": [
+       "vinstrup2017"
+      ]
+     },
+     {
+      "muscle": "semitendinosus",
+      "direction": "increase",
+      "magnitude": "71% nEMG during prone band knee flexion at a Borg CR10 of 8",
+      "note": "22 healthy participants; absolute activation level, not a between-modality comparison. The same battery recorded 73% (biceps femoris) and 77% (semitendinosus) without kinesiology tape.",
+      "referenceIds": [
+       "vinstrup2017"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "vinstrup2017"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "jakobsen2014",
+   "vinstrup2017"
+  ]
+ },
+ {
+  "id": "band-squat",
+  "name": "Band Squat",
+  "category": "squat",
+  "context": "home",
+  "equipment": [
+   "band"
+  ],
+  "primaryMuscles": [
+   "quadriceps (vastus lateralis)",
+   "quadriceps (vastus medialis)",
+   "quadriceps (rectus femoris)",
+   "gluteus maximus"
+  ],
+  "secondaryMuscles": [
+   "biceps femoris",
+   "semitendinosus",
+   "gluteus medius",
+   "erector spinae",
+   "adductor magnus"
+  ],
+  "variations": [
+   {
+    "id": "band-squat-modality",
+    "name": "Resistance modality: band vs barbell",
+    "description": "Standing on the band or anchoring it low, compared with a barbell back squat at a matched 10RM.",
+    "effects": [
+     {
+      "muscle": "quadriceps (vastus lateralis)",
+      "direction": "decrease",
+      "magnitude": "substantially lower than the barbell squat (main effect, p<0.001)",
+      "note": "29 men and women, cross-over, 10RM matched. The authors concluded bands are feasible for pulldowns and rows but not for the squat because quadriceps activation was considerably lower.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     },
+     {
+      "muscle": "quadriceps (vastus medialis)",
+      "direction": "decrease",
+      "magnitude": "lower in the first concentric and second eccentric phases (p<0.01)",
+      "note": "Same cross-over.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     },
+     {
+      "muscle": "quadriceps (rectus femoris)",
+      "direction": "decrease",
+      "magnitude": "lower in the first concentric and second eccentric phases (p<0.01)",
+      "note": "Same cross-over.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     },
+     {
+      "muscle": "gluteus maximus",
+      "direction": "increase",
+      "magnitude": "higher with the band in the first eccentric phase (p<0.01)",
+      "note": "The band condition shifted demand toward the hip extensors even while quadriceps activity fell.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     },
+     {
+      "muscle": "semitendinosus",
+      "direction": "increase",
+      "magnitude": "higher with the band in the first eccentric phase (p<0.01)",
+      "note": "Same cross-over.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     },
+     {
+      "muscle": "biceps femoris",
+      "direction": "increase",
+      "magnitude": "higher with the band in the first eccentric phase (p<0.01)",
+      "note": "Same cross-over.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     },
+     {
+      "muscle": "erector spinae",
+      "direction": "decrease",
+      "magnitude": "higher for the barbell squat in the first concentric and second eccentric phases (p<0.01); overall difference small",
+      "note": "Same cross-over.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "iversen2017"
+    ]
+   },
+   {
+    "id": "band-squat-loop-forefeet",
+    "name": "Loop band: around the forefeet vs the thighs",
+    "description": "A loop band worn around the legs during a bodyweight squat; placement and stiffness both change hip demand.",
+    "effects": [
+     {
+      "muscle": "gluteus medius",
+      "direction": "increase",
+      "magnitude": "+83% myoelectric activity versus the free squat with the stiffest band around the forefeet",
+      "note": "35 healthy participants (18 men, 17 women); band position (thigh, lower leg, forefoot) and stiffness compared. Forefoot placement produced the largest hip-muscle increases.",
+      "referenceIds": [
+       "martins2022"
+      ]
+     },
+     {
+      "muscle": "gluteus maximus",
+      "direction": "increase",
+      "magnitude": "+68% myoelectric activity versus the free squat with the stiffest band around the forefeet",
+      "note": "Same study; tensor fascia latae rose only 24%, so the gluteal-to-TFL balance improved.",
+      "referenceIds": [
+       "martins2022"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "martins2022"
+    ]
+   },
+   {
+    "id": "band-squat-banded-barbell",
+    "name": "Banded barbell: elastic contribution 20-40%",
+    "description": "Bands added to a barbell squat so that 20%, 30% or 40% of the total load comes from elastic resistance.",
+    "effects": [
+     {
+      "muscle": "quadriceps (vastus lateralis)",
+      "direction": "increase",
+      "magnitude": "significantly higher in the upper phase at a 40% elastic contribution (p<=0.021)",
+      "note": "13 basketball players, 85% 1RM, within-subject. This is a banded barbell squat, not a bodyweight band squat.",
+      "referenceIds": [
+       "shi2024"
+      ]
+     },
+     {
+      "muscle": "quadriceps (vastus medialis)",
+      "direction": "increase",
+      "magnitude": "significantly higher in the upper phase at a 40% elastic contribution (p<=0.036)",
+      "note": "Same study.",
+      "referenceIds": [
+       "shi2024"
+      ]
+     },
+     {
+      "muscle": "quadriceps (rectus femoris)",
+      "direction": "increase",
+      "magnitude": "higher in the upper eccentric phase at the largest elastic contribution (p<=0.036)",
+      "note": "Same study.",
+      "referenceIds": [
+       "shi2024"
+      ]
+     },
+     {
+      "muscle": "whole-body (peak force and power)",
+      "direction": "increase",
+      "magnitude": "mean power (p<=0.021) and rate of force development (p<=0.002) rose with increasing elastic contribution",
+      "note": "Same study; movement velocity also increased in the eccentric phase.",
+      "referenceIds": [
+       "shi2024"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "shi2024"
+    ]
+   },
+   {
+    "id": "band-squat-small-contribution",
+    "name": "Elastic contribution: about 10% of the load",
+    "description": "Bands replacing roughly a tenth of the barbell load, the common gym use of band resistance.",
+    "effects": [
+     {
+      "muscle": "quadriceps",
+      "direction": "shift",
+      "magnitude": "no difference in integrated EMG or vertical ground reaction force versus the free-weight squat",
+      "note": "11 NCAA Division I athletes, repeated measures; bands or chains replaced about 10% of the load. The authors questioned the added value at that magnitude.",
+      "referenceIds": [
+       "ebben2002"
+      ]
+     },
+     {
+      "muscle": "hamstrings",
+      "direction": "shift",
+      "magnitude": "no difference in integrated EMG versus the free-weight squat",
+      "note": "Same study.",
+      "referenceIds": [
+       "ebben2002"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "ebben2002"
+    ]
+   },
+   {
+    "id": "band-squat-trunk",
+    "name": "Trunk activation when bands replace part of the load",
+    "description": "Free-weight squat with and without elastic bands at a matched 6RM.",
+    "effects": [
+     {
+      "muscle": "erector spinae",
+      "direction": "shift",
+      "magnitude": "no difference across the whole repetition or any phase (p=0.112-0.782)",
+      "note": "25 resistance-trained women, 6RM matched; band substitution changed the load curve (117% / 105% / 93% of free-weight resistance at top, middle and bottom) but not trunk activation.",
+      "referenceIds": [
+       "saeterbakken2014"
+      ]
+     },
+     {
+      "muscle": "external oblique",
+      "direction": "shift",
+      "magnitude": "no difference (p=0.225-0.977)",
+      "note": "Same study.",
+      "referenceIds": [
+       "saeterbakken2014"
+      ]
+     },
+     {
+      "muscle": "rectus abdominis",
+      "direction": "shift",
+      "magnitude": "no difference (p=0.315-0.729)",
+      "note": "Same study.",
+      "referenceIds": [
+       "saeterbakken2014"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "saeterbakken2014"
+    ]
+   },
+   {
+    "id": "band-squat-split-stance",
+    "name": "Split stance: band lunge vs dumbbell lunge",
+    "description": "Forward lunge with elastic resistance compared with dumbbells at 33%, 66% and 100% of 10RM.",
+    "effects": [
+     {
+      "muscle": "quadriceps (vastus lateralis)",
+      "direction": "shift",
+      "magnitude": "medium-load ballistic lunges with elastic resistance matched or exceeded high-load controlled dumbbell lunges at flexed knee angles",
+      "note": "42 participants (24 women, 18 men); elastic resistance was judged as effective as isoinertial resistance for high leg muscle activity when contraction intent is accounted for.",
+      "referenceIds": [
+       "jakobsen2013"
+      ]
+     },
+     {
+      "muscle": "gluteus maximus",
+      "direction": "shift",
+      "magnitude": "quadriceps and gluteus EMG during medium-load ballistic elastic lunges exceeded high-load controlled lunges at flexed knee positions",
+      "note": "Same study.",
+      "referenceIds": [
+       "jakobsen2013"
+      ]
+     },
+     {
+      "muscle": "biceps femoris",
+      "direction": "increase",
+      "magnitude": "hamstring EMG rose at more extended knee angles with elastic resistance but stayed constant with dumbbells",
+      "note": "Same study; the shift in the hamstring angle-tension relation is specific to the band condition.",
+      "referenceIds": [
+       "jakobsen2013"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "jakobsen2013"
+    ]
+   },
+   {
+    "id": "band-squat-outcome",
+    "name": "Training outcome: pooled strength",
+    "description": "Meta-analytic evidence for band-based lower-limb training.",
+    "effects": [
+     {
+      "muscle": "quadriceps (strength outcome)",
+      "direction": "increase",
+      "magnitude": "leg-extension strength improved versus control (SMD 1.01, 95% CI 0.36-1.66) across 25 RCTs and 1318 older adults",
+      "note": "Meta-analysis of elastic band training in older adults; chair-stand SMD 2.04 and timed-up-and-go SMD -1.41 also favoured training.",
+      "referenceIds": [
+       "meng2025"
+      ]
+     },
+     {
+      "muscle": "whole-body (1RM)",
+      "direction": "increase",
+      "magnitude": "variable resistance training outperformed free weights for maximal strength (SMD 0.28-0.37)",
+      "note": "Meta-analysis of long-term trials; the advantage was clearest with chain-based loading or a variable-load proportion of 20% or less.",
+      "referenceIds": [
+       "li2026b"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "meng2025",
+     "li2026b"
+    ]
+   },
+   {
+    "id": "band-squat-older-adults",
+    "name": "Training outcome: band vs free weights in older adults",
+    "description": "Twelve-week randomised comparison of elastic-band and free-weight training.",
+    "effects": [
+     {
+      "muscle": "whole-body (1RM)",
+      "direction": "shift",
+      "magnitude": "12 weeks of band versus free-weight training in older adults: leg-press 1RM +23.9% vs +16.8% (between-group p=0.322); chest press +3.6% vs +7.3% (p=0.184)",
+      "note": "48 participants, three-arm RCT; both modes improved functional tests, with no significant difference between them.",
+      "referenceIds": [
+       "schott2026"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "schott2026"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "ebben2002",
+   "iversen2017",
+   "jakobsen2013",
+   "li2026b",
+   "martins2022",
+   "meng2025",
+   "saeterbakken2014",
+   "schott2026",
+   "shi2024"
+  ]
+ },
+ {
+  "id": "band-lateral-raise",
+  "name": "Band Lateral Raise",
+  "category": "shoulder abduction",
+  "context": "home",
+  "equipment": [
+   "band"
+  ],
+  "primaryMuscles": [
+   "lateral deltoid"
+  ],
+  "secondaryMuscles": [
+   "anterior deltoid",
+   "upper trapezius",
+   "supraspinatus"
+  ],
+  "variations": [
+   {
+    "id": "band-lateral-raise-3rm",
+    "name": "Resistance modality: band vs dumbbell at 3RM",
+    "description": "Lateral raise taken to an individually maximal 3RM load with dumbbells versus elastic tubing.",
+    "effects": [
+     {
+      "muscle": "lateral deltoid",
+      "direction": "shift",
+      "magnitude": "3RM normalized EMG did not differ significantly: 59-87% MVIC with dumbbells vs 64-86% with elastic tubing",
+      "note": "16 female workers, randomized loadings; the same study tested wrist extension and shoulder external rotation. Perceived loading tracked normalized EMG moderately to very strongly (r=0.59-0.92).",
+      "referenceIds": [
+       "andersen2010"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "andersen2010"
+    ]
+   },
+   {
+    "id": "band-lateral-raise-load-equivalence",
+    "name": "Load equivalence: sex-dependent",
+    "description": "Formal equivalence testing of dumbbell and elastic-tube loads across five resistance levels.",
+    "effects": [
+     {
+      "muscle": "lateral deltoid",
+      "direction": "shift",
+      "magnitude": "load equivalence for shoulder abduction passed in men but not in women; the authors concluded the two modes are not interchangeable",
+      "note": "30 physically active participants (15 men, 15 women), 4 exercises and 5 loads. Both modes were symmetrical and produced similar muscle synergies as load rose.",
+      "referenceIds": [
+       "martinruiz2026"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "martinruiz2026"
+    ]
+   },
+   {
+    "id": "band-lateral-raise-tension",
+    "name": "Band length-tension: the bottom of the raise",
+    "description": "Where the band is slack at the start of a lateral raise it contributes little resistance.",
+    "effects": [
+     {
+      "muscle": "lateral deltoid",
+      "direction": "increase",
+      "magnitude": "external resistance rises non-linearly with elongation; measured band tensions differed significantly between colours at 100% and 200% elongation",
+      "note": "Mechanical, not EMG. Anchoring under the foot or starting with the arm slightly abducted restores tension in the first part of the range.",
+      "referenceIds": [
+       "uchida2016"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "uchida2016"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "andersen2010",
+   "martinruiz2026",
+   "uchida2016"
+  ]
+ },
+ {
+  "id": "band-romanian-deadlift",
+  "name": "Band Romanian Deadlift",
+  "category": "hinge",
+  "context": "home",
+  "equipment": [
+   "band"
+  ],
+  "primaryMuscles": [
+   "biceps femoris",
+   "semitendinosus",
+   "gluteus maximus",
+   "erector spinae"
+  ],
+  "secondaryMuscles": [
+   "semimembranosus",
+   "adductor magnus",
+   "external oblique"
+  ],
+  "variations": [
+   {
+    "id": "band-rdl-modality",
+    "name": "Resistance modality: band vs barbell",
+    "description": "Band stiff-legged deadlift with the band anchored behind the body, compared with a barbell version at a matched 10RM.",
+    "effects": [
+     {
+      "muscle": "erector spinae",
+      "direction": "decrease",
+      "magnitude": "11% lower than the barbell stiff-legged deadlift at a matched 10RM",
+      "note": "29 men and women, cross-over. The band was attached behind the participant while the barbell pulled downward, which changes the biomechanics; the authors still judged bands viable to some extent for this pattern.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     },
+     {
+      "muscle": "gluteus maximus",
+      "direction": "decrease",
+      "magnitude": "lower in the first concentric and second eccentric phases (p<0.01)",
+      "note": "Same cross-over.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     },
+     {
+      "muscle": "biceps femoris",
+      "direction": "decrease",
+      "magnitude": "lower in the first and second concentric and second eccentric phases (p<0.01)",
+      "note": "Same cross-over.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     },
+     {
+      "muscle": "semitendinosus",
+      "direction": "decrease",
+      "magnitude": "lower in the first concentric and second eccentric phases (p<0.01)",
+      "note": "Same cross-over.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     },
+     {
+      "muscle": "external oblique",
+      "direction": "decrease",
+      "magnitude": "lower in the first concentric and second eccentric phases (p<0.01)",
+      "note": "Same cross-over.",
+      "referenceIds": [
+       "iversen2017"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "iversen2017"
+    ]
+   },
+   {
+    "id": "band-rdl-end-range",
+    "name": "End range: hip extension under maximum band tension",
+    "description": "The lockout portion, where the band is most elongated.",
+    "effects": [
+     {
+      "muscle": "erector spinae",
+      "direction": "increase",
+      "magnitude": "the band-versus-barbell difference was eliminated in the end range where the band was most elongated",
+      "note": "Phase analysis from the same cross-over; pre-tensioning the band shifts load into the earlier hip-hinge range.",
+      "referenceIds": [
+       "iversen2017",
+       "uchida2016"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "iversen2017",
+     "uchida2016"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "iversen2017",
+   "uchida2016"
+  ]
+ },
+ {
+  "id": "band-biceps-curl",
+  "name": "Band Biceps Curl",
+  "category": "elbow flexion",
+  "context": "home",
+  "equipment": [
+   "band"
+  ],
+  "primaryMuscles": [
+   "biceps brachii",
+   "brachialis"
+  ],
+  "secondaryMuscles": [
+   "brachioradialis",
+   "forearm flexors"
+  ],
+  "variations": [
+   {
+    "id": "band-curl-load-equivalence",
+    "name": "Load equivalence: band vs dumbbell",
+    "description": "Elbow flexion performed with dumbbells and elastic tubes across five loads.",
+    "effects": [
+     {
+      "muscle": "biceps brachii",
+      "direction": "shift",
+      "magnitude": "formal load equivalence at elbow flexion passed in men but not in women; the authors concluded the equipment is not interchangeable",
+      "note": "30 physically active participants (15 men, 15 women); symmetry and muscle synergy were similar between modes even where load equivalence failed.",
+      "referenceIds": [
+       "martinruiz2026"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "martinruiz2026"
+    ]
+   },
+   {
+    "id": "band-curl-vs-unloaded",
+    "name": "External resistance vs unloaded elbow flexion",
+    "description": "Elbow flexion with elastic resistance, free weights or no external resistance at a moderate intensity.",
+    "effects": [
+     {
+      "muscle": "biceps brachii",
+      "direction": "increase",
+      "magnitude": "greater muscle activity with elastic resistance than with unloaded elbow flexion",
+      "note": "12 people with haemophilia A/B; both elastic and free-weight conditions exceeded the non-resisted condition. Small sample and a clinical population.",
+      "referenceIds": [
+       "calatayud2019"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "calatayud2019"
+    ]
+   },
+   {
+    "id": "band-curl-accommodating",
+    "name": "Accommodating resistance: elastic added in series",
+    "description": "Elastic resistance added in series to a cable so the external load rises through the curl.",
+    "effects": [
+     {
+      "muscle": "biceps brachii",
+      "direction": "shift",
+      "magnitude": "repetitions to failure fell and mean acceleration declined more smoothly; peak acceleration trended 18.6% lower",
+      "note": "21 participants, 70% 1RM curl to failure, cross-over. This was a cable plus elastic setup, not a free-standing band, and the outcome is performance rather than EMG.",
+      "referenceIds": [
+       "garcialopez2010"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "garcialopez2010"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "martinruiz2026",
+   "calatayud2019",
+   "garcialopez2010"
+  ]
+ },
+ {
+  "id": "band-calf-raise",
+  "name": "Band Calf Raise",
+  "category": "plantarflexion",
+  "context": "home",
+  "equipment": [
+   "band"
+  ],
+  "primaryMuscles": [
+   "gastrocnemius (medial head)",
+   "gastrocnemius (lateral head)",
+   "soleus"
+  ],
+  "secondaryMuscles": [
+   "tibialis posterior",
+   "peroneus longus"
+  ],
+  "variations": [
+   {
+    "id": "band-calf-vs-heel-raise",
+    "name": "Resistance modality: band vs bodyweight heel raise",
+    "description": "Supine plantarflexion against a red elastic band compared with weight-bearing heel raises.",
+    "effects": [
+     {
+      "muscle": "gastrocnemius (medial head)",
+      "direction": "decrease",
+      "magnitude": "45% MVIC with supine plantarflexion against a red elastic band vs 112% MVIC for the single-leg heel raise",
+      "note": "20 healthy lower extremities; eight Achilles-rehabilitation exercises ranked. The band condition was above seated toe raises (11%) and prone ankle pumps (38%) but well below weight-bearing heel raises.",
+      "referenceIds": [
+       "mullaney2011"
+      ]
+     },
+     {
+      "muscle": "soleus",
+      "direction": "decrease",
+      "magnitude": "45% MVIC with the band vs 112% MVIC for the single-leg heel raise",
+      "note": "Same study; the ranking across exercises was consistent for gastrocnemius and soleus.",
+      "referenceIds": [
+       "mullaney2011"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "mullaney2011"
+    ]
+   },
+   {
+    "id": "band-calf-progression",
+    "name": "Progression: band colour and elongation",
+    "description": "How to add resistance once band calf raises become easy.",
+    "effects": [
+     {
+      "muscle": "gastrocnemius (medial head)",
+      "direction": "increase",
+      "magnitude": "resistance is set by band colour and elongation; measured tensions differed significantly between colours at 100% and 200% elongation",
+      "note": "Mechanical, not EMG. Progression options are a heavier colour, greater pre-stretch or single-leg execution rather than added repetitions alone.",
+      "referenceIds": [
+       "uchida2016"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "uchida2016"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "mullaney2011",
+   "uchida2016"
+  ]
+ },
+ {
+  "id": "band-chest-press",
+  "name": "Band Chest Press",
+  "category": "horizontal push",
+  "context": "home",
+  "equipment": [
+   "band"
+  ],
+  "primaryMuscles": [
+   "pectoralis major (sternocostal)",
+   "anterior deltoid",
+   "triceps brachii"
+  ],
+  "secondaryMuscles": [
+   "pectoralis major (clavicular)",
+   "serratus anterior",
+   "upper trapezius"
+  ],
+  "variations": [
+   {
+    "id": "band-chestpress-modality",
+    "name": "Resistance modality: band vs dumbbell (flye proxy)",
+    "description": "Closest direct single-joint comparison: horizontal adduction with bands versus dumbbells at 10RM.",
+    "effects": [
+     {
+      "muscle": "pectoralis major (sternocostal)",
+      "direction": "decrease",
+      "magnitude": "slightly lower with elastic bands than dumbbells at a matched 10RM",
+      "note": "29 men and women, cross-over, flyes and reverse flyes. This is the nearest matched comparison located; the chest press itself has no direct band-versus-dumbbell EMG study.",
+      "referenceIds": [
+       "bergquist2018"
+      ]
+     },
+     {
+      "muscle": "anterior deltoid",
+      "direction": "increase",
+      "magnitude": "substantially higher with elastic bands than dumbbells during flyes",
+      "note": "Same study; attributed to the greater instability of band resistance.",
+      "referenceIds": [
+       "bergquist2018"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "bergquist2018"
+    ]
+   },
+   {
+    "id": "band-chestpress-pushup",
+    "name": "Proxy: elastic-resisted push-up vs bench press",
+    "description": "Adding band resistance to a push-up and comparing prime-mover activity with the bench press at 50%, 70% and 85% 1RM.",
+    "effects": [
+     {
+      "muscle": "pectoralis major (sternocostal)",
+      "direction": "shift",
+      "magnitude": "elastic-resisted push-ups produced similar prime-mover EMG to the bench press at high loads",
+      "note": "29 fit male students; elastic-resisted push-ups also imposed a greater core challenge than the bench press. A push-up is a different movement from a standing band press.",
+      "referenceIds": [
+       "calatayud2014"
+      ]
+     },
+     {
+      "muscle": "anterior deltoid",
+      "direction": "shift",
+      "magnitude": "similar activity to the bench press at high loads",
+      "note": "Same study. Triceps brachii, posterior deltoid and upper trapezius were higher in the less stable conditions (suspension), not specifically with the elastic band.",
+      "referenceIds": [
+       "calatayud2014"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "calatayud2014"
+    ]
+   },
+   {
+    "id": "band-chestpress-outcome",
+    "name": "Training outcome: pooled strength",
+    "description": "Pooled strength results for elastic resistance in upper-body pressing.",
+    "effects": [
+     {
+      "muscle": "whole-body (1RM)",
+      "direction": "shift",
+      "magnitude": "elastic versus conventional resistance: upper-limb strength SMD 0.09 (95% CI -0.18 to 0.35), no superiority of either mode",
+      "note": "Meta-analysis of 8 studies; lower-limb SMD -0.11 (95% CI -0.40 to 0.19). Different populations and protocols, but no evidence that bands are inferior.",
+      "referenceIds": [
+       "lopes2019"
+      ]
+     },
+     {
+      "muscle": "shoulder muscles (composite)",
+      "direction": "increase",
+      "magnitude": "isometric shoulder strength rose 4-42% depending on the action, and 1RM bench press by about 24%, after elastic resistance training programmes",
+      "note": "Systematic review of 24 longitudinal upper-limb elastic training studies; gains were similar across intervention durations of 4-12 weeks.",
+      "referenceIds": [
+       "seguin2022"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "lopes2019",
+     "seguin2022"
+    ]
+   },
+   {
+    "id": "band-chestpress-older-adults",
+    "name": "Training outcome: band vs free weights in older adults",
+    "description": "Twelve-week randomised comparison of elastic-band and free-weight training.",
+    "effects": [
+     {
+      "muscle": "whole-body (1RM)",
+      "direction": "shift",
+      "magnitude": "12-week RCT in older adults: chest-press 1RM +3.6% with bands vs +7.3% with free weights (between-group p=0.184)",
+      "note": "48 participants; the difference was not significant, so this is a null rather than evidence of inferiority.",
+      "referenceIds": [
+       "schott2026"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "schott2026"
+    ]
+   },
+   {
+    "id": "band-chestpress-tension",
+    "name": "Band length-tension: the press arc",
+    "description": "Band tension rises as the band shortens during the press.",
+    "effects": [
+     {
+      "muscle": "pectoralis major (sternocostal)",
+      "direction": "increase",
+      "magnitude": "resistance rises non-linearly through the press; best-fit length-tension equations reached R>0.96 for banded bench press and squat conditions",
+      "note": "Mechanical, not EMG. The practical consequence is that the lockout is the most loaded part of a band press and the chest is least loaded at the start.",
+      "referenceIds": [
+       "shoepe2010"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "shoepe2010"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "bergquist2018",
+   "calatayud2014",
+   "lopes2019",
+   "seguin2022",
+   "schott2026",
+   "shoepe2010"
+  ]
+ },
+ {
+  "id": "band-face-pull",
+  "name": "Band Face Pull",
+  "category": "horizontal pull",
+  "context": "home",
+  "equipment": [
+   "band"
+  ],
+  "primaryMuscles": [
+   "posterior deltoid",
+   "middle trapezius",
+   "lower trapezius",
+   "infraspinatus"
+  ],
+  "secondaryMuscles": [
+   "rhomboids",
+   "upper trapezius",
+   "lateral deltoid"
+  ],
+  "variations": [
+   {
+    "id": "band-facepull-pattern",
+    "name": "Movement pattern: face pull vs bent-over row",
+    "description": "Posterior-deltoid demand of the standing face pull compared with a bent-over row and a bent-over lateral raise.",
+    "effects": [
+     {
+      "muscle": "posterior deltoid",
+      "direction": "increase",
+      "magnitude": "58.2 N estimated muscle force vs 47.9 N for the bent-over row (p<0.001); comparable to the bent-over lateral raise (58.6 N)",
+      "note": "OpenSim static optimisation, 10 healthy males, dumbbell version, not a band. Trajectory modelling of the face pull was reported in the same paper.",
+      "referenceIds": [
+       "zhu2025"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "zhu2025"
+    ]
+   },
+   {
+    "id": "band-facepull-arm-position",
+    "name": "Arm position: 90/90 vs 120 degrees of abduction",
+    "description": "Band performed with the upper arm at 90 degrees abduction and external rotation (90/90) versus 120 degrees abduction.",
+    "effects": [
+     {
+      "muscle": "lower trapezius",
+      "direction": "shift",
+      "magnitude": "no difference in lower trapezius activity between the 120-degree and 90/90 positions",
+      "note": "19 uninjured male collegiate baseball players, elastic resistance oscillation exercise.",
+      "referenceIds": [
+       "tsuruike2020"
+      ]
+     },
+     {
+      "muscle": "upper trapezius",
+      "direction": "decrease",
+      "magnitude": "significantly higher at 120 degrees of abduction than at 90/90",
+      "note": "Same study; the 90/90 position minimised upper trapezius activity.",
+      "referenceIds": [
+       "tsuruike2020"
+      ]
+     },
+     {
+      "muscle": "lateral deltoid",
+      "direction": "decrease",
+      "magnitude": "significantly higher at 120 degrees of abduction than at 90/90",
+      "note": "Same study; recorded as middle deltoid.",
+      "referenceIds": [
+       "tsuruike2020"
+      ]
+     },
+     {
+      "muscle": "infraspinatus",
+      "direction": "shift",
+      "magnitude": "the 90/90 position generated both lower trapezius and infraspinatus activity while minimising upper trapezius and middle deltoid",
+      "note": "Same study; oscillation under elastic load produced high lower-trapezius activation without an adverse effect on humeral-head position.",
+      "referenceIds": [
+       "tsuruike2020"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "tsuruike2020"
+    ]
+   },
+   {
+    "id": "band-facepull-reverse-fly",
+    "name": "Band vs dumbbell: reverse fly comparison",
+    "description": "Closest matched band-versus-dumbbell comparison for the rear-delt and scapular muscles used in a face pull.",
+    "effects": [
+     {
+      "muscle": "posterior deltoid",
+      "direction": "decrease",
+      "magnitude": "slightly lower with elastic bands than dumbbells at a matched 10RM",
+      "note": "29 men and women, cross-over, reverse flyes.",
+      "referenceIds": [
+       "bergquist2018"
+      ]
+     },
+     {
+      "muscle": "lateral deltoid",
+      "direction": "increase",
+      "magnitude": "substantially higher with elastic bands than dumbbells",
+      "note": "Same study; recorded as deltoideus medius.",
+      "referenceIds": [
+       "bergquist2018"
+      ]
+     },
+     {
+      "muscle": "upper trapezius",
+      "direction": "increase",
+      "magnitude": "substantially higher with elastic bands than dumbbells",
+      "note": "Same study; recorded as trapezius descendens. Bands increased activity in perceived ancillary muscles, possibly because the resistance is more unstable.",
+      "referenceIds": [
+       "bergquist2018"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "bergquist2018"
+    ]
+   },
+   {
+    "id": "band-facepull-dual-vector",
+    "name": "Single vs dual band vector",
+    "description": "Adding a second band pulling in a different direction to the primary vector.",
+    "effects": [
+     {
+      "muscle": "lower trapezius",
+      "direction": "increase",
+      "magnitude": "dual-vector abduction increased mean lower-trapezius activity by 25.6 +/- 8.11 %MVC",
+      "note": "16 healthy university-aged males, 16 upper-extremity muscles; adding a second vector increased activity mainly in flexion and abduction exercises and changed little in rotation exercises.",
+      "referenceIds": [
+       "bench2021"
+      ]
+     },
+     {
+      "muscle": "supraspinatus",
+      "direction": "increase",
+      "magnitude": "dual-vector abduction increased peak supraspinatus activity by 29.4 +/- 5.94 %MVC",
+      "note": "Same study.",
+      "referenceIds": [
+       "bench2021"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "bench2021"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "zhu2025",
+   "tsuruike2020",
+   "bergquist2018",
+   "bench2021"
+  ]
+ },
+ {
+  "id": "band-glute-bridge",
+  "name": "Band Glute Bridge",
+  "category": "hip extension",
+  "context": "home",
+  "equipment": [
+   "band"
+  ],
+  "primaryMuscles": [
+   "gluteus maximus",
+   "gluteus medius"
+  ],
+  "secondaryMuscles": [
+   "biceps femoris",
+   "semitendinosus",
+   "multifidus"
+  ],
+  "variations": [
+   {
+    "id": "band-bridge-added-resistance",
+    "name": "Added band resistance",
+    "description": "Bridge with a loop band around the thighs, compared with the same exercises without resistance.",
+    "effects": [
+     {
+      "muscle": "gluteus maximus",
+      "direction": "increase",
+      "magnitude": "bridge with elastic resistance produced one of the highest gluteal-to-tensor-fasciae-latae indices among 13 exercises",
+      "note": "11 healthy active participants, repeated measures; the index expresses gluteal activation relative to tensor fascia latae, so a high value means gluteal bias rather than absolute maximal activation.",
+      "referenceIds": [
+       "bishop2018"
+      ]
+     },
+     {
+      "muscle": "gluteus medius",
+      "direction": "increase",
+      "magnitude": "bridge with elastic resistance produced one of the highest gluteal-to-tensor-fasciae-latae indices among 13 exercises",
+      "note": "Same study; significant tensor fascia latae differences were seen only between clams with and without resistance.",
+      "referenceIds": [
+       "bishop2018"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "bishop2018"
+    ]
+   },
+   {
+    "id": "band-bridge-placement",
+    "name": "Band placement: proximal vs distal",
+    "description": "Where the loop sits on the legs, using standing hip work as the source evidence.",
+    "effects": [
+     {
+      "muscle": "gluteus maximus",
+      "direction": "increase",
+      "magnitude": "preferentially activated with the band around the feet but not with the band around the knees",
+      "note": "9 healthy males, 16 EMG channels, monster walks and sumo walks. This is standing hip work, not a bridge; the transferable principle is that distal placement adds an external-rotation demand.",
+      "referenceIds": [
+       "cambridge2012"
+      ]
+     },
+     {
+      "muscle": "gluteus medius",
+      "direction": "increase",
+      "magnitude": "progressive increase as the band moved from knees to ankles to feet",
+      "note": "Same study; tensor fascia latae also rose with distal placement but less steeply than gluteus medius.",
+      "referenceIds": [
+       "cambridge2012"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "cambridge2012"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "bishop2018",
+   "cambridge2012"
+  ]
+ },
+ {
+  "id": "band-woodchop",
+  "name": "Band Woodchop",
+  "category": "core",
+  "context": "home",
+  "equipment": [
+   "band"
+  ],
+  "primaryMuscles": [
+   "external oblique",
+   "internal oblique",
+   "rectus abdominis"
+  ],
+  "secondaryMuscles": [
+   "erector spinae",
+   "multifidus"
+  ],
+  "variations": [
+   {
+    "id": "band-woodchop-modality",
+    "name": "Resistance modality: band vs machine torso twist",
+    "description": "Rotational core exercise with elastic resistance compared with a torso-twist machine at 10RM.",
+    "effects": [
+     {
+      "muscle": "erector spinae",
+      "direction": "increase",
+      "magnitude": "50% nEMG with the band vs 32% with the machine (right erector spinae)",
+      "note": "17 untrained men, randomized order, 10RM. Perceived exertion did not differ (5.7 vs 5.8) and 76% preferred the band version.",
+      "referenceIds": [
+       "vinstrup2015"
+      ]
+     },
+     {
+      "muscle": "external oblique",
+      "direction": "decrease",
+      "magnitude": "54% nEMG with the band vs 77% with the machine (left external oblique)",
+      "note": "Same study; the machine imposed the higher oblique demand.",
+      "referenceIds": [
+       "vinstrup2015"
+      ]
+     },
+     {
+      "muscle": "rectus abdominis",
+      "direction": "shift",
+      "magnitude": "no significant difference between band and machine",
+      "note": "Same study; right external oblique and left erector spinae also did not differ.",
+      "referenceIds": [
+       "vinstrup2015"
+      ]
+     }
+    ],
+    "referenceIds": [
+     "vinstrup2015"
+    ]
+   }
+  ],
+  "referenceIds": [
+   "vinstrup2015"
   ]
  }
 ]
